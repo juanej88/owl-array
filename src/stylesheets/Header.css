@@ -1,0 +1,48 @@
+.header {
+  height: 60px;
+  width: 90%;
+  min-width: 325px;
+  max-width: 425px;
+  padding: 0 1rem;
+  position: fixed;
+  top: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  background-color: var(--darkblue);
+  border-radius: 80px;
+  color: var(--lightblue);
+  font-family: 'Nunito', sans-serif;
+}
+
+.header > h2 {
+  font-size:
+  1.75rem;
+}
+
+.menu {
+  font-size: 1.25rem;
+  padding: 0.25em 0.75em;
+  background-color: var(--lightblue);
+  color: var(--darkblue);
+  border-radius: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.menu:hover {
+  background-color: hsl(220, 75%, 98%);
+}
+
+.menu > p {
+  padding-right: 0.4em;
+}
+
+.menu--triangle {
+  border-top: 0.5em solid var(--darkblue);
+  border-left: 0.4em solid transparent;
+  border-right: 0.4em solid transparent;
+}
