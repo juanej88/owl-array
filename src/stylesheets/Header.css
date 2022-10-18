@@ -1,8 +1,8 @@
 .header {
   height: 60px;
   width: 90%;
-  min-width: 325px;
-  max-width: 425px;
+  min-width: 350px;
+  max-width: 450px;
   padding: 0 1rem;
   position: fixed;
   top: 1.25rem;
@@ -12,19 +12,19 @@
   z-index: 10;
   background-color: var(--darkblue);
   border-radius: 80px;
-  color: var(--lightblue);
+  color: white;
   font-family: 'Nunito', sans-serif;
+  user-select: none;
 }
 
-.header > h2 {
-  font-size:
-  1.75rem;
+.header > p {
+  font-size: 2rem;
 }
 
 .menu {
   font-size: 1.25rem;
   padding: 0.25em 0.75em;
-  background-color: var(--lightblue);
+  background-color: white;
   color: var(--darkblue);
   border-radius: 1em;
   display: flex;
@@ -34,7 +34,11 @@
 }
 
 .menu:hover {
-  background-color: hsl(220, 75%, 98%);
+  background-color: var(--lightblue);
+}
+
+.menu:active {
+  background-color: white;
 }
 
 .menu > p {

@@ -1,0 +1,47 @@
+.main {
+  width: 100vw;
+  max-width: 1600px;
+  margin: calc(1.25rem + 60px + 1.25rem) 1.25rem 0 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+@media only screen and (max-width: 500px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+}
+
+.container {
+  height: 700px;
+  min-width: 225px;
+  border-radius: 2.5rem;
+  padding: 2rem;
+}
+
+.container-left {
+  background-color: var(--editor-background);
+  color: white;
+}
+
+.container-right {
+  background-color: var(--display-background);
+}
+
+.container > h1 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.container > p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  padding-bottom: 1em;
+}
+
+.code {
+  font-size: 1.1rem;
+  font-family: 'Roboto Mono', monospace;
+}
