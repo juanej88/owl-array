@@ -5,12 +5,40 @@ const Main = (props) => {
   return (
     <main className='main'>
       <section className='container container-left'>
-        <h1>The .push() Method</h1>
-        <p>Welcome to Owl Array. To start, you have to help Owl Buho to...</p>
-        <p>The <span className='code'>.push()</span> method adds one or more elements to the end of an array and returns the new length of the array.</p>
+        <h1 translate='no'>The {props.method} Method</h1>
+        <p>{props.instructions}</p>
+        <p translate='no'>The 
+          <a 
+            className='code' 
+            href={props.link} 
+            target='_blank'
+            rel="noreferrer"
+            title='Link to MDN docs'
+            translate='no'
+          >
+            {props.method}
+          </a>
+          {props.mozillaDefinition}
+        </p>
+        <div className='editor-container'>
+          <p>1</p>
+          <p translate='no'>const fridge = ['fish', 'fish', 'fish'];</p>
+          <p>2</p>
+          <p></p>
+          <p>3</p>
+          <textarea
+            className='code-input' 
+            rows='1' 
+            placeholder='type here'
+            autoCapitalize='none'
+            autoFocus
+          >
+          </textarea>
+          <p>4</p>
+        </div>
       </section>
       <section className='container container-right'>
-      <h1>Owl Buho's House</h1>
+      <h1>Family Owl's Kitchen</h1>
       </section>
     </main>
   );

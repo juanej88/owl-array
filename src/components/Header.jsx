@@ -4,7 +4,7 @@ import '../stylesheets/Header.css';
 const Header = (props) => {
   return (
     <header className='header'>
-        <p>Owl Array</p>
+        <p translate='no'>Owl Array</p>
         <section className='menu'>
           <p>{props.level}</p>
           <div className='menu--triangle'></div>
