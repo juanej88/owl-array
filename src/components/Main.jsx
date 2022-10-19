@@ -25,20 +25,41 @@ const Main = (props) => {
           <p translate='no'>const fridge = ['fish', 'fish', 'fish'];</p>
           <p>2</p>
           <p></p>
-          <p>3</p>
+          <p>4</p>
           <textarea
             className='code-input' 
             rows='1' 
             placeholder='type here'
             autoCapitalize='none'
             // autoFocus
-          >
+            >
           </textarea>
-          <p>4</p>
+          <p>5</p>
+          <p></p>
+          <p>6</p>
+          <p>console.log(fridge);</p>
+          <p>7</p>
         </div>
       </section>
-      <section className='container container-right'>
-        
+      <section className='container display'>
+        <article className='display--array-container'>
+          <h2>Outcome</h2>
+          <aside className='display--array'>
+            <p>fridge = [</p>
+            <div className='item-container'>
+              <i className="fas fa-solid fa-fish"></i>  
+            </div>           
+            <p>,</p>
+            <div className='item-container'>
+              <i className="fas fa-fish"></i>      
+            </div>           
+            <p>,</p>
+            <div className='item-container'>
+              <i className="fas fa-fish"></i>      
+            </div>
+            <p>]</p>        
+          </aside>
+        </article>
       </section>
     </main>
   );
