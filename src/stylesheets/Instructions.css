@@ -1,0 +1,30 @@
+.instructions.first {
+  padding-top: 3.5rem;
+}
+
+h1 {
+  font-family: 'Nunito', sans-serif;
+}
+
+.container > h1 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.instructions {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  padding-bottom: 1em;
+  text-align: justify;
+}
+
+.code {
+  font-size: 1.1rem;
+  font-family: 'Roboto Mono', monospace;
+  background-color: var(--lightgreen);
+  color: black;
+  padding: 0 0.15em;
+  margin: 0 0.3em;
+  border-radius: 0.25em;
+}

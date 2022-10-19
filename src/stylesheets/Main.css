@@ -23,65 +23,6 @@
   color: white;
 }
 
-.container-left > :first-child {
-  padding-top: 3.5rem;
-}
-
-.container > h1,
-.container > h2,
-.container > h3 {
-  font-family: 'Nunito', sans-serif;
-}
-
-.container > h1 {
-  font-family: 'Nunito', sans-serif;
-  font-size: 1.75rem;
-  padding-bottom: 0.75rem;
-}
-
-.container > p {
-  font-size: 1.1rem;
-  line-height: 1.5;
-  padding-bottom: 1em;
-  text-align: justify;
-}
-
-.code {
-  font-size: 1.1rem;
-  font-family: 'Roboto Mono', monospace;
-  background-color: var(--lightgreen);
-  color: black;
-  padding: 0 0.15em;
-  margin: 0 0.3em;
-  border-radius: 0.25em;
-}
-
-/* Editor */
-
-.editor-container {
-  font-family: 'Roboto Mono', monospace;
-  display: grid;
-  align-items: baseline;
-  grid-template-columns: 2rem 1fr;
-}
-
-.editor-container > p {
-  padding: 0 0.5em;
-  line-height: 2.1;
-}
-
-.code-input {
-  font-family: 'Roboto Mono', monospace;
-  font-size: inherit;
-  background-color: black;
-  color: white;
-  border-radius: 0.5em;
-  resize: none;
-  padding: 0.5em 0.5em;
-}
-
-/* Right Container */
-
 .display {
   background-color: var(--green);
   font-family: 'Nunito', sans-serif;
@@ -89,39 +30,3 @@
   flex-direction: column;
   justify-content: center;
 }
-
-.display--array-container > h2 {
-  font-size: 1.7rem;
-  padding-bottom: 1rem;
-}
-
-.display--array {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.display--array > p,
-.array-item > p {
-  font-size: 1.5rem;
-  padding: 0.25rem 0;
-}
-
-.item-container {
-  height: 4rem;
-  width: 4rem;
-  margin: 0 1rem;
-  background-color: white;
-  border: 0.25rem solid black;
-  box-shadow: inset -5px 4px hsl(0deg, 0%, 70%);
-  border-radius: 25%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.item-container > i {
-  font-size: 2rem;
-  padding: 0 1rem;
-}
-

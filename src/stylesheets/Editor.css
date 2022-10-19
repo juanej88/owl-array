@@ -1,0 +1,21 @@
+.editor-container {
+  font-family: 'Roboto Mono', monospace;
+  display: grid;
+  align-items: baseline;
+  grid-template-columns: 2rem 1fr;
+}
+
+.editor-container > p {
+  padding: 0 0.5em;
+  line-height: 2.1;
+}
+
+.code-input {
+  font-family: 'Roboto Mono', monospace;
+  font-size: inherit;
+  background-color: black;
+  color: white;
+  border-radius: 0.5em;
+  resize: none;
+  padding: 0.5em 0.5em;
+}
