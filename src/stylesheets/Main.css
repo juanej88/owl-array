@@ -1,7 +1,7 @@
 .main {
   width: 100vw;
   max-width: 1600px;
-  margin: calc(1.25rem + 60px + 1.25rem) 1.25rem 0 1.25rem;
+  margin: 1.25rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.25rem;
@@ -14,8 +14,6 @@
 }
 
 .container {
-  height: 700px;
-  min-width: 225px;
   border-radius: 2.5rem;
   padding: 2rem;
 }
@@ -25,8 +23,14 @@
   color: white;
 }
 
-.container-right {
-  background-color: var(--display-background);
+.container-left > :first-child {
+  padding-top: 3.5rem;
+}
+
+.container > h1,
+.container > h2,
+.container > h3 {
+  font-family: 'Nunito', sans-serif;
 }
 
 .container > h1 {
@@ -45,7 +49,7 @@
 .code {
   font-size: 1.1rem;
   font-family: 'Roboto Mono', monospace;
-  background-color: var(--display-background);
+  background-color: var(--lightgreen);
   color: black;
   padding: 0 0.15em;
   margin: 0 0.3em;
@@ -74,4 +78,12 @@
   border-radius: 0.5em;
   resize: none;
   padding: 0.5em 0.5em;
+}
+
+/* Right Container */
+
+.container-right {
+  background-color: var(--green);
+  display: flex;
+  align-items: center;
 }

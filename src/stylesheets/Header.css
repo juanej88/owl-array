@@ -1,19 +1,16 @@
 .header {
   height: 60px;
-  width: 90%;
+  width: 100%;
   min-width: 350px;
-  max-width: 450px;
-  padding: 0 1rem;
+  padding: 3.25rem;
   position: fixed;
   top: 1.25rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 10;
-  background-color: var(--darkblue);
-  border-radius: 80px;
-  color: white;
   font-family: 'Nunito', sans-serif;
+  color: var(--green);
   user-select: none;
 }
 
@@ -25,20 +22,18 @@
   font-size: 1.25rem;
   padding: 0.25em 0.75em;
   background-color: white;
-  color: var(--darkblue);
   border-radius: 1em;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  color: black;
 }
 
-.menu:hover {
-  background-color: var(--lightblue);
-}
-
-.menu:active {
-  background-color: white;
+@media only screen and (max-width: 500px) {
+  .level-label {
+    display: none;
+  }
 }
 
 .menu > p {
@@ -46,7 +41,7 @@
 }
 
 .menu--triangle {
-  border-top: 0.5em solid var(--darkblue);
+  border-top: 0.5em solid black;
   border-left: 0.4em solid transparent;
   border-right: 0.4em solid transparent;
 }

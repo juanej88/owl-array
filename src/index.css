@@ -15,8 +15,8 @@ body {
 }
 
 :root {
-  --darkblue: hsl(210, 100%, 25%);
-  --lightblue: hsl(220, 75%, 95%);
-  --editor-background: hsl(220, 0%, 10%);
-  --display-background: hsl(355, 10%, 80%);
+  --site-background: hsl(130, 0%, 95%);
+  --editor-background: hsl(130, 0%, 10%);
+  --green: hsl(130, 50%, 50%);
+  --lightgreen: hsl(130, 50%, 70%);
 }

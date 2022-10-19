@@ -6,7 +6,7 @@ const Header = (props) => {
     <header className='header'>
         <p translate='no'>Owl Array</p>
         <section className='menu'>
-          <p>{props.level}</p>
+          <p><span className='level-label'>Level </span>{props.level}</p>
           <div className='menu--triangle'></div>
         </section>
     </header>

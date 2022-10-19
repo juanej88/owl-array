@@ -5,8 +5,8 @@ const Main = (props) => {
   return (
     <main className='main'>
       <section className='container container-left'>
-        <h1 translate='no'>The {props.method} Method</h1>
         <p>{props.instructions}</p>
+        <h1 translate='no'>The {props.method} Method</h1>
         <p translate='no'>The 
           <a 
             className='code' 
@@ -31,14 +31,14 @@ const Main = (props) => {
             rows='1' 
             placeholder='type here'
             autoCapitalize='none'
-            autoFocus
+            // autoFocus
           >
           </textarea>
           <p>4</p>
         </div>
       </section>
       <section className='container container-right'>
-      <h1>Family Owl's Kitchen</h1>
+        
       </section>
     </main>
   );
