@@ -4,11 +4,14 @@ import '../stylesheets/Editor.css';
 const Editor = (props) => {
   return (
     <div className='editor-container'>
-      <p>1</p>
+      <h2>Owly Editor</h2>
+      <p className='line-number'>1</p>
       <p translate='no'>const fridge = ['fish', 'fish', 'fish'];</p>
-      <p>2</p>
+      <p className='line-number'>2</p>
       <p></p>
-      <p>4</p>
+      <p className='line-number'>3</p>
+      <p className='code-comment'>// By using the .push() method, add the string 'fish' to the fridge array at index 3</p>
+      <p className='line-number'>4</p>
       <textarea
         className='code-input' 
         rows='1' 
@@ -19,11 +22,11 @@ const Editor = (props) => {
         // autoFocus
       >
       </textarea>
-      <p>5</p>
+      <p className='line-number'>5</p>
       <p></p>
-      <p>6</p>
+      <p className='line-number'>6</p>
       <p>console.log(fridge);</p>
-      <p>7</p>
+      <p className='line-number'>7</p>
     </div>
   );
 };

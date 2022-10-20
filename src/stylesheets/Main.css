@@ -3,11 +3,11 @@
   max-width: 1600px;
   margin: 1.25rem;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 7fr 5fr;
   gap: 1.25rem;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 750px) {
   .main {
     grid-template-columns: 1fr;
   }
@@ -28,7 +28,6 @@
 
 .display {
   background-color: var(--green);
-  font-family: 'Nunito', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
