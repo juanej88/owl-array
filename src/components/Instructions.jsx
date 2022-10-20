@@ -6,18 +6,17 @@ const Instructions = (props) => {
     <article>
       <p className='instructions first'>{props.instructions}</p>
       <h1 translate='no'>The {props.method} Method</h1>
-      <p className='instructions' translate='no'>The 
+      <p className='instructions' translate='no'> 
+        {props.mozillaDefinition}
         <a 
-          className='code' 
+          className='documentation-link' 
           href={props.link} 
           target='_blank'
           rel="noreferrer"
           title='Link to MDN docs'
-          translate='no'
         >
-          {props.method}
+          <i class="fas fa-link"></i>
         </a>
-        {props.mozillaDefinition}
       </p>
     </article>
   );
