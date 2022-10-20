@@ -3,7 +3,7 @@
   width: 100%;
   min-width: 350px;
   padding: 3.25rem;
-  position: fixed;
+  position: absolute;
   top: 1.25rem;
   display: flex;
   justify-content: space-between;
@@ -14,8 +14,9 @@
   user-select: none;
 }
 
-.header > p {
+.title {
   font-size: 2rem;
+  font-weight: 900;
 }
 
 .menu {
@@ -38,6 +39,7 @@
 
 .menu > p {
   padding-right: 0.4em;
+  font-weight: 900;
 }
 
 .menu--triangle {

@@ -2,12 +2,13 @@ import React from 'react';
 import '../stylesheets/Main.css';
 import Instructions from './Instructions';
 import Editor from './Editor';
+import Button from './Button';
 import Display from './Display';
 
 const Main = (props) => {
   return (
     <main className='main'>
-      <section className='container container-left'>
+      <section className='container instructions--editor'>
         <Instructions
           method='.push()'
           instructions='Welcome to Owl Array! You will be helping the Owl Family with some duties which need to be completed on each level. First, you need to add one more fish to the end of the fridge array, so all the family members can have one portion for dinner.'
@@ -15,6 +16,9 @@ const Main = (props) => {
           mozillaDefinition='method adds one or more elements to the end of an array and returns the new length of the array.'
         />
         <Editor />
+        <Button
+          complete={false}
+        />
       </section>
       <section className='container display'>
         <Display />

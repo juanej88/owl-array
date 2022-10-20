@@ -1,6 +1,7 @@
 .display--array-container > h2 {
-  font-size: 1.7rem;
+  font-size: 1.6rem;
   padding-bottom: 1rem;
+  font-weight: 700;
 }
 
 .display--array {
@@ -12,16 +13,17 @@
 .display--array > p,
 .array-item > p {
   font-size: 1.5rem;
-  padding: 0.25rem 0;
+  padding: 0.5rem 0;
+  font-weight: 700;
 }
 
 .item-container {
   height: 4rem;
   width: 4rem;
-  margin: 0 1rem;
+  margin: 0.25rem 1rem;
   background-color: white;
   border: 0.25rem solid black;
-  box-shadow: inset -5px 4px hsl(0deg, 0%, 70%);
+  box-shadow: inset 0 5px hsl(0deg, 0%, 70%);
   border-radius: 25%;
   display: flex;
   justify-content: center;

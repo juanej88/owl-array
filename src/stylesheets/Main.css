@@ -16,9 +16,12 @@
 .container {
   border-radius: 2.5rem;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.container-left {
+.instructions--editor {
   background-color: var(--editor-background);
   color: white;
 }
@@ -28,5 +31,5 @@
   font-family: 'Nunito', sans-serif;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
 }

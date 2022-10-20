@@ -3,11 +3,9 @@ import '../stylesheets/Instructions.css';
 
 const Instructions = (props) => {
   return (
-    <>
+    <article>
       <p className='instructions first'>{props.instructions}</p>
-
       <h1 translate='no'>The {props.method} Method</h1>
-
       <p className='instructions' translate='no'>The 
         <a 
           className='code' 
@@ -21,7 +19,7 @@ const Instructions = (props) => {
         </a>
         {props.mozillaDefinition}
       </p>
-    </>
+    </article>
   );
 };
 

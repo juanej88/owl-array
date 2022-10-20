@@ -1,0 +1,43 @@
+#next {
+  align-self: center;
+  height: 3.5rem;
+  width: 3.5rem;
+  margin: 1.5rem 0 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.complete {
+  background-color: var(--green);
+  cursor: pointer;
+}
+
+.complete > i {
+  margin-left: -0.25rem;
+}
+
+.no-complete {
+  background-color: var(--grey);
+  cursor: not-allowed;
+}
+
+.arrow {
+  border: solid black;
+  border-width: 0 0.25rem 0.25rem 0;
+  display: inline-block;
+  padding: 0.4rem;
+}
+
+.arrow-left {
+  transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+.arrow-right {
+  transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
