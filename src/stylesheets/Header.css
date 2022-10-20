@@ -2,7 +2,7 @@
   height: 60px;
   width: 100%;
   min-width: 350px;
-  padding: 3.25rem 3.25rem 0;
+  padding: 3rem 3.25rem 0;
   position: absolute;
   display: grid;
   grid-template-columns: 7fr 5fr;

@@ -1,3 +1,7 @@
+.display--array-container {
+  padding-bottom: 3.5rem;
+}
+
 .display--array-container > h2 {
   font-size: 1.6rem;
   padding-bottom: 1rem;

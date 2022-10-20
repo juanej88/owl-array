@@ -1,7 +1,6 @@
 .main {
-  width: 100vw;
   max-width: 1600px;
-  margin: 1.25rem;
+  padding: 1.25rem;
   display: grid;
   grid-template-columns: 7fr 5fr;
   gap: 1.25rem;

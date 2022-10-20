@@ -10,8 +10,8 @@ const Main = (props) => {
     <main className='main'>
       <section className='container instructions--editor'>
         <Instructions
-          method='.push()'
-          instructions='Welcome to Owl Array! You will be helping the Owl Family with some duties which need to be completed on each level. Therefore, you will need to modify the array(s) provided by typing specific built-in JavaScript functions on the Owly Editor. To start, you need to add one more fish to the end of the fridge array, so all the family members can have one portion for dinner.'
+          method='The .push() Method'
+          instructions='Welcome to Owl Array! You will be helping the Owl Family with some duties, which need to be completed on each level, by modifying the array(s) provided and typing specific built-in JavaScript functions on the Editor. Mom Owl is a restaurant manager and she is ready to go to work; however, she is forgetting her mobile. Your task is to add her missing item to the end of the purse array, so she can go to work without missing belonings.'
           link='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push'
           mozillaDefinition='The .push() method adds one or more elements to the end of an array and returns the new length of the array.'
         />

@@ -5,8 +5,8 @@ const Instructions = (props) => {
   return (
     <article>
       <p className='instructions first'>{props.instructions}</p>
-      <h1 translate='no'>The {props.method} Method</h1>
-      <p className='instructions' translate='no'> 
+      <h1>{props.method}</h1>
+      <p className='instructions'> 
         {props.mozillaDefinition}
         <a 
           className='documentation-link' 
@@ -15,7 +15,7 @@ const Instructions = (props) => {
           rel="noreferrer"
           title='Link to MDN docs'
         >
-          <i class="fas fa-link"></i>
+          <i className="fas fa-link"></i>
         </a>
       </p>
     </article>
