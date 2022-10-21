@@ -1,0 +1,129 @@
+#owl {
+  align-self: center;
+  font-size: 10px;
+  height: 20em;
+}
+
+/* Owl Top Body */
+
+.owl--top-body {
+  align-self: center;
+  height: 15em;
+  width: 20em;
+  border-radius: 50%;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Owl Ears */
+
+.owl--ears {
+  display: flex;
+  height: 5em;
+  width: 24em;
+}
+
+.ear {
+  height: 12em;
+  width: 6em;
+  background-color: black;
+}
+
+.left-ear {
+  transform: skew(10deg) skewY(20deg);
+  border-radius: 20px;
+  position: relative;
+  right: -30px;
+}
+
+.right-ear {
+  transform: skew(-10deg) skewY(-20deg);
+  border-radius: 20px;
+  position: relative;
+  right: -90px;
+}
+
+/* Owl Eyes */
+
+.owl--eyes {
+  height: 9em;
+  width: 18.25em;
+  position: relative;
+  top: -2em;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+}
+
+.eye-container {
+  height: 8.5em;
+  width: 8.5em;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.left-eye {
+  left: 0.5em;
+}
+
+.right-eye {
+  right: 0.5em;
+}
+
+.eye-ball {
+  height: 4.5em;
+  width: 4.5em;
+  background-color: black;
+  box-shadow: 0 0 0 5px hsl(120, 25%, 50%);
+  border-radius: 50%;
+  z-index: 50;
+}
+
+.eye-reflection {
+  height: 1em;
+  width: 1em;
+  position: relative;
+  top: 0.5em;
+  left: 1em;
+  background-color: white;
+  border-radius: 50%;
+}
+
+/* Owl Nose */
+
+.owl--nose {
+  position: relative;
+  top: -4.5em;
+  z-index: 20;
+}
+
+.nose-left {
+  display: inline-block;
+  border-top: 2em solid transparent;
+  border-right: 1.75em solid hsl(130, 0%, 50%);
+  border-bottom: 2.5em solid transparent;
+}
+
+.nose-right {
+  display: inline-block;
+  border-top: 2em solid transparent;
+  border-left: 1.75em solid hsl(130, 0%, 75%);
+  border-bottom: 2.5em solid transparent;
+}
+
+/* Owl Bottom Body */
+
+.owl--bottom-body {
+  position: relative;
+  top: -7em;
+  height: 20em;
+  width: 20em;
+  background-color: black;
+  border-radius: 50%;
+}

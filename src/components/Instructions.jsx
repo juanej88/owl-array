@@ -5,6 +5,7 @@ const Instructions = (props) => {
   return (
     <article>
       <p className='instructions first'>{props.instructions}</p>
+      <p className='instructions'>{props.instructions2}</p>
       <h1>{props.method}</h1>
       <p className='instructions'> 
         {props.mozillaDefinition}
