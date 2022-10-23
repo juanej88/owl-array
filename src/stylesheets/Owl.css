@@ -1,12 +1,15 @@
-#owl {
+.owl {
   align-self: center;
   font-size: 10px;
-  height: 20em;
+  height: 29em;
+  margin: 2em 0;
+  cursor: pointer;
+  scale: 75%;
 }
 
-/* Owl Top Body */
+/* Owl Top */
 
-.owl--top-body {
+.owl--top {
   align-self: center;
   height: 15em;
   width: 20em;
@@ -43,6 +46,47 @@
   border-radius: 20px;
   position: relative;
   right: -90px;
+}
+
+/* Owl Eyelashes */
+
+.owl--eyelashes {
+  width: 15em;
+  position: relative;
+  bottom: 20.5em;
+  display: flex;
+  justify-content: space-between;
+  z-index: 50;
+}
+
+.eyelashes-container {
+  display: flex;
+  align-items: flex-end;
+  rotate: -55deg;
+}
+
+.right-eyelashes {
+  rotate: 55deg;
+}
+
+.eyelash {
+  width: 0.4em;
+  height: 1.75em;
+  margin: 0.05em;
+  border-radius: 100% 0;
+  background-color: white;
+}
+
+.eyelash-medium {
+  height: 1.5em;
+}
+
+.eyelash-small {
+  height: 1.25em;
+}
+
+.eyelash-right {
+  border-radius: 0 100%;
 }
 
 /* Owl Eyes */
@@ -85,12 +129,16 @@
   z-index: 50;
 }
 
+.mr-eye-ball {
+  box-shadow: 0 0 0 5px hsl(15deg, 25%, 25%);
+}
+
 .eye-reflection {
   height: 1em;
   width: 1em;
   position: relative;
-  top: 0.5em;
-  left: 1em;
+  top: 0.75em;
+  left: 1.25em;
   background-color: white;
   border-radius: 50%;
 }
@@ -117,13 +165,136 @@
   border-bottom: 2.5em solid transparent;
 }
 
-/* Owl Bottom Body */
+/* Owl Eyelids */
 
-.owl--bottom-body {
+.owl--eyelids {
+  display: flex;
+  z-index: 50;
+  position: relative;
+  bottom: 141px;
+}
+
+.eyelid {
+  width: 7.5em;
+  height: 5.25em;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+/* Blinking Effect */
+
+.closed-eye {
+  background-color: white;
+}
+
+/* This css style will be applied when the user has completed each level
+to simulate a happy owl expression */
+
+.owl--eyelids-completed {
+  bottom: 127px;
+}
+
+.eyelid-completed {
+  width: 5.5em;
+  margin: 0 9px;
+  background-color: white;
+}
+
+
+/* Owl Bottom */
+
+.owl--body {
   position: relative;
   top: -7em;
   height: 20em;
   width: 20em;
   background-color: black;
   border-radius: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Owl Wings */
+
+.owl--wing {
+  display: flex;
+  position: relative;
+  transform-origin: top;
+}
+
+.left-wing {
+  left: -10px;
+  top: -5px;
+  rotate: 20deg;
+}
+
+.left-wing--down {
+  rotate: 10deg;
+}
+
+.right-wing {
+  right: -10px;
+  top: -5px;
+  rotate: -20deg;
+}
+
+.half-wing {
+  height: 12em;
+  width: 3em;
+  overflow: hidden;
+}
+
+.right-wing--down {
+  rotate: -10deg;
+}
+
+.circleOne {
+  width: 15em;
+  height: 15em;
+  position: relative;
+  top: -15px;
+  background-color: black;
+  border-radius: 50%;
+}
+
+.circleTwo {
+  width: 15em;
+  height: 15em;
+  position: relative;
+  top: -15px;
+  right: 120px;
+  background-color: black;
+  border-radius: 50%
+}
+
+/* Owl Feet */
+
+.owl--feet {
+  position: relative;
+  bottom: 9em;
+  display: flex;
+  justify-content: center;
+}
+
+.foot {
+  display: flex;
+  padding: 0 1.5em;
+}
+
+.finger {
+  width: 1.5em;
+  height: 3em;
+  background-color: black;
+  border-radius: 50%;
+}
+
+.left-finger {
+  position: relative;
+  left: 0.25em;
+}
+
+.right-finger {
+  position: relative;
+  right: 0.25em;
 }

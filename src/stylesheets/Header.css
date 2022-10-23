@@ -19,14 +19,14 @@
   font-weight: 800;
   background-color: var(--green);
   border-radius: 1.5rem;
-  padding: 0 0.75rem;
+  padding: 0 1rem;
 }
 
 .menu {
   width: fit-content;
   justify-self: right;
   font-size: 1.25rem;
-  padding: 0.25em 0.75em;
+  padding: 0 0.75em;
   background-color: white;
   border-radius: 1em;
   display: flex;
@@ -43,6 +43,7 @@
 
 .menu > p {
   padding-right: 0.4em;
+  font-size: 1.5rem;
   font-weight: 900;
 }
 

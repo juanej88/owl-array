@@ -23,7 +23,10 @@ const Main = (props) => {
         />
       </section>
       <section className='container display'>
-        <Owl />
+        <aside className='owls-container'>
+          <Owl owl='mrsOwl' completed={false} />
+          <Owl owl='mrOwl' completed={false} />
+        </aside>
         <Display />
       </section>
     </main>
