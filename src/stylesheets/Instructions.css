@@ -1,4 +1,4 @@
-.first {
+#instructions > :first-child {
   padding-top: 3rem;
 }
 

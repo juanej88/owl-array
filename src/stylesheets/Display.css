@@ -13,11 +13,15 @@
   flex-wrap: wrap;
 }
 
-.display--array > p,
-.array-item > p {
+.display--array > p {
   font-size: 1.5rem;
   padding: 0.5rem 0;
   font-weight: 700;
+}
+
+.array-element {
+  display: flex;
+  align-items: center;
 }
 
 .item-container {
@@ -31,6 +35,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.array-element > p {
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .item-container > i {

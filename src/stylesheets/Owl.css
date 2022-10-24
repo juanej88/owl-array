@@ -190,11 +190,11 @@
 /* This css style will be applied when the user has completed each level
 to simulate a happy owl expression */
 
-.owl--eyelids-completed {
+.owl--eyelids-complete {
   bottom: 127px;
 }
 
-.eyelid-completed {
+.eyelid-complete {
   width: 5.5em;
   margin: 0 9px;
   background-color: white;

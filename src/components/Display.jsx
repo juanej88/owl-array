@@ -11,12 +11,12 @@ const Display = (props) => {
     let comma = <p>,</p>;
 
     return (
-      <>
+      <div className='array-element' key={`item${index}`}>
         <div className='item-container'>
           {icons[item]}
         </div>
         {index !== props.arrayItems.length - 1 && comma}
-      </>
+      </div>
     )
   });
 

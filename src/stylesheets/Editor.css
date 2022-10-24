@@ -6,6 +6,9 @@
   border: solid var(--grey);
   border-width: 0 0 0.1rem;
   padding-bottom: 1rem;
+  /* 'grid-auto-flow: dense' fill the gaps of the previous 
+  unused spaces of the grid */
+  grid-auto-flow: dense; 
 }
 
 .editor-container > h2 {
@@ -22,6 +25,7 @@
 }
 
 .editor-container > .line-number {
+  grid-column: 1 / span 1;
   padding-left: 0;
 }
 

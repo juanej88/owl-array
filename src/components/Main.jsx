@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import gameData from '../data/gameData';
 import '../stylesheets/Main.css';
 import Instructions from './Instructions';
 import Editor from './Editor';
@@ -6,31 +7,45 @@ import Button from './Button';
 import Display from './Display';
 import Owl from './Owl';
 
-const Main = (props) => {
+const Main = () => {
+  const [level, setLevel] = useState(0);
+
+  // This is the data to setup each level
+  const [data, setData] = useState(gameData[level]);
+
+  // This is the array which will be manupulated by the user
+  const [gameArray, setGameArray] = useState(data.arrayItems);
+
   return (
     <main className='main'>
       <section className='container instructions--editor'>
         <Instructions
-          method='The .push() Method'
-          instructions='Welcome to Owl Array! You will be helping the Owl Family with some duties which need to be completed on each level. To do so, you need to modify the array(s) provided and type specific built-in JavaScript functions on the Editor.'
-          instructions2='Meet Mom Owl. She is a restaurant manager who is ready to go to work; however, she is forgetting her mobile in the bedroom. Your task is to add her missing item to the end of the purse array, so she can make calls during the day.'
-          link='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push'
-          mozillaDefinition='The .push() method adds one or more elements to the end of an array and returns the new length of the array.'
+          title={data.title}
+          mainInstructions={data.mainInstructions}
+          instructionsOne={data.instructionsOne}
+          instructionsTwo={data.instructionsTwo}
+          link={data.link}
+          mozillaDefinition={data.mozillaDefinition}
         />
-        <Editor />
+        <Editor
+          editorInstructions={data.editorInstructions}
+          arrayName={data.arrayName}
+          arrayItems={data.arrayItems}
+          editorRows={data.editorRows}
+        />
         <Button
           complete={false}
         />
       </section>
       <section className='container display'>
         <aside className='owls-container'>
-          {['mrOwl', 'mrsOwl'].map(character => (
-            <Owl owl={character} completed={false} />
+          {data.characters.map(character => (
+            <Owl key={character} owl={character} complete={false} />
           ))}
         </aside>
         <Display 
-          arrayName='briefcase' 
-          arrayItems={['pencil', 'eraser', 'compass', 'swatchbook']} 
+          arrayName={data.arrayName} 
+          arrayItems={gameArray} 
         />
       </section>
     </main>

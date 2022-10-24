@@ -11,7 +11,7 @@ const Owl = (props) => {
   const [closeEyes, setCloseEyes] = useState('');
 
   useEffect(() => {
-    if (props.completed) {
+    if (props.complete) {
       return;
     }
     const blinkDown = () => {
@@ -26,7 +26,7 @@ const Owl = (props) => {
   });
 
   useEffect(() => {
-    if (props.completed) {
+    if (props.complete) {
       return;
     }
     const blinkUp = () => {
@@ -36,7 +36,7 @@ const Owl = (props) => {
     const blinkTimeout = setTimeout(blinkUp, 250);
 
     return () => clearTimeout(blinkTimeout);
-  }, [props.completed, closeEyes]);
+  }, [props.complete, closeEyes]);
 
   return (
     <div className='owl' onClick={moveWings}>
@@ -69,17 +69,17 @@ const Owl = (props) => {
           <div className='nose-right'></div>
         </div>
 
-        <div className={props.completed ? 
-          'owl--eyelids owl--eyelids-completed' :
+        <div className={props.complete ? 
+          'owl--eyelids owl--eyelids-complete' :
           'owl--eyelids'}
         >
-          <div className={props.completed ? 
-          'eyelid left-eyelid eyelid-completed' :
+          <div className={props.complete ? 
+          'eyelid left-eyelid eyelid-complete' :
           'eyelid left-eyelid ' + closeEyes}
           >
           </div>
-          <div className={props.completed ? 
-          'eyelid right-eyelid eyelid-completed' :
+          <div className={props.complete ? 
+          'eyelid right-eyelid eyelid-complete' :
           'eyelid right-eyelid ' + closeEyes}
           ></div>
         </div>

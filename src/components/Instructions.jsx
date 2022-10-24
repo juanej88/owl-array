@@ -3,10 +3,11 @@ import '../stylesheets/Instructions.css';
 
 const Instructions = (props) => {
   return (
-    <article>
-      <p className='instructions first'>{props.instructions}</p>
-      <p className='instructions'>{props.instructions2}</p>
-      <h1>{props.method}</h1>
+    <article id='instructions'>
+      {props.mainInstructions && <p className='instructions first'>{props.mainInstructions}</p>}
+      <p className='instructions'>{props.instructionsOne}</p>
+      <p className='instructions'>{props.instructionsTwo}</p>
+      <h1>{props.title}</h1>
       <p className='instructions'> 
         {props.mozillaDefinition}
         <a 
