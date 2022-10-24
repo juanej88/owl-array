@@ -1,29 +1,33 @@
 import React from 'react';
+import icons from '../data/icons';
 import '../stylesheets/Display.css';
 
 const Display = (props) => {
+
+  // arrayItemsJSX maps the props.arrayItems and returns a 
+  // div.item-container with a p element which holds a comma, unless 
+  // is the last item on the array
+  const arrayItemsJSX = props.arrayItems.map((item, index) => {
+    let comma = <p>,</p>;
+
+    return (
+      <>
+        <div className='item-container'>
+          {icons[item]}
+        </div>
+        {index !== props.arrayItems.length - 1 && comma}
+      </>
+    )
+  });
+
   return (
     <div className='display--array-container'>
       <h2>Outcome</h2>
-      <aside className='display--array'>
-        <p translate='no'>bag = [</p>
-        <div className='item-container'>
-          <i className="fas fa-laptop"></i>
-        </div>           
-        <p>,</p>
-        <div className='item-container'>
-          <i className="fa-solid fa-headphones"></i>
-        </div>           
-        <p>,</p>
-        <div className='item-container'>
-          <i className="fas fa-key"></i>   
-        </div>
-        <p>,</p>
-        <div className='item-container'>
-          <i className="fas fa-mobile-alt"></i>  
-        </div>
+      <article className='display--array'>
+        <p translate='no'>{props.arrayName} = [</p>
+        {arrayItemsJSX}
         <p>]</p>        
-      </aside>
+      </article>
     </div>
   );
 };

@@ -24,10 +24,14 @@ const Main = (props) => {
       </section>
       <section className='container display'>
         <aside className='owls-container'>
-          <Owl owl='mrsOwl' completed={false} />
-          <Owl owl='mrOwl' completed={false} />
+          {['mrOwl', 'mrsOwl'].map(character => (
+            <Owl owl={character} completed={false} />
+          ))}
         </aside>
-        <Display />
+        <Display 
+          arrayName='briefcase' 
+          arrayItems={['pencil', 'eraser', 'compass', 'swatchbook']} 
+        />
       </section>
     </main>
   );
