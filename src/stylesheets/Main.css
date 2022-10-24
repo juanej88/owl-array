@@ -2,7 +2,7 @@
   max-width: 1600px;
   padding: 1.25rem;
   display: grid;
-  grid-template-columns: 7fr 5fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.25rem;
 }
 

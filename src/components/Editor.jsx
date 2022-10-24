@@ -1,7 +1,54 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../stylesheets/Editor.css';
 
 const Editor = (props) => {
+  const [input, setInput] = useState('');
+  
+  const handleChange = event => {
+    setInput(event.target.value);
+  }
+
+  const {changeArray, testResult} = props;
+
+  // const {arrayName, method, item, testResult} = props;
+  
+  // console.log(arrayName, method, item, testResult);
+
+  useEffect(() => {
+    let stringToCheck = input.trim();
+
+    let test1 = stringToCheck.includes(testResult);
+
+    if (test1) {
+      // setResultArray([...props.gameArray, item]);
+      changeArray(true);
+    } else {
+      // setResultArray([...props.gameArray]);
+      changeArray(false);
+    }
+
+    // let arrayName = input.split('.');
+    // let arrayMethod;
+
+    // let test1 = false;
+    // arrayName[0] === props.arrayName ? test1 = true : test1 = false;
+
+    // let test2 = false;
+    // test1 && arrayMethod[0] === props.Method[0] ? test2 = true : test2 = false;
+
+    // if(test1 && arrayName.length > 1) {
+    //   arrayMethod = arrayName[1].split('(');
+    //   if array
+    // }
+    
+    // console.log(arrayName[0], arrayMethod);
+   
+  }, [input, testResult, changeArray]);
+  
+  // const [resultArray, setResultArray] = useState([...props.gameArray]);
+
+  // console.log(resultArray);
+
   const lineNumberElements = () => {
     let lineNumbers = [];
     for(let i = 1; i <= 7; i++) {
@@ -28,6 +75,8 @@ const Editor = (props) => {
         autoCapitalize='none'
         autoComplete='off'
         spellCheck='false'
+        onChange={handleChange}
+        value={input}
         // autoFocus
       >
       </textarea>
