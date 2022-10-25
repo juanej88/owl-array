@@ -7,7 +7,7 @@ import Button from './Button';
 import Display from './Display';
 import Owl from './Owl';
 
-const Main = () => {
+const Main = (props) => {
   // const [level, setLevel] = useState(0); --- To be added
 
   // This is the data to setup each level
@@ -26,7 +26,9 @@ const Main = () => {
   // The array which is passed as props to the Display component is updated every time the 'complete' state changes.
   useEffect(() => {
     complete ? setGameArray(data.finalArrayItems) : setGameArray(data.arrayItems);
-  }, [complete, data]);
+    // this line calls changeHeader from the props with the complete argument to update de Header component
+    props.changeHeader(complete);
+  }, [complete, data, props]);
 
   return (
     <main className='main'>
@@ -53,8 +55,13 @@ const Main = () => {
           complete={complete}
         />
       </section>
-      <section className='container display'>
-        {complete && <h1 className='level-clear'>LEVEL CLEAR!</h1>}
+      <section className={
+        complete ? 'container display display-complete' : 'container display'
+      }>
+        <h1 className={
+          complete ? 'level-clear level-complete' : 'level-clear'
+        }>LEVEL CLEAR!</h1>
+        {/* {complete && <h1 className='level-clear'>LEVEL CLEAR!</h1>} */}
         <aside className='owls-container'>
           {data.characters.map(character => (
             <Owl key={character} owl={character} complete={complete} />

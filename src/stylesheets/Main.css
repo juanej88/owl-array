@@ -24,15 +24,52 @@
 }
 
 .display {
-  background-color: var(--green);
+  background-color: var(--blue);
   justify-content: flex-start;
+}
+
+.display-complete {
+  animation: 0.5s linear forwards changeDisplayColour;
+}
+
+@keyframes changeDisplayColour {
+  from {
+    background-color: var(--blue);
+  }
+
+  to {
+    background-color: var(--green);
+  }
 }
 
 .level-clear {
   padding-top: 6rem;
   text-align: center;
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-family: 'Fuzzy Bubbles', cursive;
+  opacity: 0;
+}
+
+.level-clear.level-complete {
+  transform-origin: bottom;
+  animation: 0.25s linear forwards changeHeadingColour;
+}
+
+@keyframes changeHeadingColour {
+  0% {
+    opacity: 0;
+    transform: scale(1.75);
+  }
+
+  25% {
+    opacity: 0;
+    transform: scale(1.75);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 aside.owls-container {

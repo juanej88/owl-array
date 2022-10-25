@@ -1,13 +1,20 @@
+import React, { useState } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
 
 function App() {
+  const [levelComplete, setLevelComplete] = useState(false);
+
+  const changeHeader = complete => {
+    setLevelComplete(complete);
+  };
+
   return (
     <div className='App'>
-      <Header level='01' />
-      <Main />
+      <Header level='01' complete={levelComplete} />
+      <Main changeHeader={changeHeader} />
       <Footer />
     </div>
   );

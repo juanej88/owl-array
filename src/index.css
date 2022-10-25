@@ -10,13 +10,14 @@
 
 html,
 body {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
   font-size: 16px;
 }
 
 :root {
   --site-background: hsl(130, 0%, 95%);
   --editor-background: hsl(130, 0%, 10%);
+  --blue: hsl(210, 70%, 70%);
   --green: hsl(130, 50%, 65%);
   --grey: hsl(130, 0%, 50%);
 }

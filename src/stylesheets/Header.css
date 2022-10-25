@@ -4,10 +4,9 @@
   padding: 1.5rem 1.5rem 0;
   position: absolute;
   display: grid;
-  grid-template-columns: 5.5fr 4.5fr;
+  grid-template-columns: 7fr 3fr;
   justify-content: center;
   z-index: 10;
-  font-family: 'Nunito', sans-serif;
   color: black;
   user-select: none;
 }
@@ -16,9 +15,24 @@
   width: fit-content;
   font-size: 1.75rem;
   font-weight: 800;
-  background-color: var(--green);
+  background-color: var(--blue);
   border-radius: 1.5rem;
-  padding: 0 1rem;
+  padding: 0.15rem 1rem 0;
+  font-weight: 800;
+}
+
+.title.title-complete {
+  animation: 0.25s linear forwards changeTitleBackground;
+}
+
+@keyframes changeTitleBackground {
+  from {
+    background-color: var(--blue);
+  }
+
+  to{
+    background-color: var(--green);
+  }
 }
 
 .menu {
@@ -43,7 +57,7 @@
 .menu > p {
   padding-right: 0.4em;
   font-size: 1.5rem;
-  font-weight: 900;
+  font-weight: 800;
 }
 
 .menu--triangle {
