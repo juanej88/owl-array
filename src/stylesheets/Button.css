@@ -59,11 +59,11 @@
 }
 
 @keyframes moveTogether {
-  0% {
+  from {
     margin-right: 0;
   }
 
-  100% {
+  to {
     margin-right: 0.35rem;
   }
 }
@@ -75,11 +75,11 @@
 }
 
 @keyframes rotateArrow {
-  0% {
+  from {
     transform: scaleX(1) rotate(135deg);
   }
 
-  100% {
+  to {
     transform: scaleX(-1) rotate(135deg);
   }
 }

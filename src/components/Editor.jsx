@@ -87,7 +87,7 @@ const Editor = (props) => {
   // This function renders the required numbers of lines on the left of the editor
   const lineNumberElements = () => {
     let lineNumbers = [];
-    for(let i = 1; i <= 7; i++) {
+    for(let i = 1; i <= 6; i++) {
       lineNumbers.push(<p className='line-number' key={`line ${i}`}>{i}</p>);
     }
     return lineNumbers;

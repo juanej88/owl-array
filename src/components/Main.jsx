@@ -54,6 +54,7 @@ const Main = () => {
         />
       </section>
       <section className='container display'>
+        {complete && <h1 className='level-clear'>LEVEL CLEAR!</h1>}
         <aside className='owls-container'>
           {data.characters.map(character => (
             <Owl key={character} owl={character} complete={complete} />
