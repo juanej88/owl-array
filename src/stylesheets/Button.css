@@ -1,5 +1,6 @@
 #next-button {
   align-self: center;
+  justify-self: flex-end;
   height: 3.5rem;
   width: 3.5rem;
   margin-top: 1.5rem;
@@ -8,15 +9,6 @@
   align-items: center;
   border-radius: 25%;
   z-index: 100;
-}
-
-.complete {
-  background-color: var(--green);
-  cursor: pointer;
-}
-
-.complete > i {
-  margin-left: -0.25rem;
 }
 
 .no-complete {
@@ -29,6 +21,7 @@
   border-width: 0 0.25rem 0.25rem 0;
   display: inline-block;
   padding: 0.4rem;
+  margin: 0 -0.15rem;
 }
 
 .arrow-left {
@@ -41,4 +34,52 @@
   transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
+}
+
+#next-button.complete {
+  background-color: var(--green);
+  cursor: pointer;
+  animation: 0.25s linear increaseButton;
+  animation-fill-mode: forwards;
+}
+
+@keyframes increaseButton {
+  from {
+    background-color: var(--grey);
+  }
+
+  to {
+    background-color: var(--green);
+  }
+}
+
+.complete > .arrow {
+  animation: 0.25s linear moveTogether;
+  animation-fill-mode: forwards;
+}
+
+@keyframes moveTogether {
+  0% {
+    margin-right: 0;
+  }
+
+  100% {
+    margin-right: 0.35rem;
+  }
+}
+
+.complete > .arrow-left {
+  z-index: 10;
+  animation: 0.25s linear rotateArrow;
+  animation-fill-mode: forwards;
+}
+
+@keyframes rotateArrow {
+  0% {
+    transform: scaleX(1) rotate(135deg);
+  }
+
+  100% {
+    transform: scaleX(-1) rotate(135deg);
+  }
 }

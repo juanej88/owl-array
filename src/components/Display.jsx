@@ -12,8 +12,14 @@ const Display = (props) => {
 
     return (
       <div className='array-element' key={`item${index}`}>
-        <div className='item-container'>
-          {icons[item]}
+        <div 
+          className={
+            item === props.item ? 
+            'item-container item-effect' :
+            'item-container'
+          }
+        >
+          {icons[item]} 
         </div>
         {index !== props.arrayItems.length - 1 && comma}
       </div>
@@ -22,7 +28,7 @@ const Display = (props) => {
 
   return (
     <div className='display--array-container'>
-      <h2>Outcome</h2>
+      <h2>Console</h2>
       <article className='display--array'>
         <p translate='no'>{props.arrayName} = [</p>
         {arrayItemsJSX}

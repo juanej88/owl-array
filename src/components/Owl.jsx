@@ -22,7 +22,9 @@ const Owl = (props) => {
     // This function will run on intervals from 20s to 30s
     const blinkTimeout = setInterval(blinkDown, getRandomNumber);
     
-    return () => clearInterval(blinkTimeout);
+    return function() {
+      clearInterval(blinkTimeout);
+    };
   });
 
   useEffect(() => {
@@ -34,8 +36,10 @@ const Owl = (props) => {
     };
 
     const blinkTimeout = setTimeout(blinkUp, 250);
-
-    return () => clearTimeout(blinkTimeout);
+    
+    return function() {
+      clearTimeout(blinkTimeout);
+    };
   }, [props.complete, closeEyes]);
 
   return (

@@ -61,7 +61,8 @@ const Main = () => {
         </aside>
         <Display 
           arrayName={data.arrayName} 
-          arrayItems={gameArray} 
+          arrayItems={gameArray}
+          item={data.item}
         />
       </section>
     </main>

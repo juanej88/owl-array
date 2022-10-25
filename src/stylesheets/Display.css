@@ -37,6 +37,22 @@
   align-items: center;
 }
 
+.item-effect {
+  animation-name: newItem;
+  animation-duration: 0.25s;
+  animation-timing-function: linear;
+}
+
+@keyframes newItem {
+  from {
+    scale: 0;
+  }
+
+  to{
+    scale: 1;
+  }
+}
+
 .array-element > p {
   font-size: 1.5rem;
   font-weight: 700;
