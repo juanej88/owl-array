@@ -5,7 +5,7 @@
   grid-template-columns: 2rem 1fr;
   border: solid var(--grey);
   border-width: 0 0 0.1rem;
-  padding-bottom: 1rem;
+  padding-bottom: 0.75rem;
   /* 'grid-auto-flow: dense' fill the gaps of the previous 
   unused spaces of the grid */
   grid-auto-flow: dense; 
@@ -17,11 +17,11 @@
   font-size: 1.7rem;
   border: solid var(--grey);
   border-width: 0 0 0.1rem;
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
 }
 
 .editor-container > :nth-child(2) {
-  padding-top: 1rem;
+  padding-top: 0.75rem;
 }
 
 .editor-container > .line-number {
@@ -31,7 +31,7 @@
 
 .editor-container > p {
   padding: 0 0.5em;
-  line-height: 1.85;
+  line-height: 1.75;
 }
 
 .code-comment {

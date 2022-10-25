@@ -4,13 +4,13 @@
 
 h1 {
   font-size: 1.7rem;
-  padding-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
   font-weight: 700;
 }
 
 .instructions {
   font-size: 1.1rem;
-  padding-bottom: 1em;
+  padding-bottom: 0.75em;
   text-align: justify;
 }
 

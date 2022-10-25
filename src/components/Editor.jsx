@@ -2,11 +2,46 @@ import React, { useState, useEffect } from 'react';
 import '../stylesheets/Editor.css';
 
 const Editor = (props) => {
+  // the 'input' state saves the input entered by the user on the textarea
   const [input, setInput] = useState('');
+
+// Start ----- Feature: Self-Closing Characters on the Textarea ----- Start
+
+  // 'inputLength' is a dependancy for the useEffect function below which passes the length of the input to position the cursor on the text area
+  const [inputLength, setInputLength] = useState(0);
+  // The keys object lets the user use once the self-closing feature for each pair of characters - `()` - `''`
+  const [keys, setKeys] = useState({
+    parenthesis: false,
+    quotationMark: false,
+  });
   
-  const handleChange = event => {
-    setInput(event.target.value);
+  // This function updates the input, inputLength and keys states
+  const handleChange = event => {  
+    if(event.target.value.slice(-1) === '(' && !keys.parenthesis) {
+      setInput(event.target.value + ')');
+      setKeys(prevKeys => ({...prevKeys, parenthesis: true}));
+      setInputLength(input.length);
+    } else {
+      setInput(event.target.value);
+    }
+    
+    // Resetting 'keys' state so the self-closing feature can be used again if the user clears the textarea field
+    if(event.target.value.length < 1) {
+      setKeys(prevKeys => ({...prevKeys, parenthesis: false}));
+    }
   }
+
+   // This function set the cursor before the just added self-closed character from the handleChange function above
+  useEffect(() => {
+      const inputElement = document.getElementById('editor-input');
+      const cursorPosition = inputLength + 1;
+      inputElement.setSelectionRange(cursorPosition , cursorPosition);
+    }, [inputLength]);
+
+// End ----- Feature: Self-Closing Characters on the Textarea ----- End
+
+// Start ----- Tests: User Input Validation ----- Start
+
 
   const {changeArray, testResult} = props;
 
@@ -42,13 +77,14 @@ const Editor = (props) => {
     // }
     
     // console.log(arrayName[0], arrayMethod);
-   
+  
   }, [input, testResult, changeArray]);
   
   // const [resultArray, setResultArray] = useState([...props.gameArray]);
 
   // console.log(resultArray);
 
+  // This function renders the required numbers of lines on the left of the editor
   const lineNumberElements = () => {
     let lineNumbers = [];
     for(let i = 1; i <= 7; i++) {
@@ -69,6 +105,7 @@ const Editor = (props) => {
         {props.editorInstructions}
       </p>
       <textarea
+        id='editor-input'
         className='code-input' 
         rows={props.editorRows} 
         placeholder='type here'

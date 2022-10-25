@@ -3,7 +3,7 @@
   position: relative;
   bottom: 5.5rem;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 5.5fr 4.5fr;
 }
 
 #footer > p {
