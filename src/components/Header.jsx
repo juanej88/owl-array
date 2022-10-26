@@ -8,7 +8,7 @@ const Header = (props) => {
           className={props.complete ? 'title title-complete' : 'title'} 
           translate='no'
         >
-          OWL ARRAY
+          Owl Array
         </span>
         <section className='menu'>
           <p><span className='level-label'>Level </span>{props.level}</p>

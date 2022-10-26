@@ -13,7 +13,7 @@ const Main = (props) => {
   // This is the data to setup each level
   // const [data, setData] = useState(gameData[level]); --- To be added
 
-  const data = gameData[0]; // To be replaced by the states above!!
+  const data = gameData[1]; // To be replaced by the states above!!
 
   // This is the array which is modified depending on the user input. The user input success is determined by the changeArray function passed as props to the Editor component
   const [gameArray, setGameArray] = useState(data.arrayItems);
@@ -50,6 +50,7 @@ const Main = (props) => {
           item={data.item}
           testResult={data.testResult}
           changeArray={changeArray}
+          level={data.level}
         />
         <Button
           complete={complete}
@@ -60,7 +61,7 @@ const Main = (props) => {
       }>
         <h1 className={
           complete ? 'level-clear level-complete' : 'level-clear'
-        }>LEVEL CLEAR!</h1>
+        }>Level Clear!</h1>
         {/* {complete && <h1 className='level-clear'>LEVEL CLEAR!</h1>} */}
         <aside className='owls-container'>
           {data.characters.map(character => (

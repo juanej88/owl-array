@@ -3,9 +3,18 @@ import '../stylesheets/Editor.css';
 
 const Editor = (props) => {
   // the 'input' state saves the input entered by the user on the textarea
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState(localStorage.getItem(props.level) || '');
 
-// Start ----- Feature: Self-Closing Characters on the Textarea ----- Start
+  // Start ----- Feature: Save Input to Local Storage ----- Start
+
+  useEffect(() => {
+    localStorage.setItem(props.level, input);
+  }, [input, props.level]);
+
+  // End ----- Feature: Save Input to Local Storage ----- End
+
+
+  // Start ----- Feature: Self-Closing Characters on the Textarea ----- Start
 
   // 'inputLength' is a dependancy for the useEffect function below which passes the length of the input to position the cursor on the text area
   const [inputLength, setInputLength] = useState(0);

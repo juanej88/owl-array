@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div className='App'>
-      <Header level='01' complete={levelComplete} />
+      <Header level='02' complete={levelComplete} />
       <Main changeHeader={changeHeader} />
       <Footer />
     </div>

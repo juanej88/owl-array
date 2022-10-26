@@ -29,7 +29,7 @@
 }
 
 .display-complete {
-  animation: 0.5s linear forwards changeDisplayColour;
+  animation: 0.25s linear forwards changeDisplayColour;
 }
 
 @keyframes changeDisplayColour {
@@ -43,11 +43,12 @@
 }
 
 .level-clear {
-  padding-top: 6rem;
+  font-family: 'Fuzzy Bubbles', cursive;
   text-align: center;
   font-size: 2.5rem;
-  font-family: 'Fuzzy Bubbles', cursive;
+  text-transform: uppercase;
   opacity: 0;
+  padding-top: 6rem;
 }
 
 .level-clear.level-complete {
