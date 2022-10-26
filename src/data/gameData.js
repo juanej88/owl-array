@@ -29,9 +29,8 @@ const gameData = [
 
     level: '02',
     title: 'The pop() Method',
-    instructionsOne: `Mr. Owl has already returned all the stationery from his backpack. Now, he is ready to leave the office and take all his belongings with him. However; he has decided to give his plant to one of his collegues.`,
-    instructionsTwo: `Your task is to remove the 'plant' from the 'backpack' array, so he can leave it on his collegue's desk.`,
-    // instructions: 'Meet Mrs. Owl. She is a restaurant manager who is ready to go to work; however, she is forgetting her mobile at home. Your task is to add her missing item to the end of the purse array, so she can make calls during the day.',
+    instructionsOne: `Mr. Owl has already returned all the stationery from his backpack and packed all his belongings which were on the office. It's 5 o'clock and he is ready to go home. On the way out, he decides to give his plant to one of his collegues.`,
+    instructionsTwo: `Your task is to remove the last element from the 'backpack' array, so he can leave the 'plant' on his collegue's desk.`,
     link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop',
     mozillaDefinition: 'The pop() method removes the last element from an array and returns that element. This method changes the length of the array.',
     editorInstructions: `// By using the pop() method, remove the last element from the 'backpack' array`,

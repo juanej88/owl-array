@@ -27,14 +27,18 @@ const Display = (props) => {
   });
 
   return (
-    <div className='display--array-container'>
+    <section 
+      id='display' 
+      // The green-background class style is declared on Main.css
+      className={props.complete && 'green-background'}
+    >
       <h2>Console</h2>
       <article className='display--array'>
         <p translate='no'>{props.arrayName} = [</p>
         {arrayItemsJSX}
         <p>]</p>        
       </article>
-    </div>
+    </section>
   );
 };
 

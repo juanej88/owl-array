@@ -1,13 +1,18 @@
-.display--array-container {
-  padding-bottom: 5rem;
+#display {
+  grid-row: span 2;
+  background-color: var(--blue);
+  padding: 0 1.5rem;
 }
 
-.display--array-container > h2 {
+#display > h2 {
   font-size: 1.6rem;
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border: solid black;
+  border-width: 0 0 0.1rem;
 }
 
 .display--array {
+  margin-top: 0.75rem;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -25,8 +30,8 @@
 }
 
 .item-container {
-  height: 4rem;
-  width: 4rem;
+  height: 3.75rem;
+  width: 3.75rem;
   margin: 0.25rem 1rem;
   background-color: white;
   border: 0.25rem solid black;
@@ -57,6 +62,6 @@
 }
 
 .item-container > i {
-  font-size: 2rem;
+  font-size: 1.75rem;
   padding: 0 1rem;
 }

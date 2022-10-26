@@ -1,6 +1,14 @@
+#buttons {
+  grid-area: 3 / 1 / span 1 / span 1;
+  background-color: var(--editor-background);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 1.5rem;
+}
+
 #next-button {
-  align-self: center;
-  justify-self: flex-end;
   height: 3.5rem;
   width: 3.5rem;
   margin-top: 1.5rem;

@@ -1,4 +1,4 @@
-.main {
+#main {
   min-height: 100vh;
   max-width: 1600px;
   display: grid;
@@ -11,28 +11,18 @@
   }
 }
 
-.container {
-  padding: 1.5rem;
+#owls {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.instructions--editor {
-  background-color: var(--editor-background);
-  color: white;
-}
-
-.display {
+  justify-content: space-around;
+  flex-wrap: wrap;
   background-color: var(--blue);
-  justify-content: flex-start;
 }
 
-.display-complete {
-  animation: 0.25s linear forwards changeDisplayColour;
+.green-background {
+  animation: 0.25s linear forwards changeColour;
 }
 
-@keyframes changeDisplayColour {
+@keyframes changeColour {
   from {
     background-color: var(--blue);
   }
@@ -45,7 +35,7 @@
 .level-clear {
   font-family: 'Fuzzy Bubbles', cursive;
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   text-transform: uppercase;
   opacity: 0;
   padding-top: 6rem;
@@ -71,10 +61,4 @@
     opacity: 1;
     transform: scale(1);
   }
-}
-
-aside.owls-container {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
 }

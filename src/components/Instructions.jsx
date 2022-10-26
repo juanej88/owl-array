@@ -3,7 +3,7 @@ import '../stylesheets/Instructions.css';
 
 const Instructions = (props) => {
   return (
-    <article id='instructions'>
+    <section id='instructions'>
       {props.mainInstructions && <p className='instructions first'>{props.mainInstructions}</p>}
       <p className='instructions'>{props.instructionsOne}</p>
       <p className='instructions'>{props.instructionsTwo}</p>
@@ -20,7 +20,7 @@ const Instructions = (props) => {
           <i className="fas fa-link"></i>
         </a>
       </p>
-    </article>
+    </section>
   );
 };
 

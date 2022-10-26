@@ -27,53 +27,50 @@ const Main = (props) => {
   useEffect(() => {
     complete ? setGameArray(data.finalArrayItems) : setGameArray(data.arrayItems);
     // this line calls changeHeader from the props with the complete argument to update de Header component
-    props.changeHeader(complete);
-  }, [complete, data, props]);
+    // props.changeHeader(complete); --- TO BE DELETED
+  }, [complete, data]);
 
   return (
-    <main className='main'>
-      <section className='container instructions--editor'>
-        <Instructions
-          title={data.title}
-          mainInstructions={data.mainInstructions}
-          instructionsOne={data.instructionsOne}
-          instructionsTwo={data.instructionsTwo}
-          link={data.link}
-          mozillaDefinition={data.mozillaDefinition}
-        />
-        <Editor
-          editorInstructions={data.editorInstructions}
-          arrayName={data.arrayName}
-          arrayItems={data.arrayItems}
-          editorRows={data.editorRows}
-          method={data.method}
-          item={data.item}
-          testResult={data.testResult}
-          changeArray={changeArray}
-          level={data.level}
-        />
-        <Button
-          complete={complete}
-        />
+    <main id='main'>
+      <Instructions
+        title={data.title}
+        mainInstructions={data.mainInstructions}
+        instructionsOne={data.instructionsOne}
+        instructionsTwo={data.instructionsTwo}
+        link={data.link}
+        mozillaDefinition={data.mozillaDefinition}
+      />
+      <Editor
+        editorInstructions={data.editorInstructions}
+        arrayName={data.arrayName}
+        arrayItems={data.arrayItems}
+        editorRows={data.editorRows}
+        method={data.method}
+        item={data.item}
+        testResult={data.testResult}
+        changeArray={changeArray}
+        level={data.level}
+      />
+      <Button
+        complete={complete}
+      />
+      <section 
+        id='owls'
+        className={complete && 'green-background'}
+      >
+        {data.characters.map(character => (
+          <Owl key={character} owl={character} complete={complete} />
+        ))}
       </section>
-      <section className={
-        complete ? 'container display display-complete' : 'container display'
-      }>
-        <h1 className={
-          complete ? 'level-clear level-complete' : 'level-clear'
-        }>Level Clear!</h1>
-        {/* {complete && <h1 className='level-clear'>LEVEL CLEAR!</h1>} */}
-        <aside className='owls-container'>
-          {data.characters.map(character => (
-            <Owl key={character} owl={character} complete={complete} />
-          ))}
-        </aside>
-        <Display 
-          arrayName={data.arrayName} 
-          arrayItems={gameArray}
-          item={data.item}
-        />
-      </section>
+      <Display 
+        arrayName={data.arrayName} 
+        arrayItems={gameArray}
+        item={data.item}
+        complete={complete}
+      />
+      {/* <h1 className={
+        complete ? 'level-clear level-complete' : 'level-clear'
+      }>Level Clear!</h1> */}
     </main>
   );
 };

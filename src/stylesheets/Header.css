@@ -16,24 +16,10 @@
   font-size: 1.75rem;
   font-weight: 800;
   text-transform: uppercase;
-  background-color: var(--blue);
+  background-color: white;
   border-radius: 1.5rem;
   padding: 0.15rem 1rem 0;
   font-weight: 800;
-}
-
-.title.title-complete {
-  animation: 0.25s linear forwards changeTitleBackground;
-}
-
-@keyframes changeTitleBackground {
-  from {
-    background-color: var(--blue);
-  }
-
-  to{
-    background-color: var(--green);
-  }
 }
 
 .menu {

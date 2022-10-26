@@ -105,7 +105,7 @@ const Editor = (props) => {
   const editorArray = props.arrayItems.join('\', \'');
 
   return (
-    <div className='editor-container'>
+    <section id='editor'>
       <h2>Editor</h2>
       {lineNumberElements()}
       <p translate='no'>const {props.arrayName} = ['{editorArray}'];</p>
@@ -128,7 +128,7 @@ const Editor = (props) => {
       </textarea>
       <p></p>
       <p translate='no'>console.log({props.arrayName});</p>
-    </div>
+    </section>
   );
 };
 

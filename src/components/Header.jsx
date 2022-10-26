@@ -5,7 +5,7 @@ const Header = (props) => {
   return (
     <header className='header'>
         <span 
-          className={props.complete ? 'title title-complete' : 'title'} 
+          className='title'
           translate='no'
         >
           Owl Array
