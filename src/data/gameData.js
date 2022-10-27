@@ -5,19 +5,17 @@ const gameData = [
 
     level: '01',
     title: 'The push() Method',
-    mainInstructions: 'Welcome to Owl Array, a game where you need to help the Owl Family with some duties. You will modify the array provided with built-in JavaScript functions on each level.',
-    instructionsOne: `Meet Mr. Owl! He is an architectural engineer who has decided to resign to his job as a construction manager to become a full-stack developer. Mr. Owl is ready to go to work on his last day, but he is missing a 'compass' which was given to him by the design leader.`,
+    mainInstructions: 'Welcome to Owl Array, a game where you need to help the Owl Family. You will modify the arrays provided with built-in JavaScript functions to complete each task.',
+    instructionsOne: `Meet Mr. Owl! He is an architectural engineer who has decided to quit his job to become a full-stack software developer. Mr. Owl is ready to go to work on his last day, but he is missing a 'compass' which was given to him by the design leader.`,
     instructionsTwo: `Your task is to add the 'compass' to the end of the 'backpack' array, so he can give it back with the rest of the stationery in his backpack.`,
-    // instructions: 'Meet Mrs. Owl. She is a restaurant manager who is ready to go to work; however, she is forgetting her mobile at home. Your task is to add her missing item to the end of the purse array, so she can make calls during the day.',
     link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push',
     mozillaDefinition: 'The push() method adds one or more elements to the end of an array and returns the new length of the array.',
-    editorInstructions: `// By using the push() method, add the string 'compass' to the end of the 'backpack' array`,
+    editorInstructions: `// By using the push() method, add the string 'compass' to the end of the array 'backpack'`,
     arrayName: 'backpack',
     arrayItems: ['pencil', 'eraser', 'swatchbook'],
     finalArrayItems: ['pencil', 'eraser', 'swatchbook', 'compass'],
     editorRows: 1,
     characters: ['mrOwl'],
-    // characters: ['mrsOwl'] // This character will be display on another level
     // Editor - Values to test the input of the user on the Editor component
     method: 'push',
     item: 'compass',
@@ -33,16 +31,35 @@ const gameData = [
     instructionsTwo: `Your task is to remove the last element from the 'backpack' array, so he can leave the 'plant' on his collegue's desk.`,
     link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop',
     mozillaDefinition: 'The pop() method removes the last element from an array and returns that element. This method changes the length of the array.',
-    editorInstructions: `// By using the pop() method, remove the last element from the 'backpack' array`,
+    editorInstructions: `// By using the pop() method, remove the last element 'plant' from the array 'backpack'`,
     arrayName: 'backpack',
     arrayItems: ['laptop', 'picture', 'trophy', 'plant'],
     finalArrayItems: ['laptop', 'picture', 'trophy'],
     editorRows: 1,
     characters: ['mrOwl'],
-    // Editor - Values to test the input of the user on the Editor component
     method: 'pop',
     item: '',
     testResult: `backpack.pop()`
+  },
+  {
+
+    // ----- ----- ----- ----- Level 03 ----- ----- ----- -----
+
+    level: '03',
+    title: 'The unshift() Method',
+    instructionsOne: `Meet Mrs. Owl. She is a restaurant manager who is ready to go to work, but she is missing her train 'ticket' and her 'mobile'.`,
+    instructionsTwo: `Your task is to add the 'ticket' and the 'mobile' inside her 'bag', so she can use the 'ticket' to commute to her job and the 'mobile' to receive calls during the day.`,
+    link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift',
+    mozillaDefinition: 'The unshift() method adds one or more elements to the beginning of an array and returns the new length of the array.',
+    editorInstructions: `// By using the unshift() method, add the strings 'ticket' and 'mobile' to the beginning of the array 'bag'`,
+    arrayName: 'bag',
+    arrayItems: ['headphones', 'glasses', 'key'],
+    finalArrayItems: ['ticket', 'mobile', 'headphones', 'glasses', 'key'],
+    editorRows: 1,
+    characters: ['mrsOwl'],
+    method: 'unshift',
+    item: 'ticket',
+    testResult: `bag.unshift('ticket', 'mobile')`
   }
 ];
 

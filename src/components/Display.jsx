@@ -29,6 +29,7 @@ const Display = (props) => {
   return (
     <section 
       id='display' 
+      style={props.chooseColour()}
       // The green-background class style is declared on Main.css
       className={props.complete ? 'green-background' : undefined}
     >

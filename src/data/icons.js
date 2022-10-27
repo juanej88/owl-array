@@ -1,17 +1,22 @@
 const icons = {
+  // Level 01
   pencil: <i className='fa-solid fa-pencil'></i>,
-  compass: <i className='fa-solid fa-compass-drafting'></i>,
   eraser: <i className='fa-solid fa-eraser'></i>,
   swatchbook: <i className='fa-solid fa-swatchbook'></i>,
-  picture: <i className="fa-solid fa-image"></i>,
-  plant: <i className="fa-solid fa-seedling"></i>,
-  trophy: <i className="fa-solid fa-trophy"></i>,
-  plan: <i className='fa-solid fa-scroll'></i>,
-  helmet: <i className="fa-solid fa-helmet-safety"></i>,
+  compass: <i className='fa-solid fa-compass-drafting'></i>,
+  // Level 02
   laptop: <i className='fa-solid fa-laptop'></i>,
+  picture: <i className='fa-solid fa-image'></i>,
+  trophy: <i className='fa-solid fa-trophy'></i>,
+  plant: <i className='fa-solid fa-seedling'></i>,
+  // Level 03
+  ticket: <i className='fa-solid fa-receipt'></i>,
+  mobile: <i className='fas fa-mobile-alt'></i>,
   headphones: <i className='fa-solid fa-headphones'></i>,
+  glasses: <i className='fa-solid fa-glasses'></i>,
   key: <i className='fas fa-key'></i>,
-  mobile: <i className='fas fa-mobile-alt'></i>
+  // To use in the future...
+  helmet: <i className='fa-solid fa-helmet-safety'></i>
 }
 
 export default icons;

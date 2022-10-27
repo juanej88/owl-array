@@ -27,6 +27,18 @@ const Main = (props) => {
     // props.changeHeader(complete); --- TO BE DELETED
   }, [complete, data]);
 
+  const chooseColour = () => {
+    const owlArray = data.characters;
+    const owlArrayLength = owlArray.length;
+    if(owlArrayLength === 1 && owlArray[0] === 'mrOwl') {
+      return {backgroundColor: 'var(--blue)'};
+    } else if (owlArrayLength === 1 && owlArray[0] === 'mrsOwl') {
+      return {backgroundColor: 'var(--pink)'};
+    } else {
+      return {backgroundColor: 'white'};
+    }
+  };
+
   return (
     <main id='main'>
       <Instructions
@@ -54,6 +66,7 @@ const Main = (props) => {
       />
       <section 
         id='owls'
+        style={chooseColour()}
         className={complete ? 'green-background' : undefined}
       >
         {data.characters.map(character => (
@@ -65,6 +78,7 @@ const Main = (props) => {
         arrayItems={gameArray}
         item={data.item}
         complete={complete}
+        chooseColour={chooseColour}
       />
       {/* <h1 className={
         complete ? 'level-clear level-complete' : 'level-clear'
