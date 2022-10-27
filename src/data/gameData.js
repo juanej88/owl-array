@@ -39,7 +39,6 @@ const gameData = [
     finalArrayItems: ['laptop', 'picture', 'trophy'],
     editorRows: 1,
     characters: ['mrOwl'],
-    // characters: ['mrsOwl'] // This character will be display on another level
     // Editor - Values to test the input of the user on the Editor component
     method: 'pop',
     item: '',

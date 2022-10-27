@@ -30,7 +30,7 @@ const Display = (props) => {
     <section 
       id='display' 
       // The green-background class style is declared on Main.css
-      className={props.complete && 'green-background'}
+      className={props.complete ? 'green-background' : undefined}
     >
       <h2>Console</h2>
       <article className='display--array'>

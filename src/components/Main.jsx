@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import gameData from '../data/gameData';
 import '../stylesheets/Main.css';
 import Instructions from './Instructions';
 import Editor from './Editor';
@@ -11,9 +10,7 @@ const Main = (props) => {
   // const [level, setLevel] = useState(0); --- To be added
 
   // This is the data to setup each level
-  // const [data, setData] = useState(gameData[level]); --- To be added
-
-  const data = gameData[1]; // To be replaced by the states above!!
+  const data = props.levelData;
 
   // This is the array which is modified depending on the user input. The user input success is determined by the changeArray function passed as props to the Editor component
   const [gameArray, setGameArray] = useState(data.arrayItems);
@@ -53,10 +50,11 @@ const Main = (props) => {
       />
       <Button
         complete={complete}
+        nextLevel={props.nextLevel}
       />
       <section 
         id='owls'
-        className={complete && 'green-background'}
+        className={complete ? 'green-background' : undefined}
       >
         {data.characters.map(character => (
           <Owl key={character} owl={character} complete={complete} />

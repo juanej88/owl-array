@@ -6,7 +6,7 @@
 }
 
 @media only screen and (max-width: 750px) {
-  .main {
+  #main {
     grid-template-columns: 1fr;
   }
 }
