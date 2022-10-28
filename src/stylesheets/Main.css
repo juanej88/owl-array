@@ -1,6 +1,7 @@
 #main {
   min-height: 100vh;
-  max-width: 1600px;
+  max-width: 1800px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 5.5fr 4.5fr;
 }

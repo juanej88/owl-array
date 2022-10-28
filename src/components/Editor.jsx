@@ -2,20 +2,35 @@ import React, { useState, useEffect } from 'react';
 import '../stylesheets/Editor.css';
 
 const Editor = (props) => {
-  // the 'input' state saves the input entered by the user on the textarea
+  // The 'input' state saves the string entered by the user on the textarea and it's initialised with either the localStorage or an empty string
   const [input, setInput] = useState(localStorage.getItem(props.level) || '');
 
   // Start ----- Feature: Save Input to Local Storage ----- Start
+  const [actualLevel, setActualLevel] = useState('01');
 
   useEffect(() => {
-    localStorage.setItem(props.level, input);
-  }, [input, props.level]);
+    // When the level is different, the input is updated either with the localStorage or an empty string
+    if(actualLevel !== props.level) {
+      setInput(localStorage.getItem(props.level) || ''); // Update input
+    }
 
+    setActualLevel(props.level); // Update level
+    localStorage.setItem(actualLevel, input); // Update localStorage
+    
+  }, [input, actualLevel, props.level]);
   // End ----- Feature: Save Input to Local Storage ----- End
 
+  // Start ----- Feature: Reset Level ----- Start
+  const {reset, changeResetBack} = props;
+  useEffect(() => {
+    if(reset) {
+      setInput('');
+      changeResetBack();
+    }
+  }, [reset, changeResetBack]);
+  // End ----- Feature: Reset Level ----- End
 
   // Start ----- Feature: Self-Closing Characters on the Textarea ----- Start
-
   // 'inputLength' is a dependancy for the useEffect function below which passes the length of the input to position the cursor on the text area
   const [inputLength, setInputLength] = useState(0);
   // The keys object lets the user use once the self-closing feature for each pair of characters - `()` - `''`

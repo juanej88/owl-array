@@ -8,7 +8,8 @@
   padding-bottom: 2rem;
 }
 
-#next-button {
+.button {
+  position: relative;
   height: 3rem;
   width: 7rem;
   margin-top: 1.5rem;
@@ -16,12 +17,46 @@
   justify-content: center;
   align-items: center;
   border-radius: 2rem;
+}
+
+#reset-button {
+  z-index: 90;
+  font-size: 1.75rem;
+  color: black;
+  cursor: pointer;
+}
+
+.hidden {
+  left: 3.5rem;
+  visibility: hidden;
+}
+
+.shown {
+  animation: 0.5s linear forwards showButton;
+}
+
+@keyframes showButton {
+  0% {
+    left: 3.5rem;
+  }
+
+  50% {
+    left: 3.5rem;
+  }
+
+  100% {
+    left: -1.75rem;
+  }
+}
+
+#next-button {
   z-index: 100;
 }
 
 .no-complete {
   background-color: var(--grey);
   cursor: not-allowed;
+  right: 3.5rem;
 }
 
 .arrow {
@@ -47,16 +82,22 @@
 #next-button.complete {
   background-color: var(--green);
   cursor: pointer;
-  animation: 0.25s linear increaseButton;
-  animation-fill-mode: forwards;
+  animation: 0.5s linear forwards changeButton;
 }
 
-@keyframes increaseButton {
-  from {
+@keyframes changeButton {
+  0% {
+    right: 3.5rem;
     background-color: var(--grey);
   }
 
-  to {
+  50% {
+    right: 3.5rem;
+    background-color: var(--green);
+  }
+
+  100% {
+    right: -1.75rem;
     background-color: var(--green);
   }
 }

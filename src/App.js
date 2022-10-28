@@ -7,7 +7,7 @@ import Footer from './components/Footer';
 
 function App() {
   // This state keeps track of the actual 'level'
-  const [level, setLevel] = useState(2);
+  const [level, setLevel] = useState(0);
 
   // This state takes the object of the actual 'level' from the gameData array and pass it as props to render its data
   const [levelData, setLevelData] = useState(gameData[level]);

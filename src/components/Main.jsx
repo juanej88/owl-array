@@ -23,9 +23,20 @@ const Main = (props) => {
   // The array which is passed as props to the Display component is updated every time the 'complete' state changes.
   useEffect(() => {
     complete ? setGameArray(data.finalArrayItems) : setGameArray(data.arrayItems);
-    // this line calls changeHeader from the props with the complete argument to update de Header component
-    // props.changeHeader(complete); --- TO BE DELETED
   }, [complete, data]);
+
+  // Start ----- Feature: Reset Level ----- Start
+  // This state is passed to the Editor component. If it is true, it will reset the value of the input to an empty string
+  const [reset, setReset] = useState(false);
+  // This function is called by the Button component and changes the state to true when the #reset-button is clicked
+  const resetLevel = () => {
+    setReset(true);
+  };
+  // This functions is called back by the Editor, once the empty string is set to the input. This function is required to be able to use it again in further reset requests by the user
+  const changeResetBack = () => {
+    setReset(false);
+  };
+  // End ----- Feature: Reset Level ----- End
 
   const chooseColour = () => {
     const owlArray = data.characters;
@@ -59,9 +70,12 @@ const Main = (props) => {
         testResult={data.testResult}
         changeArray={changeArray}
         level={data.level}
+        reset={reset}
+        changeResetBack={changeResetBack}
       />
       <Button
         complete={complete}
+        resetLevel={resetLevel}
         nextLevel={props.nextLevel}
       />
       <section 
