@@ -9,8 +9,6 @@ const Header = (props) => {
     setDisplayMenu(prevState => !prevState);
   }
 
-  console.log(displayMenu);
-
   return (
     <header className='header'>
         <span 
@@ -32,6 +30,9 @@ const Header = (props) => {
           levelComplete={props.levelComplete}
           levelCharacters={props.levelCharacters}
           displayMenu={displayMenu}
+          handleClick={handleClick}
+          changeLevel={props.changeLevel}
+          allLevelStatus={props.allLevelStatus}
         />}
         {displayMenu && <div 
           className='screen-filter'

@@ -3,8 +3,6 @@ import '../stylesheets/Menu.css';
 
 
 const Menu = props => {
-
-
   const menuElements = props.levelTitles.map((level, index) => {
     const currentLevel = parseInt(props.level) === index + 1;
     
@@ -28,9 +26,10 @@ const Menu = props => {
           `menu-title ${currentLevelBackground()}` :
           'menu-title'
           }
+        onClick={() => props.changeLevel(index)}
       >
-        <i className={'check-mark-container complete'}>
-          <div className='check-mark'></div>
+        <i className={'check-mark-container'}>
+          {props.allLevelStatus[`0${index + 1}`] && <div className='check-mark'></div>}
         </i>
         <p>0{index + 1} {level}()</p>
       </div>
@@ -38,7 +37,11 @@ const Menu = props => {
   });
 
   return (
-    <section id='menu' className={props.displayMenu ? 'showMenu' : ''}>
+    <section 
+      id='menu' 
+      className={props.displayMenu ? 'showMenu' : ''}
+      onClick={props.handleClick}
+    >
       {menuElements}
     </section>
   )

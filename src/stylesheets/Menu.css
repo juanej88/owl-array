@@ -49,6 +49,7 @@
 .check-mark-container {
   width: 1.5rem;
   height: 1.5rem;
+  background-color: white;
   border: 2px solid black;
   border-radius: 50%;
   margin: 0.5rem;
@@ -56,10 +57,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.check-mark-container.complete {
-  background-color: white;
 }
 
 .check-mark {
