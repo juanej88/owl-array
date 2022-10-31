@@ -83,6 +83,9 @@ const Main = (props) => {
         style={chooseColour()}
         className={complete ? 'green-background' : undefined}
       >
+        {/* <h1 className={
+        complete ? 'level-clear level-complete' : 'level-clear'
+      }>Level Clear!</h1> */}
         {data.characters.map(character => (
           <Owl key={character} owl={character} complete={complete} />
         ))}
@@ -94,9 +97,6 @@ const Main = (props) => {
         complete={complete}
         chooseColour={chooseColour}
       />
-      {/* <h1 className={
-        complete ? 'level-clear level-complete' : 'level-clear'
-      }>Level Clear!</h1> */}
     </main>
   );
 };

@@ -1,0 +1,61 @@
+#menu {
+  grid-column: 2;
+  justify-self: right;
+  background-color: white;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-title {
+  display: grid;
+  grid-template-columns: 1fr 3.25fr;
+  align-items: center;
+  border-radius: 1.5rem;
+}
+
+.menu-title:hover {
+  transform: scale(1.075);
+  font-weight: 800;
+}
+
+i.check-mark {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid black;
+  border-radius: 50%;
+  margin: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+i.check-mark.complete {
+  background-color: white;
+}
+
+i.check-mark.complete > div {
+  width: 0.45rem;
+  height: 0.8rem;
+  border-right: 3px solid black;
+  border-bottom: 3px solid black;
+  rotate: 45deg;
+}
+
+.menu-title > p {
+  padding: 0.25rem 0.5rem;
+}
+
+.menu-title--current {
+  background-color: var(--green);
+  
+}
+
+/* This css style will be given to all the elements when 
+#menu is displayed */
+/* filter: brightness(0.25) grayscale(0.25); */

@@ -22,6 +22,8 @@ function App() {
     setLevelData(gameData[level]);
   }, [level]);
 
+  const levelTitles = gameData.map(eachLevel => eachLevel.method);
+
   // const [levelComplete, setLevelComplete] = useState(false);
   
   // const changeHeader = complete => {
@@ -30,7 +32,10 @@ function App() {
 
   return (
     <div className='App'>
-      <Header level={levelData.level} />
+      <Header 
+        level={levelData.level} 
+        levelTitles={levelTitles}
+      />
       <Main 
         levelData={levelData}
         nextLevel={nextLevel}
