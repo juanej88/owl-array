@@ -22,7 +22,7 @@
   font-weight: 800;
 }
 
-.menu {
+.menu-icon {
   width: fit-content;
   justify-self: right;
   font-size: 1.25rem;
@@ -33,6 +33,7 @@
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  z-index: 200;
 }
 
 @media only screen and (max-width: 850px) {
@@ -41,14 +42,24 @@
   }
 }
 
-.menu > p {
+.menu-icon > p {
   padding-right: 0.4em;
   font-size: 1.5rem;
   font-weight: 800;
 }
 
-.menu--triangle {
+.menu-icon--triangle {
   border-top: 0.5em solid black;
   border-left: 0.4em solid transparent;
   border-right: 0.4em solid transparent;
+}
+
+.screen-filter {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: 0.75;
 }

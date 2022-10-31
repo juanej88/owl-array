@@ -7,8 +7,6 @@ import Display from './Display';
 import Owl from './Owl';
 
 const Main = (props) => {
-  // const [level, setLevel] = useState(0); --- To be added
-
   // This is the data to setup each level
   const data = props.levelData;
 
@@ -24,6 +22,12 @@ const Main = (props) => {
   useEffect(() => {
     complete ? setGameArray(data.finalArrayItems) : setGameArray(data.arrayItems);
   }, [complete, data]);
+
+  // This useEffect will update the App component whether the level has been completed or not
+  const updateLevelStatus = props.updateLevelStatus;
+  useEffect(() => {
+    updateLevelStatus(complete);
+  }, [complete, updateLevelStatus])
 
   // Start ----- Feature: Reset Level ----- Start
   // This state is passed to the Editor component. If it is true, it will reset the value of the input to an empty string

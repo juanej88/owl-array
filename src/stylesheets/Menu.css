@@ -6,40 +6,63 @@
   font-weight: 700;
   border-radius: 1rem;
   padding: 1rem;
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  z-index: 200;
+}
+
+@media only screen and (max-width: 750px) {
+  #menu {
+    grid-column: 1 / span 2;
+  }
+}
+
+.showMenu {
+  position: relative;
+  animation: 0.25s linear showMenu;
+}
+
+@keyframes showMenu {
+  from {
+    left: 15rem;
+  }
+
+  to {
+    left: 0;
+  }
 }
 
 .menu-title {
   display: grid;
-  grid-template-columns: 1fr 3.25fr;
+  grid-template-columns: 2rem 1fr;
   align-items: center;
   border-radius: 1.5rem;
 }
 
 .menu-title:hover {
-  transform: scale(1.075);
-  font-weight: 800;
+  transform: scale(1.1);
+  /* font-weight: 800; */
 }
 
-i.check-mark {
+.check-mark-container {
   width: 1.5rem;
   height: 1.5rem;
   border: 2px solid black;
   border-radius: 50%;
   margin: 0.5rem;
+  margin-right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-i.check-mark.complete {
+.check-mark-container.complete {
   background-color: white;
 }
 
-i.check-mark.complete > div {
+.check-mark {
   width: 0.45rem;
   height: 0.8rem;
   border-right: 3px solid black;
@@ -51,9 +74,20 @@ i.check-mark.complete > div {
   padding: 0.25rem 0.5rem;
 }
 
-.menu-title--current {
+.complete-background {
   background-color: var(--green);
-  
+}
+
+.mrowl-background {
+  background-color: var(--blue);
+}
+
+.mrsowl-background {
+  background-color: var(--pink);
+}
+
+.familyowl-background {
+  background-color: white;
 }
 
 /* This css style will be given to all the elements when 
