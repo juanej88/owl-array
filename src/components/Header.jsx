@@ -32,7 +32,7 @@ const Header = (props) => {
           displayMenu={displayMenu}
           handleClick={handleClick}
           changeLevel={props.changeLevel}
-          allLevelStatus={props.allLevelStatus}
+          allLevelsStatus={props.allLevelsStatus}
         />}
         {displayMenu && <div 
           className='screen-filter'

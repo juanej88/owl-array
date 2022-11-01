@@ -29,7 +29,7 @@ const Menu = props => {
         onClick={() => props.changeLevel(index)}
       >
         <i className={'check-mark-container'}>
-          {props.allLevelStatus[`0${index + 1}`] && <div className='check-mark'></div>}
+          {props.allLevelsStatus[`0${index + 1}`] && <div className='check-mark'></div>}
         </i>
         <p>0{index + 1} {level}()</p>
       </div>

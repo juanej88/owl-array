@@ -111,23 +111,24 @@ const Editor = (props) => {
   // This function renders the required numbers of lines on the left of the editor
   const lineNumberElements = () => {
     let lineNumbers = [];
-    for(let i = 1; i <= 6; i++) {
+    for(let i = 1; i <= 8; i++) {
       lineNumbers.push(<p className='line-number' key={`line ${i}`}>{i}</p>);
     }
     return lineNumbers;
   }
 
   const editorArray = props.arrayItems.join('\', \'');
+  const editorfinalArray = props.finalArrayItems.join('\', \'');
 
   return (
     <section id='editor'>
       <h2>Editor</h2>
       {lineNumberElements()}
       <p translate='no'>const {props.arrayName} = ['{editorArray}'];</p>
+      {props.variableName &&
+        <p>let {props.variableName};</p>
+      }
       <p></p>
-      <p className='code-comment' translate='no'>
-        {props.editorInstructions}
-      </p>
       <textarea
         id='editor-input'
         className='code-input' 
@@ -138,11 +139,23 @@ const Editor = (props) => {
         spellCheck='false'
         onChange={handleChange}
         value={input}
-        // autoFocus
       >
       </textarea>
       <p></p>
-      <p translate='no'>console.log({props.arrayName});</p>
+      <p translate='no'>
+        console.log(
+        {props.arrayName}
+        {props.variableName && `, ${props.variableName}`}
+        ); <span className='code-comment'>
+          &#x2f;&#x2f; Expected outcome:
+        </span>
+      </p>
+      <p className='code-comment' translate='no'>
+        &#x2f;&#x2f; {props.arrayName} = ['{editorfinalArray}'];
+      </p>
+      {props.variableName && <p className='code-comment' translate='no'>
+        &#x2f;&#x2f; {props.variableName} = '{props.finalVariable}';
+      </p>}
     </section>
   );
 };

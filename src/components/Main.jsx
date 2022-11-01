@@ -68,6 +68,9 @@ const Main = (props) => {
         editorInstructions={data.editorInstructions}
         arrayName={data.arrayName}
         arrayItems={data.arrayItems}
+        finalArrayItems={data.finalArrayItems}
+        variableName={data.variableName}
+        finalVariable={data.finalVariable}
         editorRows={data.editorRows}
         method={data.method}
         item={data.item}

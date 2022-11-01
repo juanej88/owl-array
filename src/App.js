@@ -33,9 +33,9 @@ function App() {
     setLevelComplete(newState);
   };
 
-  // Start ----- Feature: Save All Level Status to Local Storage ----- Start
+  // Start ----- Feature: Save All Levels Status to Local Storage ----- Start
   // allLevelStatus keeps track of each level which has been completed
-  const [allLevelStatus, setAllLevelStatus] = useState(JSON.parse(localStorage.getItem('Levels solved')) || {});
+  const [allLevelsStatus, setAllLevelsStatus] = useState(JSON.parse(localStorage.getItem('Levels solved')) || {});
   // This useEffect creates a new object with a key-value for each level and saves it to the localStorage for the first time the game is loaded
   useEffect(() => {
     if(localStorage.getItem('Levels solved') === null) {
@@ -43,21 +43,21 @@ function App() {
       gameData.forEach(eachLevel => {
         statusObject[eachLevel.level] = false;
       })
-      setAllLevelStatus(statusObject);
+      setAllLevelsStatus(statusObject);
       localStorage.setItem('Levels solved', JSON.stringify(statusObject));
     }
   }, []);
 
   useEffect(() => {
-    setAllLevelStatus(prevStatus => ({
+    setAllLevelsStatus(prevStatus => ({
       ...prevStatus,
       [levelData.level]: levelComplete
     }));
   }, [levelComplete, levelData.level]);
 
   useEffect(() => {
-    localStorage.setItem('Levels solved', JSON.stringify(allLevelStatus));
-  }, [allLevelStatus]);
+    localStorage.setItem('Levels solved', JSON.stringify(allLevelsStatus));
+  }, [allLevelsStatus]);
   // End ----- Feature: Save All Level Status to Local Storage ----- End
 
   return (
@@ -68,7 +68,7 @@ function App() {
         levelComplete={levelComplete}
         levelCharacters={levelData.characters}
         changeLevel={changeLevel}
-        allLevelStatus={allLevelStatus}
+        allLevelsStatus={allLevelsStatus}
       />
       <Main 
         levelData={levelData}
