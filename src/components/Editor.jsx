@@ -1,76 +1,86 @@
-import React, { useState, useEffect } from 'react';
-import '../stylesheets/Editor.css';
+import React, { useState, useEffect } from "react";
+import "../stylesheets/Editor.css";
 
 const Editor = (props) => {
   // The 'input' state saves the string entered by the user on the textarea and it's initialised with either the localStorage or an empty string
-  const [input, setInput] = useState(localStorage.getItem(props.level) || '');
+  const [input, setInput] = useState(localStorage.getItem(props.level) || "");
+
+  const handleChange = (event) => {
+    setInput(event.target.value);
+  };
 
   // Start ----- Feature: Save Input to Local Storage ----- Start
-  const [actualLevel, setActualLevel] = useState('01');
+  const [actualLevel, setActualLevel] = useState("01");
 
   useEffect(() => {
     // When the level is different, the input is updated either with the localStorage or an empty string
-    if(actualLevel !== props.level) {
-      setInput(localStorage.getItem(props.level) || ''); // Update input
+    if (actualLevel !== props.level) {
+      setInput(localStorage.getItem(props.level) || ""); // Update input
     }
 
     setActualLevel(props.level); // Update level
     localStorage.setItem(actualLevel, input); // Update localStorage
-    
   }, [input, actualLevel, props.level]);
   // End ----- Feature: Save Input to Local Storage ----- End
 
   // Start ----- Feature: Reset Level ----- Start
-  const {reset, changeResetBack} = props;
+  const { reset, changeResetBack } = props;
   useEffect(() => {
-    if(reset) {
-      setInput('');
+    if (reset) {
+      setInput("");
       changeResetBack();
     }
   }, [reset, changeResetBack]);
   // End ----- Feature: Reset Level ----- End
 
   // Start ----- Feature: Self-Closing Characters on the Textarea ----- Start
-  // 'inputLength' is a dependancy for the useEffect function below which passes the length of the input to position the cursor on the text area
-  const [inputLength, setInputLength] = useState(0);
-  // The keys object lets the user use once the self-closing feature for each pair of characters - `()` - `''`
-  const [keys, setKeys] = useState({
-    parenthesis: false,
-    quotationMark: false,
-  });
-  
-  // This function updates the input, inputLength and keys states
-  const handleChange = event => {  
-    if(event.target.value.slice(-1) === '(' && !keys.parenthesis) {
-      setInput(event.target.value + ')');
-      setKeys(prevKeys => ({...prevKeys, parenthesis: true}));
-      setInputLength(input.length);
-    } else {
-      setInput(event.target.value);
-    }
-    
-    // Resetting 'keys' state so the self-closing feature can be used again if the user clears the textarea field
-    if(event.target.value.length < 1) {
-      setKeys(prevKeys => ({...prevKeys, parenthesis: false}));
-    }
-  }
-
-   // This function set the cursor before the just added self-closed character from the handleChange function above
+  const [cursorPosition, setCursorPosition] = useState(0);
+  // This function moves the cursor inside the self-closing parentheses and quotes. The self-closing feature is achieved by the function below
   useEffect(() => {
-      const inputElement = document.getElementById('editor-input');
-      const cursorPosition = inputLength + 1;
-      inputElement.setSelectionRange(cursorPosition , cursorPosition);
-    }, [inputLength]);
+    const editorInput = document.getElementById("editor-input");
+    editorInput.setSelectionRange(cursorPosition, cursorPosition);
+  }, [cursorPosition]);
+  // This function self-closes parentheses and quotes whenever the user types one of the initial keys - `(` or `'`
+  useEffect(() => {
+    const editorInput = document.getElementById("editor-input");
+    setCursorPosition(editorInput.selectionStart);
+    const handleKey = (event) => {
+      if (event.key === "(") {
+        setTimeout(() => {
+          setInput((prevInput) => {
+            const splitPrevInput = prevInput.split("");
+            const indexToAdd = splitPrevInput.indexOf("(", cursorPosition) + 1;
+            splitPrevInput.splice(indexToAdd, 0, ")");
+            return splitPrevInput.join("");
+          });
+        }, 0);
+      }
 
-// End ----- Feature: Self-Closing Characters on the Textarea ----- End
+      if (event.key === `'`) {
+        setTimeout(() => {
+          setInput((prevInput) => {
+            const splitPrevInput = prevInput.split("");
+            const indexToAdd = splitPrevInput.indexOf(`'`, cursorPosition) + 1;
+            splitPrevInput.splice(indexToAdd, 0, `'`);
+            return splitPrevInput.join("");
+          });
+        }, 0);
+      }
+    };
+    editorInput.addEventListener("keydown", handleKey);
 
-// Start ----- Tests: User Input Validation ----- Start
+    return () => {
+      editorInput.removeEventListener("keydown", handleKey);
+    };
+  }, [input, cursorPosition]);
+  // End ----- Feature: Self-Closing Characters on the Textarea ----- End
 
+  // Start ----- Tests: User Input Validation ----- Start
 
-  const {changeArray, testResult} = props;
+  const { changeArray, testResult } = props;
 
   // const {arrayName, method, item, testResult} = props;
-  
+
   // console.log(arrayName, method, item, testResult);
 
   useEffect(() => {
@@ -99,11 +109,10 @@ const Editor = (props) => {
     //   arrayMethod = arrayName[1].split('(');
     //   if array
     // }
-    
+
     // console.log(arrayName[0], arrayMethod);
-  
   }, [input, testResult, changeArray]);
-  
+
   // const [resultArray, setResultArray] = useState([...props.gameArray]);
 
   // console.log(resultArray);
@@ -112,49 +121,52 @@ const Editor = (props) => {
   const lineNumberElements = () => {
     let lineNumbers = [];
     const lines = props.editorLines;
-    for(let i = 1; i <= lines; i++) {
-      lineNumbers.push(<p className='line-number' key={`line ${i}`}>{i}</p>);
+    for (let i = 1; i <= lines; i++) {
+      lineNumbers.push(
+        <p className='line-number' key={`line ${i}`}>
+          {i}
+        </p>
+      );
     }
     return lineNumbers;
-  }
+  };
 
-  const editorArray = props.arrayItems.join('\', \'');
-  const editorfinalArray = props.finalArrayItems.join('\', \'');
+  const editorArray = props.arrayItems.join("', '");
+  const editorfinalArray = props.finalArrayItems.join("', '");
 
   return (
     <section id='editor'>
       <h2>Editor</h2>
       {lineNumberElements()}
-      <p translate='no'>let {props.arrayName} = ['{editorArray}'];</p>
-      {props.variableName &&
-        <p>let {props.variableName};</p>
-      }
+      <p translate='no'>
+        let {props.arrayName} = ['{editorArray}'];
+      </p>
+      {props.variableName && <p>let {props.variableName};</p>}
       <p></p>
       <textarea
         id='editor-input'
-        className='code-input' 
-        rows={props.editorRows} 
+        className='code-input'
+        rows={props.editorRows}
         placeholder='type here'
         autoCapitalize='none'
         autoComplete='off'
         spellCheck='false'
         onChange={handleChange}
         value={input}
-      >
-      </textarea>
+      ></textarea>
       <p></p>
-      <p translate='no'>
-        console.log({props.arrayName});
-      </p>
+      <p translate='no'>console.log({props.arrayName});</p>
       <p className='code-comment' translate='no'>
         &#x2f;&#x2f; Expected outcome: ['{editorfinalArray}']
       </p>
-      {props.variableName && <p translate='no'>
-        console.log({props.variableName});
-      </p>}
-      {props.variableName && <p className='code-comment' translate='no'>
-        &#x2f;&#x2f; Expected outcome: '{props.finalVariable}'
-      </p>}
+      {props.variableName && (
+        <p translate='no'>console.log({props.variableName});</p>
+      )}
+      {props.variableName && (
+        <p className='code-comment' translate='no'>
+          &#x2f;&#x2f; Expected outcome: '{props.finalVariable}'
+        </p>
+      )}
     </section>
   );
 };

@@ -35,12 +35,12 @@ const Display = (props) => {
     >
       <h2>Console</h2>
       <article className='display--array'>
-        <p translate='no'>{props.arrayName} = [</p>
+        <p translate='no'>{props.arrayName}: [</p>
         {arrayItemsJSX}
         <p>]</p>        
       </article>
       {props.variableName && <article className='display--array'>
-        <p translate='no'>{props.variableName} =</p>
+        <p translate='no'>{props.variableName}:</p>
           {props.gameVariable && <div className='array-element'>
             <div className='item-container item-effect'>
               {icons[props.gameVariable]} 
