@@ -1,13 +1,62 @@
-import React, { useState, useEffect } from "react";
-import "../stylesheets/Editor.css";
+import React, { useState, useEffect } from 'react';
+import '../stylesheets/Editor.css';
 
 const Editor = (props) => {
   // The 'input' state saves the string entered by the user on the textarea and it's initialised with either the localStorage or an empty string
-  const [input, setInput] = useState(localStorage.getItem(props.level) || "");
+  const [input, setInput] = useState(localStorage.getItem(props.level) || '');
 
+  // Start ----- Feature: Self-Closing Characters ----- Start
+  const [cursorPosition, setCursorPosition] = useState(0);
+  // This function updates the input state
   const handleChange = (event) => {
+    const prevInput = input.split('');
+    const currentInput = event.target.value.split('');
+    // This function is called whenever the currentInput.length is greater than the prevInput.length
+    const findNewCharacter = () => {
+      let newPosition = currentInput.length;
+      let i = 0
+      let newCharacter = currentInput.slice(-1).join('');
+      for(let j = 0; j < prevInput.length; j++) {
+        if(prevInput[i] !== currentInput[j]) {
+          newCharacter = currentInput[j];
+          newPosition = j + 1;
+          break;
+        }
+        i++;
+      }
+      return [newCharacter, newPosition];
+    }
+    // This function is called if the validCharacters and validNexCharacters are truthy
+    const addClosingCharacter = (character, position) => {
+      if(character === '(') {
+        character = ')';
+      }
+      currentInput.splice(position, 0, character);
+      setInput(currentInput.join(''));
+      setCursorPosition(position);
+    }
+    
+    if(currentInput.length > prevInput.length) {
+      const [character, position] = findNewCharacter();
+      const validCharacters = ['(', `'`, '"'];
+      const validNextCharacters = [')', ' ', undefined];
+      if(
+        validCharacters.includes(character) && 
+        validNextCharacters.includes(currentInput[position])
+      ) {
+        addClosingCharacter(character, position);
+        return;
+      }
+    }
+    // If there is not self-closing character which meets the criteria above, the input get updated without any extra character
     setInput(event.target.value);
   };
+  // This function moves the cursor to the middle of the self-closing characters whenever the addClosingCharacter function is called
+  useEffect(() => {
+    const editorInput = document.getElementById('editor-input');
+    editorInput.setSelectionRange(cursorPosition, cursorPosition);
+  }, [cursorPosition]);
+  // End ----- Feature: Self-Closing Characters ----- End
 
   // Start ----- Feature: Save Input to Local Storage ----- Start
   const [actualLevel, setActualLevel] = useState("01");
@@ -33,50 +82,7 @@ const Editor = (props) => {
   }, [reset, changeResetBack]);
   // End ----- Feature: Reset Level ----- End
 
-  // Start ----- Feature: Self-Closing Characters on the Textarea ----- Start
-  const [cursorPosition, setCursorPosition] = useState(0);
-  // This function moves the cursor inside the self-closing parentheses and quotes. The self-closing feature is achieved by the function below
-  useEffect(() => {
-    const editorInput = document.getElementById("editor-input");
-    editorInput.setSelectionRange(cursorPosition, cursorPosition);
-  }, [cursorPosition]);
-  // This function self-closes parentheses and quotes whenever the user types one of the initial keys - `(` or `'`
-  useEffect(() => {
-    const editorInput = document.getElementById("editor-input");
-    setCursorPosition(editorInput.selectionStart);
-    const handleKey = (event) => {
-      if (event.key === "(") {
-        setTimeout(() => {
-          setInput((prevInput) => {
-            const splitPrevInput = prevInput.split("");
-            const indexToAdd = splitPrevInput.indexOf("(", cursorPosition) + 1;
-            splitPrevInput.splice(indexToAdd, 0, ")");
-            return splitPrevInput.join("");
-          });
-        }, 0);
-      }
-
-      if (event.key === `'`) {
-        setTimeout(() => {
-          setInput((prevInput) => {
-            const splitPrevInput = prevInput.split("");
-            const indexToAdd = splitPrevInput.indexOf(`'`, cursorPosition) + 1;
-            splitPrevInput.splice(indexToAdd, 0, `'`);
-            return splitPrevInput.join("");
-          });
-        }, 0);
-      }
-    };
-    editorInput.addEventListener("keydown", handleKey);
-
-    return () => {
-      editorInput.removeEventListener("keydown", handleKey);
-    };
-  }, [input, cursorPosition]);
-  // End ----- Feature: Self-Closing Characters on the Textarea ----- End
-
   // Start ----- Tests: User Input Validation ----- Start
-
   const { changeArray, testResult } = props;
 
   // const {arrayName, method, item, testResult} = props;
@@ -134,6 +140,15 @@ const Editor = (props) => {
   const editorArray = props.arrayItems.join("', '");
   const editorfinalArray = props.finalArrayItems.join("', '");
 
+  // const hello = [3, 2];
+  // let hi;
+  // const run = (input) => {
+  //     hi = hello.map(item => item * input);
+  // };
+  // run(input);
+
+  // console.log(hi);
+
   return (
     <section id='editor'>
       <h2>Editor</h2>
@@ -152,6 +167,7 @@ const Editor = (props) => {
         autoComplete='off'
         spellCheck='false'
         onChange={handleChange}
+        // onKeyDown={handleEnter}
         value={input}
       ></textarea>
       <p></p>
