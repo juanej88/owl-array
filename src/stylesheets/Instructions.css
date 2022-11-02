@@ -9,19 +9,19 @@
 }
 
 h1 {
-  font-size: 1.7rem;
+  font-size: 1.65rem;
   padding-bottom: 0.5rem;
   font-weight: 700;
 }
 
 .instructions {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   padding-bottom: 0.75em;
   text-align: justify;
 }
 
 .documentation-link {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: white;
   padding-left: 0.25em;
 }

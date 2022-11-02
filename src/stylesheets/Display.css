@@ -5,13 +5,14 @@
 }
 
 #display > h2 {
-  font-size: 1.6rem;
+  font-size: 1.65rem;
   padding-bottom: 0.5rem;
   border: solid black;
   border-width: 0 0 0.1rem;
 }
 
 .display--array {
+  min-height: 4.25rem;
   margin-top: 0.75rem;
   display: flex;
   align-items: center;
@@ -19,9 +20,10 @@
 }
 
 .display--array > p {
-  font-size: 1.5rem;
+  font-family: 'Red Hat Mono', monospace;
+  font-size: 1.25rem;
   padding: 0.5rem 0;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .array-element {
@@ -32,9 +34,9 @@
 .item-container {
   height: 3.75rem;
   width: 3.75rem;
-  margin: 0.25rem 1rem;
+  margin: 0.25rem 0.75rem;
   background-color: white;
-  border: 0.25rem solid black;
+  border: 0.2rem solid black;
   box-shadow: inset 0 5px hsl(0deg, 0%, 70%);
   border-radius: 25%;
   display: flex;

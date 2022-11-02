@@ -39,6 +39,14 @@ const Display = (props) => {
         {arrayItemsJSX}
         <p>]</p>        
       </article>
+      {props.variableName && <article className='display--array'>
+        <p translate='no'>{props.variableName} =</p>
+          {props.gameVariable && <div className='array-element'>
+            <div className='item-container item-effect'>
+              {icons[props.gameVariable]} 
+            </div>
+          </div> }
+      </article>}
     </section>
   );
 };

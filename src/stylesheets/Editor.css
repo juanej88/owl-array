@@ -4,6 +4,7 @@
   color: white;
   padding: 0 1.5rem;
   font-family: 'Roboto Mono', monospace;
+  font-family: 'Red Hat Mono', monospace;
   display: grid;
   align-items: baseline;
   grid-template-columns: 2rem 1fr;
@@ -16,7 +17,7 @@
 #editor > h2 {
   grid-column: span 2;
   font-family: 'Nunito Sans', sans-serif;
-  font-size: 1.7rem;
+  font-size: 1.65rem;
   border: solid var(--grey);
   border-width: 0 0 0.1rem;
   padding-bottom: 0.5rem;
@@ -42,6 +43,7 @@
 
 .code-input {
   font-family: 'Roboto Mono', monospace;
+  font-family: 'Red Hat Mono', monospace;
   font-size: inherit;
   background-color: black;
   color: white;

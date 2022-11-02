@@ -111,7 +111,8 @@ const Editor = (props) => {
   // This function renders the required numbers of lines on the left of the editor
   const lineNumberElements = () => {
     let lineNumbers = [];
-    for(let i = 1; i <= 8; i++) {
+    const lines = props.editorLines;
+    for(let i = 1; i <= lines; i++) {
       lineNumbers.push(<p className='line-number' key={`line ${i}`}>{i}</p>);
     }
     return lineNumbers;
@@ -124,7 +125,7 @@ const Editor = (props) => {
     <section id='editor'>
       <h2>Editor</h2>
       {lineNumberElements()}
-      <p translate='no'>const {props.arrayName} = ['{editorArray}'];</p>
+      <p translate='no'>let {props.arrayName} = ['{editorArray}'];</p>
       {props.variableName &&
         <p>let {props.variableName};</p>
       }
@@ -143,18 +144,16 @@ const Editor = (props) => {
       </textarea>
       <p></p>
       <p translate='no'>
-        console.log(
-        {props.arrayName}
-        {props.variableName && `, ${props.variableName}`}
-        ); <span className='code-comment'>
-          &#x2f;&#x2f; Expected outcome:
-        </span>
+        console.log({props.arrayName});
       </p>
       <p className='code-comment' translate='no'>
-        &#x2f;&#x2f; {props.arrayName} = ['{editorfinalArray}'];
+        &#x2f;&#x2f; Expected outcome: ['{editorfinalArray}']
       </p>
+      {props.variableName && <p translate='no'>
+        console.log({props.variableName});
+      </p>}
       {props.variableName && <p className='code-comment' translate='no'>
-        &#x2f;&#x2f; {props.variableName} = '{props.finalVariable}';
+        &#x2f;&#x2f; Expected outcome: '{props.finalVariable}'
       </p>}
     </section>
   );
