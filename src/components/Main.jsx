@@ -52,7 +52,7 @@ const Main = (props) => {
     } else if (owlArrayLength === 1 && owlArray[0] === 'mrsOwl') {
       return {backgroundColor: 'var(--pink)'};
     } else {
-      return {backgroundColor: 'white'};
+      return {backgroundColor: 'var(--orange)'};
     }
   };
 

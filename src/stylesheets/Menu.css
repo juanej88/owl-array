@@ -83,5 +83,5 @@
 }
 
 .familyowl-background {
-  background-color: white;
+  background-color: var(--orange);
 }

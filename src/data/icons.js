@@ -9,12 +9,17 @@ const icons = {
   picture: <i className='fa-solid fa-image'></i>,
   trophy: <i className='fa-solid fa-trophy'></i>,
   plant: <i className='fa-solid fa-seedling'></i>,
-  // Level 03
+  // Level 03 && 04
   ticket: <i className='fa-solid fa-receipt'></i>,
   mobile: <i className='fas fa-mobile-alt'></i>,
   headphones: <i className='fa-solid fa-headphones'></i>,
-  glasses: <i className='fa-solid fa-glasses'></i>,
   key: <i className='fas fa-key'></i>,
+  // Level 05
+  jam: <i className='fa-solid fa-jar'></i>,
+  bread: <i className='fa-solid fa-bread-slice'></i>,
+  biscuit: <i className='fa-solid fa-cookie'></i>,
+  apple: <i className='fa-solid fa-apple-whole'></i>,
+  carrot: <i className='fa-solid fa-carrot'></i>,
   // To use in the future...
   helmet: <i className='fa-solid fa-helmet-safety'></i>
 }
