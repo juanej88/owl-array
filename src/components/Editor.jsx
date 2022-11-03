@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import '../stylesheets/Editor.css';
+import tests from '../functions/tests';
 
 const Editor = (props) => {
   // The 'input' state saves the string entered by the user on the textarea and it's initialised with either the localStorage or an empty string
   const [input, setInput] = useState(localStorage.getItem(props.level) || '');
 
-  // Start ----- Feature: Self-Closing Characters ----- Start
+  // START ----- FEATURE: SELF-CLOSING CHARACTERS ----- START
   const [cursorPosition, setCursorPosition] = useState(0);
   // This function updates the input state
   const handleChange = (event) => {
@@ -56,72 +57,57 @@ const Editor = (props) => {
     const editorInput = document.getElementById('editor-input');
     editorInput.setSelectionRange(cursorPosition, cursorPosition);
   }, [cursorPosition]);
-  // End ----- Feature: Self-Closing Characters ----- End
+  // END ----- FEATURE: SELF-CLOSING CHARACTERS ----- END
 
-  // Start ----- Feature: Save Input to Local Storage ----- Start
-  const [actualLevel, setActualLevel] = useState("01");
+  // START ----- FEATURE: SAVE INPUT TO LOCAL STORAGE ----- START
+  const [actualLevel, setActualLevel] = useState('01');
 
   useEffect(() => {
     // When the level is different, the input is updated either with the localStorage or an empty string
     if (actualLevel !== props.level) {
-      setInput(localStorage.getItem(props.level) || ""); // Update input
+      setInput(localStorage.getItem(props.level) || ''); // Update input
     }
 
     setActualLevel(props.level); // Update level
     localStorage.setItem(actualLevel, input); // Update localStorage
   }, [input, actualLevel, props.level]);
-  // End ----- Feature: Save Input to Local Storage ----- End
+  // END ----- FEATURE: SAVE INPUT TO LOCAL STORAGE ----- END
 
-  // Start ----- Feature: Reset Level ----- Start
+  // START ----- FEATURE: RESET LEVEL ----- START
   const { reset, changeResetBack } = props;
   useEffect(() => {
     if (reset) {
-      setInput("");
+      setInput('');
       changeResetBack();
     }
   }, [reset, changeResetBack]);
-  // End ----- Feature: Reset Level ----- End
+  // END ----- FEATURE: RESET LEVEL ----- END
 
-  // Start ----- Tests: User Input Validation ----- Start
-  const { changeArray, testResult } = props;
-
-  // const {arrayName, method, item, testResult} = props;
-
-  // console.log(arrayName, method, item, testResult);
+  // START ----- FEATURE: USER INPUT TESTS ----- START
+  const { arrayName, method, item, changeArray } = props;
+  // const { arrayItems, testResult } = props;
 
   useEffect(() => {
-    let stringToCheck = input.trim();
+    // const testArray = [...arrayItems];
+    
+    const arrayNameInput = tests.getArrayName(input);
+    const arrayNameTest = tests.checkArrayName(arrayName, arrayNameInput);
 
-    let test1 = stringToCheck.includes(testResult);
+    const methodInput = tests.getMethod(input);
+    const methodTest = tests.checkMethod(method, methodInput);
 
-    if (test1) {
-      // setResultArray([...props.gameArray, item]);
+    const stringsInput = tests.getStrings(input);
+    const stringsTest = tests.checkStrings(item, stringsInput)
+
+    if(arrayNameTest && methodTest[0] && stringsTest) {
       changeArray(true);
     } else {
-      // setResultArray([...props.gameArray]);
       changeArray(false);
     }
 
-    // let arrayName = input.split('.');
-    // let arrayMethod;
+  }, [input, arrayName, method, item, changeArray]);
 
-    // let test1 = false;
-    // arrayName[0] === props.arrayName ? test1 = true : test1 = false;
-
-    // let test2 = false;
-    // test1 && arrayMethod[0] === props.Method[0] ? test2 = true : test2 = false;
-
-    // if(test1 && arrayName.length > 1) {
-    //   arrayMethod = arrayName[1].split('(');
-    //   if array
-    // }
-
-    // console.log(arrayName[0], arrayMethod);
-  }, [input, testResult, changeArray]);
-
-  // const [resultArray, setResultArray] = useState([...props.gameArray]);
-
-  // console.log(resultArray);
+  // END ----- FEATURE: USER INPUT TESTS ----- END
 
   // This function renders the required numbers of lines on the left of the editor
   const lineNumberElements = () => {
@@ -139,15 +125,6 @@ const Editor = (props) => {
 
   const editorArray = props.arrayItems.join("', '");
   const editorfinalArray = props.finalArrayItems.join("', '");
-
-  // const hello = [3, 2];
-  // let hi;
-  // const run = (input) => {
-  //     hi = hello.map(item => item * input);
-  // };
-  // run(input);
-
-  // console.log(hi);
 
   return (
     <section id='editor'>
