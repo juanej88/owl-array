@@ -62,7 +62,6 @@ const getEachString = (strings) => {
 
 const getStringsArray = (strings) => {
   let stringsArray = [strings];
-
   if(strings) {
     if(strings.includes(',')) {
       stringsArray = strings.split(',');
@@ -106,10 +105,43 @@ const runTests = (input, arrayName, method, arrayItems, items) => {
     })
     return newArray;
   } 
-  // else if (test1 && methodInput === 'pop') {
-  //   newArray.pop();
-  //   return newArray;
-  // }
+
+  let testPop = arrayNameTest &&
+  methodInput === 'pop' && 
+  parameterInput === '' ? true : false;
+
+  if(testPop) {
+    newArray.pop();
+    return newArray;
+  } 
+
+  let testUnshift = arrayNameTest &&
+  methodInput === 'unshift' && 
+  parameterInput ? true : false;
+
+  if(testUnshift) {
+    stringsArray.reverse()
+    stringsArray.forEach(string => {
+      let cleanString = getEachString(string);
+      const stringsTest = checkString(cleanString);
+      if (stringsTest) {
+        newArray.unshift(cleanString);
+      } else {
+        newArray.unshift('');
+      }
+    })
+    return newArray;
+  } 
+
+  let testShift = arrayNameTest &&
+  methodInput === 'shift' && 
+  parameterInput === '' ? true : false;
+
+  if(testShift) {
+    newArray.shift();
+    return newArray;
+  } 
+  
 };
 
 export default runTests;
