@@ -1,13 +1,13 @@
 import React from 'react';
 import '../stylesheets/Button.css';
 
-const Button = ({ complete, resetLevel, nextLevel }) => {
+const Button = ({ levelClear, resetLevel, nextLevel }) => {
   const reset = () => {
     resetLevel();
   };
 
   const changeLevel = () => {
-    if(complete) {
+    if(levelClear) {
       nextLevel();
     }
   };
@@ -16,14 +16,14 @@ const Button = ({ complete, resetLevel, nextLevel }) => {
     <section id='buttons'>
       <button 
         id='reset-button'
-        className={!complete ? 'button hidden' : 'button shown'}
+        className={!levelClear ? 'button hidden' : 'button shown'}
         onClick={reset}
       >
         <i className='fa-solid fa-clock-rotate-left'></i>
       </button>
       <button 
         id='next-button' 
-        className={!complete ? 'button no-complete' : 'button complete'}
+        className={!levelClear ? 'button no-complete' : 'button complete'}
         onClick={changeLevel}
       >
         <i className='arrow arrow-left'></i>

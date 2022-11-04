@@ -31,7 +31,7 @@ const Display = (props) => {
       id='display' 
       style={props.chooseColour()}
       // The green-background class style is declared on Main.css
-      className={props.complete ? 'green-background' : undefined}
+      className={props.levelClear ? 'green-background' : undefined}
     >
       <h2>Console</h2>
       <article className='display--array'>

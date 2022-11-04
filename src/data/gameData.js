@@ -93,7 +93,7 @@ const gameData = [
 
     level: '05',
     title: 'The slice() Method',
-    instructionsOne: `After a long day, Mr. Owl and Mrs. Owl are finally together. Before going home, they must stop at the supermarket to buy something for tomorrow's breakfast. Mr. Owl wants a 'biscuit' to have it with milk and Mrs. Owl needs an 'apple' for her oats.`,
+    instructionsOne: `After a long day, Mr. Owl and Mrs. Owl are finally together. Before going home, they must stop at the supermarket to buy something for breakfast. Mr. Owl wants a 'biscuit' to have it with milk and Mrs. Owl needs an 'apple' for her oats.`,
     instructionsTwo: `Your task is to take the strings 'biscuit' and 'apple' from the array 'shelf' and assign it to the variable 'basket'.`,
     link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice',
     mozillaDefinition: 'The slice() method returns a portion of an array into a new array selected from start to end (end not included) where start and end represent the index of items in that array. The original array will not be modified.',

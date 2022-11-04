@@ -10,26 +10,30 @@ const Main = (props) => {
   // This is the data to setup each level
   const data = props.levelData;
 
-  // These are the array and variable which are modified depending on the user input. The user input success is determined by the changeArray function passed as props to the Editor component
-  const [gameArray, setGameArray] = useState(data.arrayItems);
+  // These are the array and variable which are modified depending on the user input. The user input success is determined by the changeLevelClear function passed as props to the Editor component
+  const [consoleArray, setConsoleArray] = useState(data.arrayItems);
   const [gameVariable, setGameVariable] = useState('');
 
-  const [complete, setComplete] = useState(false);
-  // This is the function which is passed as props to the Editor component to change the state 'complete' whether the input is correct or not
-  const changeArray = (newState) => {
-    setComplete(newState);
+  const changeArray = (newArray) => {
+    setConsoleArray(newArray);
   }
-  // The array and string which are passed as props to the Display component are updated every time the 'complete' state changes.
-  useEffect(() => {
-    complete ? setGameArray(data.finalArrayItems) : setGameArray(data.arrayItems);
-    complete ? setGameVariable(data.finalVariable) : setGameVariable('');
-  }, [complete, data]);
 
-  // This useEffect will update the App component whether the level has been completed or not
+  const [levelClear, setLevelClear] = useState(false);
+  // This is the function which is passed as props to the Editor component to change the state 'levelClear' whether the input is correct or not
+  const changeLevelClear = (newState) => {
+    setLevelClear(newState);
+  }
+  // The array and string which are passed as props to the Display component are updated every time the 'levelClear' state changes.
+  useEffect(() => {
+    // levelClear ? setConsoleArray(data.finalArrayItems) : setConsoleArray(data.arrayItems);
+    levelClear ? setGameVariable(data.finalVariable) : setGameVariable('');
+  }, [levelClear, data]);
+
+  // This useEffect will update the App component whether the level has been levelCleard or not
   const updateLevelStatus = props.updateLevelStatus;
   useEffect(() => {
-    updateLevelStatus(complete);
-  }, [complete, updateLevelStatus])
+    updateLevelStatus(levelClear);
+  }, [levelClear, updateLevelStatus]);
 
   // Start ----- Feature: Reset Level ----- Start
   // This state is passed to the Editor component. If it is true, it will reset the value of the input to an empty string
@@ -52,7 +56,7 @@ const Main = (props) => {
     } else if (owlArrayLength === 1 && owlArray[0] === 'mrsOwl') {
       return {backgroundColor: 'var(--pink)'};
     } else {
-      return {backgroundColor: 'var(--orange)'};
+      return {backgroundColor: 'var(--yellow)'};
     }
   };
 
@@ -79,34 +83,35 @@ const Main = (props) => {
         item={data.item}
         testResult={data.testResult}
         changeArray={changeArray}
+        changeLevelClear={changeLevelClear}
         level={data.level}
         reset={reset}
         changeResetBack={changeResetBack}
       />
       <Button
-        complete={complete}
+        levelClear={levelClear}
         resetLevel={resetLevel}
         nextLevel={props.nextLevel}
       />
       <section 
         id='owls'
         style={chooseColour()}
-        className={complete ? 'green-background' : undefined}
+        className={levelClear ? 'green-background' : undefined}
       >
         {/* <h1 className={
-        complete ? 'level-clear level-complete' : 'level-clear'
+        levelClear ? 'level-clear level-levelClear' : 'level-clear'
       }>Level Clear!</h1> */}
         {data.characters.map(character => (
-          <Owl key={character} owl={character} complete={complete} />
+          <Owl key={character} owl={character} levelClear={levelClear} />
         ))}
       </section>
       <Display 
         arrayName={data.arrayName} 
-        arrayItems={gameArray}
+        arrayItems={consoleArray}
         variableName={data.variableName}
         gameVariable={gameVariable}
         item={data.item}
-        complete={complete}
+        levelClear={levelClear}
         chooseColour={chooseColour}
       />
     </main>

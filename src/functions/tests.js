@@ -1,3 +1,5 @@
+import icons from '../data/icons';
+
 const getInput = (input) => {
   const inputSplit = input.trim().split('');
   const equalsSign = inputSplit.indexOf('=');
@@ -39,7 +41,7 @@ const getMethod = (input) => {
 
 const checkMethod = (method, methodInput) => {
   const correctMethod = method === methodInput ? true : false;
-  const availableMethods = ['push', 'pop', 'unshift', 'shift'];
+  const availableMethods = ['push', 'pop', 'unshift', 'shift', 'slice'];
   const validMethod = availableMethods.includes(methodInput);
   return [correctMethod, validMethod];
 };
@@ -52,16 +54,35 @@ const getStrings = (input) => {
 }
 
 const checkStrings = (item, stringsInput) => {
-  return item === stringsInput ? true : false
+  const validItems = Object.keys(icons);
+  const validString = validItems.includes(stringsInput);
+  return validString;
+  // return item === stringsInput ? true : false
 };
 
-const tests = {
-  getArrayName: getArrayName,
-  checkArrayName: checkArrayName,
-  getMethod: getMethod,
-  checkMethod: checkMethod,
-  getStrings: getStrings,
-  checkStrings: checkStrings
+const runTests = (input, arrayName, method, item, arrayItems) => {
+  const arrayNameInput = getArrayName(input);
+  const methodInput = getMethod(input);
+  const stringsInput = getStrings(input);
+
+  const arrayNameTest = checkArrayName(arrayName, arrayNameInput);
+  const methodTest = checkMethod(method, methodInput);
+  const stringsTest = checkStrings(item, stringsInput);
+
+  let test1 = false;
+
+  let newArray = [...arrayItems];
+  // These lines update the consoleArray as long as there are a valid method and a valid item typed onto the textArea
+  arrayNameTest && methodTest[1] && stringsTest ? test1 = true : test1 = false;
+  
+  if(test1 && methodInput === 'push') {
+    newArray.push(stringsInput);
+    return newArray;
+  } 
+  // else if (test1 && methodInput === 'pop') {
+  //   newArray.pop();
+  //   return newArray;
+  // }
 };
 
-export default tests;
+export default runTests;

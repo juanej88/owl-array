@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../stylesheets/Editor.css';
-import tests from '../functions/tests';
+import runTests from '../functions/tests';
 
 const Editor = (props) => {
   // The 'input' state saves the string entered by the user on the textarea and it's initialised with either the localStorage or an empty string
@@ -84,29 +84,32 @@ const Editor = (props) => {
   // END ----- FEATURE: RESET LEVEL ----- END
 
   // START ----- FEATURE: USER INPUT TESTS ----- START
-  const { arrayName, method, item, changeArray } = props;
-  // const { arrayItems, testResult } = props;
-
+  // Every time the input changes, the runTests function from '../functions/tests.js' runs to change the modifiedArray. If the input passes the tests, the runTests function returns the new array; otherwise, returns undefined
+  const { arrayName, method, item, arrayItems } = props;
+  const [modifiedArray, setModifiedArray] = useState(props.arrayItems);
   useEffect(() => {
-    // const testArray = [...arrayItems];
-    
-    const arrayNameInput = tests.getArrayName(input);
-    const arrayNameTest = tests.checkArrayName(arrayName, arrayNameInput);
-
-    const methodInput = tests.getMethod(input);
-    const methodTest = tests.checkMethod(method, methodInput);
-
-    const stringsInput = tests.getStrings(input);
-    const stringsTest = tests.checkStrings(item, stringsInput)
-
-    if(arrayNameTest && methodTest[0] && stringsTest) {
-      changeArray(true);
+    const result = runTests(input, arrayName, method, item, arrayItems);
+    if(result) {
+      setModifiedArray(result);
     } else {
-      changeArray(false);
+      setModifiedArray(arrayItems);
     }
+  }, [input, arrayName, method, item, arrayItems]);
 
-  }, [input, arrayName, method, item, changeArray]);
+  const { changeArray, finalArrayItems, changeLevelClear } = props;
+  useEffect(() => {
+    // When the modifiedArray changes, it updates the Main component so the Display component can show the new array
+    changeArray(modifiedArray);
 
+    const arrayOne = modifiedArray.join();
+    const arrayTwo = finalArrayItems.join();
+    // If the modifiedArray and the finalArrayItems are the same, the Main component receives the update through the changeLevelClear function to update its LevelClear state to true
+    if(arrayOne === arrayTwo) {
+      changeLevelClear(true);
+    } else {
+      changeLevelClear(false);
+    }
+  }, [modifiedArray, changeArray, finalArrayItems, changeLevelClear]);
   // END ----- FEATURE: USER INPUT TESTS ----- END
 
   // This function renders the required numbers of lines on the left of the editor

@@ -19,8 +19,7 @@ body {
   --editor-background: hsl(130, 0%, 10%);
   --blue: hsl(190, 50%, 65%);
   --pink: hsl(340, 50%, 65%);
-  /* --orange: hsl(55, 65%, 65%); */
-  --orange: hsl(25, 75%, 65%);
+  --yellow: hsl(55, 65%, 65%);
   --green: hsl(130, 50%, 65%);
   --grey: hsl(130, 0%, 50%);
 }
