@@ -11,7 +11,7 @@ const Owl = (props) => {
   const [closeEyes, setCloseEyes] = useState('');
 
   useEffect(() => {
-    if (props.complete) {
+    if (props.levelClear) {
       return;
     }
     const blinkDown = () => {
@@ -28,7 +28,7 @@ const Owl = (props) => {
   });
 
   useEffect(() => {
-    if (props.complete) {
+    if (props.levelClear) {
       return;
     }
     const blinkUp = () => {
@@ -40,7 +40,7 @@ const Owl = (props) => {
     return function() {
       clearTimeout(blinkTimeout);
     };
-  }, [props.complete, closeEyes]);
+  }, [props.levelClear, closeEyes]);
 
   return (
     <div className='owl' onClick={moveWings}>
@@ -73,16 +73,16 @@ const Owl = (props) => {
           <div className='nose-right'></div>
         </div>
 
-        <div className={props.complete ? 
+        <div className={props.levelClear ? 
           'owl--eyelids owl--eyelids-complete' :
           'owl--eyelids'}
         >
-          <div className={props.complete ? 
+          <div className={props.levelClear ? 
           'eyelid left-eyelid eyelid-complete' :
           'eyelid left-eyelid ' + closeEyes}
           >
           </div>
-          <div className={props.complete ? 
+          <div className={props.levelClear ? 
           'eyelid right-eyelid eyelid-complete' :
           'eyelid right-eyelid ' + closeEyes}
           ></div>

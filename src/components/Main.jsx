@@ -80,7 +80,7 @@ const Main = (props) => {
         finalVariable={data.finalVariable}
         editorRows={data.editorRows}
         method={data.method}
-        item={data.item}
+        items={data.items}
         testResult={data.testResult}
         changeArray={changeArray}
         changeLevelClear={changeLevelClear}

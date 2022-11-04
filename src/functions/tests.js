@@ -5,9 +5,9 @@ const getInput = (input) => {
   const equalsSign = inputSplit.indexOf('=');
   const dotCharacter = inputSplit.indexOf('.');
   const openParenthesis = inputSplit.indexOf('(');
-  const closeParenthesis = inputSplit.indexOf(')');
+  const closeParenthesis = inputSplit.lastIndexOf(')');
   const firstQuote = inputSplit.indexOf(`'`);
-  const lastQuote = inputSplit.lastIndexOf(`'`);
+  const lastQuote = inputSplit.indexOf(`'`, firstQuote + 1);
   return { 
     inputSplit: inputSplit,
     equalsSign: equalsSign,
@@ -39,44 +39,71 @@ const getMethod = (input) => {
   }
 }
 
-const checkMethod = (method, methodInput) => {
-  const correctMethod = method === methodInput ? true : false;
-  const availableMethods = ['push', 'pop', 'unshift', 'shift', 'slice'];
-  const validMethod = availableMethods.includes(methodInput);
-  return [correctMethod, validMethod];
+// const checkMethod = (method, methodInput) => {
+//   const correctMethod = method === methodInput ? true : false;
+//   const availableMethods = ['push', 'pop', 'unshift', 'shift', 'slice'];
+//   const validMethod = availableMethods.includes(methodInput);
+//   return [correctMethod, validMethod];
+// };
+
+const checkString = (stringInput) => {
+  const validItems = Object.keys(icons);
+  const validString = validItems.includes(stringInput);
+  return validString;
+  // return item === stringsInput ? true : false
 };
 
-const getStrings = (input) => {
-  const {inputSplit, firstQuote, lastQuote} = getInput(input);
+const getEachString = (strings) => {
+  const {inputSplit, firstQuote, lastQuote} = getInput(strings);
   if (firstQuote > -1 && (firstQuote !== lastQuote)) {
     return inputSplit.slice(firstQuote + 1, lastQuote).join('');
   }
 }
 
-const checkStrings = (item, stringsInput) => {
-  const validItems = Object.keys(icons);
-  const validString = validItems.includes(stringsInput);
-  return validString;
-  // return item === stringsInput ? true : false
-};
+const getStringsArray = (strings) => {
+  let stringsArray = [strings];
 
-const runTests = (input, arrayName, method, item, arrayItems) => {
+  if(strings) {
+    if(strings.includes(',')) {
+      stringsArray = strings.split(',');
+    }
+  }
+  return stringsArray;
+}
+
+const getParameter = (input) => {
+  const {inputSplit, openParenthesis, closeParenthesis} = getInput(input);
+  if (openParenthesis > -1 && closeParenthesis > -1) {
+    return inputSplit.slice(openParenthesis + 1, closeParenthesis).join('');
+  }
+}
+
+const runTests = (input, arrayName, method, arrayItems, items) => {
   const arrayNameInput = getArrayName(input);
   const methodInput = getMethod(input);
-  const stringsInput = getStrings(input);
+  const parameterInput = getParameter(input);
+  const stringsArray = getStringsArray(parameterInput);
 
   const arrayNameTest = checkArrayName(arrayName, arrayNameInput);
-  const methodTest = checkMethod(method, methodInput);
-  const stringsTest = checkStrings(item, stringsInput);
-
-  let test1 = false;
+  // const methodTest = checkMethod(method, methodInput);
+    
 
   let newArray = [...arrayItems];
-  // These lines update the consoleArray as long as there are a valid method and a valid item typed onto the textArea
-  arrayNameTest && methodTest[1] && stringsTest ? test1 = true : test1 = false;
-  
-  if(test1 && methodInput === 'push') {
-    newArray.push(stringsInput);
+
+  let testPush = arrayNameTest &&
+  methodInput === 'push' && 
+  parameterInput ? true : false;
+
+  if(testPush) {
+    stringsArray.forEach(string => {
+      let cleanString = getEachString(string);
+      const stringsTest = checkString(cleanString);
+      if (stringsTest) {
+        newArray.push(cleanString);
+      } else {
+        newArray.push('');
+      }
+    })
     return newArray;
   } 
   // else if (test1 && methodInput === 'pop') {

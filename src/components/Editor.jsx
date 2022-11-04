@@ -85,16 +85,16 @@ const Editor = (props) => {
 
   // START ----- FEATURE: USER INPUT TESTS ----- START
   // Every time the input changes, the runTests function from '../functions/tests.js' runs to change the modifiedArray. If the input passes the tests, the runTests function returns the new array; otherwise, returns undefined
-  const { arrayName, method, item, arrayItems } = props;
+  const { arrayName, method, arrayItems } = props;
   const [modifiedArray, setModifiedArray] = useState(props.arrayItems);
   useEffect(() => {
-    const result = runTests(input, arrayName, method, item, arrayItems);
+    const result = runTests(input, arrayName, method, arrayItems);
     if(result) {
       setModifiedArray(result);
     } else {
       setModifiedArray(arrayItems);
     }
-  }, [input, arrayName, method, item, arrayItems]);
+  }, [input, arrayName, method, arrayItems]);
 
   const { changeArray, finalArrayItems, changeLevelClear } = props;
   useEffect(() => {

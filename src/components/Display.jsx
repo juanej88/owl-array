@@ -20,6 +20,7 @@ const Display = (props) => {
           }
         >
           {icons[item]} 
+          <p>{item}</p>
         </div>
         {index !== props.arrayItems.length - 1 && comma}
       </div>
@@ -44,6 +45,7 @@ const Display = (props) => {
           {props.gameVariable && <div className='array-element'>
             <div className='item-container item-effect'>
               {icons[props.gameVariable]} 
+              <p>{props.gameVariable}</p>
             </div>
           </div> }
       </article>}

@@ -19,7 +19,7 @@ const gameData = [
     characters: ['mrOwl'],
     // Editor - Values to test the input of the user on the Editor component
     method: 'push',
-    item: 'compass',
+    items: 1,
     testResult: `backpack.push('compass')`
   },
   {
