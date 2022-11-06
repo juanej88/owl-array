@@ -1,43 +1,46 @@
 import icons from '../data/icons';
 
-const getInput = (input) => {
-  const inputSplit = input.trim().split('');
-  const equalsSign = inputSplit.indexOf('=');
-  const dotCharacter = inputSplit.indexOf('.');
-  const openParenthesis = inputSplit.indexOf('(');
+// This function gets the main input (so it can be checked by the rest of the functions below) and the last character of the input
+const getInputToCheck = inputSplit => {
   const closeParenthesis = inputSplit.lastIndexOf(')');
-  const firstQuote = inputSplit.indexOf(`'`);
-  const lastQuote = inputSplit.indexOf(`'`, firstQuote + 1);
-  return { 
-    inputSplit: inputSplit,
-    equalsSign: equalsSign,
-    dotCharacter: dotCharacter,
-    openParenthesis: openParenthesis,
-    closeParenthesis: closeParenthesis,
-    firstQuote: firstQuote,
-    lastQuote: lastQuote
-  };
-}
-
-const getArrayName = (input) => {
-  const {inputSplit, equalsSign, dotCharacter} = getInput(input);
-  if(equalsSign === -1 && dotCharacter > -1) {
-    return inputSplit.slice(0, dotCharacter).join(''); 
-  } else if (dotCharacter > -1) {
-    return inputSplit.slice(equalsSign + 1, dotCharacter).join('').trim();
+  let mainInput = inputSplit;
+  let lastCharacter = '';
+  if (closeParenthesis !== -1) {
+    mainInput = inputSplit.slice(0, closeParenthesis);
+    lastCharacter = inputSplit.slice(closeParenthesis + 1).join('').trim()
   }
-}
-
-const checkArrayName = (arrayName, arrayNameInput) => {
-  return arrayName === arrayNameInput ? true : false
+  return [mainInput, lastCharacter];
 };
 
-const getMethod = (input) => {
-  const {inputSplit, dotCharacter, openParenthesis} = getInput(input);
-  if (dotCharacter > -1 && openParenthesis > -1) {
-    return inputSplit.slice(dotCharacter + 1, openParenthesis).join('');
+const checkLastCharacter = lastCharacter => lastCharacter === ';' || lastCharacter === '';
+
+const getInputSections = inputSplit => {
+  const equalsSign = inputSplit.indexOf('=');
+  const dotCharacter = inputSplit.indexOf('.');
+  let variableName;
+  let arrayName;
+  let methodAndParameter;
+  if(equalsSign === -1 && dotCharacter !== -1) {
+    arrayName = inputSplit.slice(0, dotCharacter).join('');
+    methodAndParameter = inputSplit.slice(dotCharacter + 1);
+  } else if (equalsSign === -1 && dotCharacter !== -1) {
+    arrayName = inputSplit.slice(equalsSign + 1, dotCharacter).join('').trim();
   }
-}
+  return [variableName, arrayName, methodAndParameter];
+};
+
+const checkArrayName = (arrayName, arrayNameInput) => arrayName === arrayNameInput;
+
+const getMethodAndParameter = (inputSplit) => {
+  const openParenthesis = inputSplit.indexOf('(');
+  let method;
+  let parameter;
+  if (openParenthesis !== -1) {
+    method = inputSplit.slice(0, openParenthesis).join('');
+    parameter = inputSplit.slice(openParenthesis + 1).join('');    
+  }
+  return [method, parameter];
+};
 
 // const checkMethod = (method, methodInput) => {
 //   const correctMethod = method === methodInput ? true : false;
@@ -46,19 +49,31 @@ const getMethod = (input) => {
 //   return [correctMethod, validMethod];
 // };
 
-const checkString = (stringInput) => {
-  const validItems = Object.keys(icons);
-  const validString = validItems.includes(stringInput);
-  return validString;
-  // return item === stringsInput ? true : false
+const checkStringParameter = (parameter) => {
+  const validParameter = [false, false];
+  if(parameter) {
+    let trimParameter = parameter.trim();
+    if(trimParameter.startsWith(`'`)) {
+      validParameter[0] = true;
+    }
+    if(trimParameter.endsWith(`'`)) {
+      validParameter[1] = true;
+    }
+  }
+  return validParameter.every(quote => quote);
 };
 
 const getEachString = (strings) => {
-  const {inputSplit, firstQuote, lastQuote} = getInput(strings);
-  if (firstQuote > -1 && (firstQuote !== lastQuote)) {
-    return inputSplit.slice(firstQuote + 1, lastQuote).join('');
-  }
-}
+  const inputSplit = strings.trim().split('');
+  const cleanString = inputSplit.slice(1, -1).join('').trim();
+  return cleanString;
+};
+
+const checkEachString = (stringInput) => {
+  const validItems = Object.keys(icons);
+  const validString = validItems.includes(stringInput);
+  return validString;
+};
 
 const getStringsArray = (strings) => {
   let stringsArray = [strings];
@@ -68,35 +83,50 @@ const getStringsArray = (strings) => {
     }
   }
   return stringsArray;
-}
+};
 
-const getParameter = (input) => {
-  const {inputSplit, openParenthesis, closeParenthesis} = getInput(input);
-  if (openParenthesis > -1 && closeParenthesis > -1) {
-    return inputSplit.slice(openParenthesis + 1, closeParenthesis).join('');
-  }
-}
-
+// This function controls all the functions above and runs them depending on the tests which have been passed successfully
 const runTests = (input, arrayName, method, arrayItems, items) => {
-  const arrayNameInput = getArrayName(input);
-  const methodInput = getMethod(input);
-  const parameterInput = getParameter(input);
-  const stringsArray = getStringsArray(parameterInput);
+  const inputSplit = input.trim().split('');
+  const [mainInput, lastCharacter] = getInputToCheck(inputSplit);
+
+  const lastCharacterTest = checkLastCharacter(lastCharacter);
+
+  let variableNameInput, arrayNameInput, methodAndParameter;
+  if(lastCharacterTest) {
+    [variableNameInput, arrayNameInput, methodAndParameter] = getInputSections(mainInput);
+  }
+
+  console.log(variableNameInput); // NEXT TO BE IMPLEMENTED...
 
   const arrayNameTest = checkArrayName(arrayName, arrayNameInput);
-  // const methodTest = checkMethod(method, methodInput);
-    
+
+  let methodInput, parameterInput;
+  if(arrayNameTest) {
+    [methodInput, parameterInput] = getMethodAndParameter(methodAndParameter);
+  }
+
+  // const methodTest = checkMethod(method, methodInput); TO BE IMPLEMENTED LATER (MAYBE)
+
+  const stringsArray = getStringsArray(parameterInput);
+
+  const stringParameterTest = checkStringParameter(parameterInput);
+
+  // All the methods available to be implemented:
+  // push, pop, unshift, shift, slice...
 
   let newArray = [...arrayItems];
 
-  let testPush = arrayNameTest &&
-  methodInput === 'push' && 
-  parameterInput ? true : false;
+  let testPush = lastCharacterTest &&
+  arrayNameTest &&
+  methodInput === 'push' &&
+  stringParameterTest &&
+  (parameterInput ? true : false);
 
   if(testPush) {
     stringsArray.forEach(string => {
       let cleanString = getEachString(string);
-      const stringsTest = checkString(cleanString);
+      const stringsTest = checkEachString(cleanString);
       if (stringsTest) {
         newArray.push(cleanString);
       } else {
@@ -106,7 +136,8 @@ const runTests = (input, arrayName, method, arrayItems, items) => {
     return newArray;
   } 
 
-  let testPop = arrayNameTest &&
+  let testPop = lastCharacterTest &&
+  arrayNameTest &&
   methodInput === 'pop' && 
   parameterInput === '' ? true : false;
 
@@ -115,15 +146,17 @@ const runTests = (input, arrayName, method, arrayItems, items) => {
     return newArray;
   } 
 
-  let testUnshift = arrayNameTest &&
-  methodInput === 'unshift' && 
-  parameterInput ? true : false;
+  let testUnshift = lastCharacterTest &&
+  arrayNameTest &&
+  (methodInput === 'unshift') && 
+  stringParameterTest &&
+  (parameterInput ? true : false);
 
   if(testUnshift) {
     stringsArray.reverse()
     stringsArray.forEach(string => {
       let cleanString = getEachString(string);
-      const stringsTest = checkString(cleanString);
+      const stringsTest = checkEachString(cleanString);
       if (stringsTest) {
         newArray.unshift(cleanString);
       } else {
@@ -133,7 +166,8 @@ const runTests = (input, arrayName, method, arrayItems, items) => {
     return newArray;
   } 
 
-  let testShift = arrayNameTest &&
+  let testShift = lastCharacterTest &&
+  arrayNameTest &&
   methodInput === 'shift' && 
   parameterInput === '' ? true : false;
 
