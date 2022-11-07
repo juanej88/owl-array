@@ -63,15 +63,16 @@ const Main = (props) => {
   return (
     <main id='main'>
       <Instructions
+        storyMode={props.storyMode}
         title={data.title}
-        mainInstructions={data.mainInstructions}
-        instructionsOne={data.instructionsOne}
-        instructionsTwo={data.instructionsTwo}
+        storyModeOne={data.storyModeOne}
+        storyModeTwo={data.storyModeTwo}
+        generalInstructions={data.generalInstructions}
+        mandatoryInstructions={data.mandatoryInstructions}
         link={data.link}
         mozillaDefinition={data.mozillaDefinition}
       />
       <Editor
-        editorInstructions={data.editorInstructions}
         editorLines={data.editorLines}
         arrayName={data.arrayName}
         arrayItems={data.arrayItems}

@@ -10,10 +10,12 @@ function App() {
   // This state keeps track of the actual 'level'
   const [level, setLevel] = useState(0);
 
+  // START ----- FEATURE: STORY MODE ----- START
   const[storyMode, setStoryMode] = useState('');
   const toggleStoryMode = (bool) => {
     setStoryMode(bool);
   };
+  // END ----- FEATURE: STORY MODE ----- END
 
   // START ----- Feature: Welcome Page ----- START
   // getLocalShowWelcome retrieves the boolean from localStorage to not show the welcome component every time the user refreshes or loads the page again
@@ -84,7 +86,6 @@ function App() {
   }, [allLevelsStatus]);
   // End ----- Feature: Save All Level Status to Local Storage ----- End
 
-  console.log(showWelcome);
   return (
     <div className='App'>
       {showWelcome && <Welcome
@@ -100,10 +101,11 @@ function App() {
         changeLevel={changeLevel}
         allLevelsStatus={allLevelsStatus}
       />
-      <Main 
+      <Main
         levelData={levelData}
+        storyMode={storyMode}
         nextLevel={nextLevel}
-        updateLevelStatus={updateLevelStatus} 
+        updateLevelStatus={updateLevelStatus}
       />
       <Footer />
     </div>

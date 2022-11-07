@@ -20,6 +20,14 @@ h1 {
   text-align: justify;
 }
 
+.hint {
+  cursor: pointer;
+}
+
+.hint.flip > i {
+  transform: rotate(180deg);
+}
+
 .documentation-link {
   font-size: 1.05rem;
   color: white;
