@@ -1,10 +1,16 @@
 import '../stylesheets/Welcome.css';
 import Owl from './Owl';
-const Welcome = ({ storyMode, toggleStoryMode }) => {
-  const handleClick = (event) => {
+const Welcome = ({ storyMode, toggleStoryMode, toggleShowWelcome }) => {
+  const handleStory = (event) => {
     const answer = event.target.id === 'yes' ? true : false;
     toggleStoryMode(answer);
   };
+
+  const handleStart = () => {
+    toggleShowWelcome();
+  }
+
+  const showStart = storyMode === true || storyMode === false ? true : false;
 
   return (
     <section className='welcome'>
@@ -13,8 +19,8 @@ const Welcome = ({ storyMode, toggleStoryMode }) => {
         <p>To clear each level, you'll need to modify variables and arrays by using built-in JavaScript functions.</p>
 
         <div className='owl-container'>
-          <Owl owl='mrOwl' levelClear={false} />
-          <Owl owl='mrsOwl' levelClear={false} />
+          <Owl owl='mrOwl' levelClear={storyMode} />
+          <Owl owl='mrsOwl' levelClear={storyMode} />
         </div>
 
         <aside className='story-mode--start'>
@@ -23,30 +29,30 @@ const Welcome = ({ storyMode, toggleStoryMode }) => {
             <span 
               id='yes' 
               className={storyMode ?
-                'yes-no-option option-selected' :
+                'yes-no-option yes-selected' :
                 'yes-no-option'}
-              onClick={handleClick}
+              onClick={handleStory}
             >
               Yes
             </span>
             <span 
               id='no'
-              className={!storyMode ?
-                'yes-no-option option-selected' :
+              className={storyMode === false ?
+                'yes-no-option no-selected' :
                 'yes-no-option'}
-              onClick={handleClick}
+              onClick={handleStory}
             >
               No
             </span>
           </div>
-          <p className='story-mode-comment'>If you change your mind, you can toggle this option on the menu</p>
-          <button id='start-button'>Start</button>
+          {showStart && <>
+            <p className='story-mode-comment'>If you change your mind, you can toggle this option on the menu</p>
+            <button id='start-button' onClick={handleStart}>
+              Start
+            </button>
+          </>}
         </aside>
       </article>
-      
-      
-      
-      
     </section>
   );
 };

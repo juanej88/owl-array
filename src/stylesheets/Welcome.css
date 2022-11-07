@@ -5,7 +5,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--editor-background);
+  background-color: var(--blue);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,14 +15,28 @@
 .welcome-message {
   position: absolute;
   background-color: white;
-  max-width: 500px;
+  max-width: 550px;
   padding: 1.5rem;
   font-size: 1.05rem;
   border-radius: 1.5rem;
+  border: 4px solid;
+}
+
+@media only screen and (max-width: 750px) {
+  .welcome-message {
+    margin: 0 0.75rem;
+  }
+}
+
+@media only screen and (max-height: 450px) {
+  .welcome-message {
+    max-width: 750px;
+    padding: 0.75rem 1.5rem;
+  }
 }
 
 .welcome-message > p {
-  padding: 0.25rem 0 0.5rem;
+  padding: 0 0 0.5rem;
 }
 
 .owl-container {
@@ -32,12 +46,23 @@
   margin: 1.5rem 0;
 }
 
+@media only screen and (max-width: 750px) {
+  .owl-container > :last-child {
+    display: none;
+  }
+}
+
+@media only screen and (max-height: 450px) {
+  .owl-container {
+    display: none;
+  }
+}
+
 .story-mode--start {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 0.5rem;
 }
 
 .story-mode-comment {
@@ -50,22 +75,31 @@
 
 .yes-no-option {
   font-size: 1.5rem;
-  font-family: 'Fuzzy Bubbles', cursive;
+  font-family: 'Fuzzy Bubbles', sans-serif;
   text-transform: uppercase;
   color: black;
   background-color: hsl(130deg, 0%, 90%);
   padding: 0.2em 1em;
   margin: 0 1rem;
   cursor: pointer;
+  display: inline-block;
 }
 
-.option-selected {
+.yes-no-option:hover {
+  transform: scale(1.1);
+}
+
+.yes-selected {
+  background-color: var(--green);
+}
+
+.no-selected {
   background-color: var(--yellow);
 }
 
 #start-button {
   font-size: 1.75rem;
-  font-family: 'Fuzzy Bubbles', cursive;
+  font-family: 'Fuzzy Bubbles', sans-serif;
   text-transform: uppercase;
   color: black;
   background-color: var(--green);

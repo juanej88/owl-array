@@ -3,7 +3,7 @@ import icons from '../data/icons';
 // This function gets the main input (so it can be checked by the rest of the functions below) and the last character of the input
 const getInputToCheck = inputSplit => {
   const closeParenthesis = inputSplit.lastIndexOf(')');
-  let mainInput = inputSplit;
+  let mainInput = '';
   let lastCharacter = '';
   if (closeParenthesis !== -1) {
     mainInput = inputSplit.slice(0, closeParenthesis);

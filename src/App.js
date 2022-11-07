@@ -15,7 +15,23 @@ function App() {
     setStoryMode(bool);
   };
 
-  console.log(storyMode);
+  // START ----- Feature: Welcome Page ----- START
+  // getLocalShowWelcome retrieves the boolean from localStorage to not show the welcome component every time the user refreshes or loads the page again
+  const getLocalShowWelcome = () => {
+    const localShowWelcome = JSON.parse(localStorage.getItem('showWelcome'));
+    if(localShowWelcome === null) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+  // The welcome component will be rendered for the first time the game is loaded or when all the levels are reset
+  const [showWelcome, setShowWelcome] = useState(getLocalShowWelcome());
+  const toggleShowWelcome = () => {
+    localStorage.setItem('showWelcome', JSON.stringify(false));
+    setShowWelcome(false);
+  };
+    // END ----- Feature: Welcome Page ----- END
 
   // This state takes the object of the actual 'level' from the gameData array and pass it as props to render its data
   const [levelData, setLevelData] = useState(gameData[level]);
@@ -68,12 +84,14 @@ function App() {
   }, [allLevelsStatus]);
   // End ----- Feature: Save All Level Status to Local Storage ----- End
 
+  console.log(showWelcome);
   return (
     <div className='App'>
-      <Welcome
+      {showWelcome && <Welcome
         storyMode={storyMode}
         toggleStoryMode={toggleStoryMode}
-      />
+        toggleShowWelcome={toggleShowWelcome}
+      />}
       <Header 
         level={levelData.level} 
         levelTitles={levelTitles}

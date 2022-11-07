@@ -4,8 +4,7 @@ const gameData = [
     // ----- ----- ----- ----- Level 01 ----- ----- ----- -----
 
     level: '01',
-    title: 'Level 01 - The push() Method',
-    // mainInstructions: 'Welcome to Owl Array, a game where you need to help the Owl Family. You will modify the arrays provided with built-in JavaScript functions to complete each task.',
+    title: 'The push() Method',
     instructionsOne: `Meet Mr. Owl! He is an architectural engineer who has decided to quit his job to become a software developer. Mr. Owl is ready to go to work on his last day, but he is missing a 'compass' which was given to him by the design leader.`,
     instructionsTwo: `Your task is to add the string 'compass' to the end of the array 'backpack', so he can give back the 'compass' with the rest of the stationery in his backpack.`,
     link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push',
