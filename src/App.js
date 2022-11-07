@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import gameData from './data/gameData';
 import './App.css';
+import Welcome from './components/Welcome';
 import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
@@ -8,6 +9,13 @@ import Footer from './components/Footer';
 function App() {
   // This state keeps track of the actual 'level'
   const [level, setLevel] = useState(0);
+
+  const[storyMode, setStoryMode] = useState('');
+  const toggleStoryMode = (bool) => {
+    setStoryMode(bool);
+  };
+
+  console.log(storyMode);
 
   // This state takes the object of the actual 'level' from the gameData array and pass it as props to render its data
   const [levelData, setLevelData] = useState(gameData[level]);
@@ -62,6 +70,10 @@ function App() {
 
   return (
     <div className='App'>
+      <Welcome
+        storyMode={storyMode}
+        toggleStoryMode={toggleStoryMode}
+      />
       <Header 
         level={levelData.level} 
         levelTitles={levelTitles}

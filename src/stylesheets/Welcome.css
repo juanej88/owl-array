@@ -1,0 +1,76 @@
+.welcome {
+  z-index: 1000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--editor-background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: justify;
+}
+
+.welcome-message {
+  position: absolute;
+  background-color: white;
+  max-width: 500px;
+  padding: 1.5rem;
+  font-size: 1.05rem;
+  border-radius: 1.5rem;
+}
+
+.welcome-message > p {
+  padding: 0.25rem 0 0.5rem;
+}
+
+.owl-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 1.5rem 0;
+}
+
+.story-mode--start {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.story-mode-comment {
+  font-size: 0.75rem;
+}
+
+.yes-no-container {
+  margin: 1rem;
+}
+
+.yes-no-option {
+  font-size: 1.5rem;
+  font-family: 'Fuzzy Bubbles', cursive;
+  text-transform: uppercase;
+  color: black;
+  background-color: hsl(130deg, 0%, 90%);
+  padding: 0.2em 1em;
+  margin: 0 1rem;
+  cursor: pointer;
+}
+
+.option-selected {
+  background-color: var(--yellow);
+}
+
+#start-button {
+  font-size: 1.75rem;
+  font-family: 'Fuzzy Bubbles', cursive;
+  text-transform: uppercase;
+  color: black;
+  background-color: var(--green);
+  padding: 0.2em 0.5em;
+  margin-top: 0.75rem;
+  border-radius: 1.75rem;
+  cursor: pointer;
+}

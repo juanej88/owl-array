@@ -129,6 +129,25 @@ const Editor = (props) => {
   const editorArray = props.arrayItems.join("', '");
   const editorfinalArray = props.finalArrayItems.join("', '");
 
+  // THINKING ABOUT TO LEAVE THIS FEATURE OR NOT - BELOW
+  // const [rows, setRows] = useState(props.editorRows);
+  // const [overflow, setOverflow] = useState(false);
+  // useEffect(() => {
+  //   const textArea = document.getElementById('editor-input');
+  //   console.log(textArea.scrollHeight, textArea.clientHeight);
+  //   if(textArea.scrollHeight > textArea.clientHeight) {
+  //     setOverflow(true);
+  //   } else {
+  //     setOverflow(false);
+  //   }
+  // }, [input]);
+  // useEffect(() => {
+  //   if(overflow) {
+  //     setRows(prevRows => prevRows + 1);
+  //   }
+  // }, [overflow]);
+  // THINKING ABOUT TO LEAVE THIS FEATURE OR NOT - ABOVE
+
   return (
     <section id='editor'>
       <h2>Editor</h2>
@@ -142,6 +161,7 @@ const Editor = (props) => {
         id='editor-input'
         className='code-input'
         rows={props.editorRows}
+        // rows={rows} // THINKING ABOUT IT
         placeholder='type here'
         autoCapitalize='none'
         autoComplete='off'

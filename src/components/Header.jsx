@@ -18,11 +18,10 @@ const Header = (props) => {
           Owl Array
         </span>
         <section className='menu-icon' onClick={handleClick}>
-          {/* <i className='fa-solid fa-plus'></i> */}
+          {/* <i className='fa-solid fa-bars'></i> */}
+          <i className='fa-solid fa-bars-staggered'></i>
           <p><span className='level-label'>Level </span>{props.level}</p>
           {/* <div className='menu-icon--triangle'></div> */}
-          {/* <i className='fa-solid fa-bars-staggered'></i> */}
-          <i className='fa-solid fa-bars'></i>
         </section>
         {displayMenu && <Menu
           level={props.level}

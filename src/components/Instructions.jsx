@@ -5,9 +5,9 @@ const Instructions = (props) => {
   return (
     <section id='instructions'>
       {props.mainInstructions && <p className='instructions first'>{props.mainInstructions}</p>}
+      <h1>{props.title}</h1>
       <p className='instructions'>{props.instructionsOne}</p>
       <p className='instructions'>{props.instructionsTwo}</p>
-      <h1>{props.title}</h1>
       <p className='instructions'> 
         {props.mozillaDefinition}
         <a 
