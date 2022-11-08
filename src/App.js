@@ -10,30 +10,30 @@ function App() {
   // This state keeps track of the actual 'level'
   const [level, setLevel] = useState(0);
 
-  // START ----- FEATURE: STORY MODE ----- START
-  const[storyMode, setStoryMode] = useState('');
-  const toggleStoryMode = (bool) => {
-    setStoryMode(bool);
-  };
-  // END ----- FEATURE: STORY MODE ----- END
-
-  // START ----- Feature: Welcome Page ----- START
-  // getLocalShowWelcome retrieves the boolean from localStorage to not show the welcome component every time the user refreshes or loads the page again
-  const getLocalShowWelcome = () => {
-    const localShowWelcome = JSON.parse(localStorage.getItem('showWelcome'));
-    if(localShowWelcome === null) {
+  // START ----- FEATURE: STORY MODE AND WELCOME PAGE ----- START
+  // getLocalStorage retrieves 'storyMode' and 'showWelcome'
+  const getLocalStorage = item => {
+    const localStorageItem = JSON.parse(localStorage.getItem(item));
+    if(item === 'storyMode' && localStorageItem === null) {
+      return '';
+    } else if(item === 'showWelcome' && localStorageItem === null) {
       return true;
     } else {
-      return false;
+      return localStorageItem;
     }
   };
+  const[storyMode, setStoryMode] = useState(getLocalStorage('storyMode'));
+  const toggleStoryMode = (bool) => {
+    localStorage.setItem('storyMode', JSON.stringify(bool));
+    setStoryMode(bool);
+  };
   // The welcome component will be rendered for the first time the game is loaded or when all the levels are reset
-  const [showWelcome, setShowWelcome] = useState(getLocalShowWelcome());
+  const [showWelcome, setShowWelcome] = useState(getLocalStorage('showWelcome'));
   const toggleShowWelcome = () => {
     localStorage.setItem('showWelcome', JSON.stringify(false));
     setShowWelcome(false);
   };
-    // END ----- Feature: Welcome Page ----- END
+  // END ----- FEATURE: STORY MODE AND WELCOME PAGE ----- END
 
   // This state takes the object of the actual 'level' from the gameData array and pass it as props to render its data
   const [levelData, setLevelData] = useState(gameData[level]);
