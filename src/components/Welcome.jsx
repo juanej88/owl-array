@@ -16,7 +16,7 @@ const Welcome = ({ storyMode, toggleStoryMode, toggleShowWelcome }) => {
     <section className='welcome'>
       <article className='welcome-message'>
         <p>Welcome to Owl Array, a game where you help the Owl Family with daily tasks.</p>
-        <p>To clear each level, you'll need to modify variables and arrays by using built-in JavaScript functions.</p>
+        <p>To pass each level, you'll need to modify variables and arrays by using built-in JavaScript functions.</p>
 
         <div className='owl-container'>
           <Owl owl='mrOwl' levelClear={storyMode} />
@@ -32,6 +32,7 @@ const Welcome = ({ storyMode, toggleStoryMode, toggleShowWelcome }) => {
                 'yes-no-option yes-selected' :
                 'yes-no-option'}
               onClick={handleStory}
+              translate='no'
             >
               Yes
             </span>
@@ -41,6 +42,7 @@ const Welcome = ({ storyMode, toggleStoryMode, toggleShowWelcome }) => {
                 'yes-no-option no-selected' :
                 'yes-no-option'}
               onClick={handleStory}
+              translate='no'
             >
               No
             </span>

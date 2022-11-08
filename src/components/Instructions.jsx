@@ -6,7 +6,7 @@ const Instructions = (props) => {
   const handleClick = () => {
     setShowHint(prevState => !prevState);
   };
-  
+
   const flipArrow = showHint ? 'hint flip' : 'hint';
 
   useEffect(() => {
@@ -21,8 +21,9 @@ const Instructions = (props) => {
         <p className='instructions'>{props.storyModeOne}</p>
         <p className='instructions'>
           {props.storyModeTwo} <span 
-          className={flipArrow} 
-          onClick={handleClick}>
+            className={flipArrow} 
+            onClick={handleClick}
+            translate='no'>
             Hint <i className='fa-solid fa-caret-down'></i>
           </span>
         </p>
@@ -30,7 +31,10 @@ const Instructions = (props) => {
 
       {!props.storyMode &&
         <p className='instructions'>
-          {props.generalInstructions} <span className={flipArrow} onClick={handleClick}>
+          {props.generalInstructions} <span 
+            className={flipArrow} 
+            onClick={handleClick} 
+            translate='no'>
             Hint <i className='fa-solid fa-caret-down'></i>
           </span>
         </p>

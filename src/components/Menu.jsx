@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../stylesheets/Menu.css';
 
 
 const Menu = props => {
+  const [storyModeOn, setStoryModeOn] = useState(props.storyMode);
+  const changeStoryMode = () => {
+    setStoryModeOn(prevState => !prevState);
+  }
+  const { toggleStoryMode } = props;
+  useEffect(() => {
+    console.log(storyModeOn);
+    toggleStoryMode(storyModeOn);
+  },[storyModeOn, toggleStoryMode]);
+
   const menuElements = props.levelTitles.map((level, index) => {
     const currentLevel = parseInt(props.level) === index + 1;
     
@@ -42,6 +52,20 @@ const Menu = props => {
       className={props.displayMenu ? 'showMenu' : ''}
       onClick={props.handleClick}
     >
+      <article id='story-toggle'>
+        <p>Story Mode</p>
+        <aside>
+          <p>on</p>
+          <div 
+            id='outer-toggle'
+            onClick={changeStoryMode}
+            className={storyModeOn ? 'on' : 'off'}
+          >
+            <div id='inner-toggle'></div>
+          </div>
+          <p>off</p>
+        </aside>
+      </article>
       {menuElements}
     </section>
   )

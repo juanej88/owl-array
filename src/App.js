@@ -94,6 +94,8 @@ function App() {
         toggleShowWelcome={toggleShowWelcome}
       />}
       <Header 
+        storyMode={storyMode}
+        toggleStoryMode={toggleStoryMode}
         level={levelData.level} 
         levelTitles={levelTitles}
         levelComplete={levelComplete}
@@ -102,8 +104,8 @@ function App() {
         allLevelsStatus={allLevelsStatus}
       />
       <Main
-        levelData={levelData}
         storyMode={storyMode}
+        levelData={levelData}
         nextLevel={nextLevel}
         updateLevelStatus={updateLevelStatus}
       />

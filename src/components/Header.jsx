@@ -5,7 +5,11 @@ import Menu from './Menu';
 const Header = (props) => {
   const [displayMenu, setDisplayMenu] = useState(false);
 
-  const handleClick = () => {
+  const handleClick = event => {
+    const elementId = event.target.id;
+    if(elementId === 'outer-toggle' || elementId === 'inner-toggle') {
+      return;
+    }
     setDisplayMenu(prevState => !prevState);
   }
 
@@ -24,6 +28,8 @@ const Header = (props) => {
           {/* <div className='menu-icon--triangle'></div> */}
         </section>
         {displayMenu && <Menu
+          storyMode={props.storyMode}
+          toggleStoryMode={props.toggleStoryMode}
           level={props.level}
           levelTitles={props.levelTitles}
           levelComplete={props.levelComplete}

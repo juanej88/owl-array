@@ -5,6 +5,7 @@
   margin: 0 3em;
   cursor: pointer;
   transform-origin: bottom;
+  z-index: 1;
 }
 
 /* Owl Top */
