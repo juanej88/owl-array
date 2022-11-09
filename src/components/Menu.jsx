@@ -9,7 +9,6 @@ const Menu = props => {
   }
   const { toggleStoryMode } = props;
   useEffect(() => {
-    console.log(storyModeOn);
     toggleStoryMode(storyModeOn);
   },[storyModeOn, toggleStoryMode]);
 
@@ -30,7 +29,7 @@ const Menu = props => {
     };
 
     return (
-      <div 
+      <article 
         key={`menu-title--${level}`}
         className={currentLevel ? 
           `menu-title ${currentLevelBackground()}` :
@@ -42,7 +41,7 @@ const Menu = props => {
           {props.allLevelsStatus[`0${index + 1}`] && <div className='check-mark'></div>}
         </i>
         <p>0{index + 1} {level}()</p>
-      </div>
+      </article>
     )
   });
 
@@ -52,10 +51,11 @@ const Menu = props => {
       className={props.displayMenu ? 'showMenu' : ''}
       onClick={props.handleClick}
     >
+      {menuElements}
       <article id='story-toggle'>
         <p>Story Mode</p>
         <aside>
-          <p>on</p>
+          <p>On</p>
           <div 
             id='outer-toggle'
             onClick={changeStoryMode}
@@ -63,10 +63,15 @@ const Menu = props => {
           >
             <div id='inner-toggle'></div>
           </div>
-          <p>off</p>
+          <p>Off</p>
         </aside>
       </article>
-      {menuElements}
+      <article>
+        <p 
+          id='reset-levels' 
+          onClick={props.showResetWindow}
+        >Reset Game</p>
+      </article>
     </section>
   )
 };

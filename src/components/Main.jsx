@@ -73,6 +73,7 @@ const Main = (props) => {
         mozillaDefinition={data.mozillaDefinition}
       />
       <Editor
+        resetGameStatus= {props.resetGameStatus}
         editorLines={data.editorLines}
         arrayName={data.arrayName}
         arrayItems={data.arrayItems}

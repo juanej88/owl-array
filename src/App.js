@@ -35,6 +35,22 @@ function App() {
   };
   // END ----- FEATURE: STORY MODE AND WELCOME PAGE ----- END
 
+  // START ----- FEATURE: RESET GAME ----- START
+  // The resetGameStatus is used to clear the input on the Editor component with a useEffect function on that file if the user resets the game while being on level 01
+  const [resetGameStatus, setResetGameStatus] = useState(false);
+  const resetGame = () => {
+    setResetGameStatus(true);
+    localStorage.clear();
+    setLevel(0);
+    setStoryMode('');
+    setShowWelcome(true);
+    // it also updates the allLevelStatus with a useEffect function below
+  }
+  useEffect(() => {
+    setResetGameStatus(false);
+  }, [resetGameStatus])
+  // END ----- FEATURE: RESET GAME ----- END
+
   // This state takes the object of the actual 'level' from the gameData array and pass it as props to render its data
   const [levelData, setLevelData] = useState(gameData[level]);
   
@@ -72,7 +88,8 @@ function App() {
       setAllLevelsStatus(statusObject);
       localStorage.setItem('Levels solved', JSON.stringify(statusObject));
     }
-  }, []);
+    // it updates the allLevelStatus every time the game is reset and is called through the showWelcome status change
+  }, [showWelcome]);
 
   useEffect(() => {
     setAllLevelsStatus(prevStatus => ({
@@ -96,6 +113,7 @@ function App() {
       <Header 
         storyMode={storyMode}
         toggleStoryMode={toggleStoryMode}
+        resetGame={resetGame}
         level={levelData.level} 
         levelTitles={levelTitles}
         levelComplete={levelComplete}
@@ -104,6 +122,7 @@ function App() {
         allLevelsStatus={allLevelsStatus}
       />
       <Main
+        resetGameStatus={resetGameStatus}
         storyMode={storyMode}
         levelData={levelData}
         nextLevel={nextLevel}

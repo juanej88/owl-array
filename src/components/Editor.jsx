@@ -74,13 +74,14 @@ const Editor = (props) => {
   // END ----- FEATURE: SAVE INPUT TO LOCAL STORAGE ----- END
 
   // START ----- FEATURE: RESET LEVEL ----- START
-  const { reset, changeResetBack } = props;
+  const { reset, changeResetBack, resetGameStatus } = props;
+  console.log(resetGameStatus);
   useEffect(() => {
-    if (reset) {
+    if (reset || resetGameStatus) {
       setInput('');
       changeResetBack();
-    }
-  }, [reset, changeResetBack]);
+    } 
+  }, [reset, changeResetBack, resetGameStatus]);
   // END ----- FEATURE: RESET LEVEL ----- END
 
   // START ----- FEATURE: USER INPUT TESTS ----- START
