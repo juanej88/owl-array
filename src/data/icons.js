@@ -20,8 +20,10 @@ const icons = {
   biscuit: <i className='fa-solid fa-cookie'></i>,
   apple: <i className='fa-solid fa-apple-whole'></i>,
   carrot: <i className='fa-solid fa-carrot'></i>,
-  // To use in the future...
-  helmet: <i className='fa-solid fa-helmet-safety'></i>
+  // Level 06
+  lemon: <i className='fa-solid fa-lemon'></i>,
+  water: <i className='fa-solid fa-droplet'></i>,
+  'lemon water': <i className='fa-solid fa-glass-water'></i>
 }
 
 export default icons;

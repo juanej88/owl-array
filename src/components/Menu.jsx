@@ -36,6 +36,7 @@ const Menu = props => {
           'menu-title'
           }
         onClick={() => props.changeLevel(index)}
+        translate='no'
       >
         <i className={'check-mark-container'}>
           {props.allLevelsStatus[`0${index + 1}`] && <div className='check-mark'></div>}
@@ -55,7 +56,7 @@ const Menu = props => {
       <article id='story-toggle'>
         <p>Story Mode</p>
         <aside>
-          <p>On</p>
+          <p translate='no'>On</p>
           <div 
             id='outer-toggle'
             onClick={changeStoryMode}
@@ -63,7 +64,7 @@ const Menu = props => {
           >
             <div id='inner-toggle'></div>
           </div>
-          <p>Off</p>
+          <p translate='no'>Off</p>
         </aside>
       </article>
       <article>

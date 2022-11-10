@@ -66,6 +66,7 @@ const Header = (props) => {
               <span 
                 id='reset-yes' 
                 className='reset-option'
+                translate='no'
                 onClick={showResetWindow}
               >
                 Yes
@@ -73,6 +74,7 @@ const Header = (props) => {
               <span 
                 id='reset-no' 
                 className='reset-option'
+                translate='no'
                 onClick={showResetWindow}
               >
                 No

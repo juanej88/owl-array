@@ -75,7 +75,6 @@ const Editor = (props) => {
 
   // START ----- FEATURE: RESET LEVEL ----- START
   const { reset, changeResetBack, resetGameStatus } = props;
-  console.log(resetGameStatus);
   useEffect(() => {
     if (reset || resetGameStatus) {
       setInput('');

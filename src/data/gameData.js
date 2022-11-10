@@ -11,6 +11,7 @@ const gameData = [
     link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push',
     mozillaDefinition: 'The push() method adds one or more elements to the end of an array and returns the new length of the array.',
     arrayName: 'backpack',
+    variableName: null,
     arrayItems: ['pencil', 'eraser', 'swatchbook'],
     finalArrayItems: ['pencil', 'eraser', 'swatchbook', 'compass'],
     editorRows: 1,
@@ -33,6 +34,7 @@ const gameData = [
     link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop',
     mozillaDefinition: 'The pop() method removes the last element from an array and returns that element. This method changes the length of the array.',
     arrayName: 'backpack',
+    variableName: null,
     arrayItems: ['laptop', 'picture', 'trophy', 'plant'],
     finalArrayItems: ['laptop', 'picture', 'trophy'],
     editorRows: 1,
@@ -54,6 +56,7 @@ const gameData = [
     link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift',
     mozillaDefinition: 'The unshift() method adds one or more elements to the beginning of an array and returns the new length of the array.',
     arrayName: 'bag',
+    variableName: null,
     arrayItems: ['headphones', 'key'],
     finalArrayItems: ['ticket', 'mobile', 'headphones', 'key'],
     editorRows: 1,
@@ -106,6 +109,29 @@ const gameData = [
     editorLines: 9,
     characters: ['mrOwl', 'mrsOwl'],
     method: 'slice',
+    item: '2, 4',
+    testResult: `bin = bag.shift()`
+  },
+  {
+
+    // ----- ----- ----- ----- Level 06 ----- ----- ----- -----
+
+    level: '06',
+    title: 'The join() Method',
+    storyModeOne: `Good morning everyone! After eating a delicious breakfast, Mr and Mrs Owl are ready to start a new day, but they just want to finish the morning with a glass of lemon water.`,
+    storyModeTwo: `Your task is to join the strings 'lemon' and 'water' from the array 'ingredients' and assign it to the variable 'glass', so they can continue enjoying the weekend. You must use the join() method.`,
+    generalInstructions: `Your task is to join the strings 'lemon' and 'water' from the array 'ingredients' and assign it to the variable 'glass'. You must use the join() method.`,
+    link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join',
+    mozillaDefinition: 'The join() method creates and returns a new string by concatenating all of the elements in an array, separated by commas or a specified separator string.',
+    arrayName: 'ingredients',
+    variableName: 'glass',
+    arrayItems: ['lemon', 'water'],
+    finalArrayItems: ['lemon', 'water'],
+    finalVariable: 'lemon water',
+    editorRows: 1,
+    editorLines: 9,
+    characters: ['mrOwl', 'mrsOwl'],
+    method: 'join',
     item: '2, 4',
     testResult: `bin = bag.shift()`
   }
