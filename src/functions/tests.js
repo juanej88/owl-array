@@ -34,7 +34,7 @@ const getInputSections = inputSplit => {
 const checkVariableName = (variableName, variableNameInput) => variableName === variableNameInput;
 const checkArrayName = (arrayName, arrayNameInput) => arrayName === arrayNameInput;
 
-const getMethodAndParameter = (inputSplit) => {
+const getMethodAndParameter = inputSplit => {
   const openParenthesis = inputSplit.indexOf('(');
   let method;
   let parameter;
@@ -52,7 +52,7 @@ const getMethodAndParameter = (inputSplit) => {
 //   return [correctMethod, validMethod];
 // };
 
-const checkStringParameter = (parameter) => {
+const checkStringParameter = parameter => {
   const validParameter = [false, false];
   if(parameter) {
     let trimParameter = parameter.trim();
@@ -66,19 +66,19 @@ const checkStringParameter = (parameter) => {
   return validParameter.every(quote => quote);
 };
 
-const getEachString = (strings) => {
+const getEachString = strings => {
   const inputSplit = strings.trim().split('');
   const cleanString = inputSplit.slice(1, -1).join('').trim();
   return cleanString;
 };
 
-const checkEachString = (stringInput) => {
+const checkEachString = stringInput => {
   const validItems = Object.keys(icons);
   const validString = validItems.includes(stringInput);
   return validString;
 };
 
-const getStringsArray = (strings) => {
+const getStringsArray = strings => {
   let stringsArray = [strings];
   if(strings) {
     if(strings.includes(',')) {
@@ -86,6 +86,25 @@ const getStringsArray = (strings) => {
     }
   }
   return stringsArray;
+};
+
+const checkNumbers = input => {
+  const result = input.map(number => {
+    let eachNum = number.trim().split('');
+    if(eachNum[0] === '-') {
+      eachNum.shift();
+    }
+
+    if(eachNum.length > 0) {
+      let digits = eachNum.map(each => {
+        return parseInt(each);
+      });
+      const checkDigits = digits.includes(NaN);
+      return !checkDigits;
+    }
+    return false;
+  });
+  return result;
 };
 
 // This function controls all the functions above and runs them depending on the tests which have been passed successfully
@@ -128,7 +147,7 @@ const runTests = (input, arrayName, method, arrayItems, variableName) => {
 
   let testPush = lastCharacterTest &&
   arrayNameTest &&
-  methodInput === 'push' &&
+  (methodInput === 'push') &&
   stringParameterTest &&
   (parameterInput ? true : false);
 
@@ -150,8 +169,8 @@ const runTests = (input, arrayName, method, arrayItems, variableName) => {
 
   let testPop = lastCharacterTest &&
   arrayNameTest &&
-  methodInput === 'pop' && 
-  parameterInput === '' ? true : false;
+  (methodInput === 'pop') && 
+  (parameterInput === '' ? true : false);
 
   if(testPop) {
     if (variableNameTest && variableNameInput !== null) {
@@ -186,8 +205,8 @@ const runTests = (input, arrayName, method, arrayItems, variableName) => {
 
   let testShift = lastCharacterTest &&
   arrayNameTest &&
-  methodInput === 'shift' && 
-  parameterInput === '' ? true : false;
+  (methodInput === 'shift') && 
+  (parameterInput === '' ? true : false);
 
   if(testShift) {
     if (variableNameTest && variableNameInput !== null) {
@@ -197,9 +216,42 @@ const runTests = (input, arrayName, method, arrayItems, variableName) => {
     };
   };
 
+  let testSlice = lastCharacterTest &&
+  arrayNameTest &&
+  variableNameTest &&
+  (methodInput === 'slice');
+
+  if(testSlice) {
+    let splitParameter;
+    let testNumbers;
+    let testPassed;
+
+    if(parameterInput === '') {
+      newVariable = newArray.slice();
+    } else if (parameterInput) {
+      splitParameter = getStringsArray(parameterInput);
+    }
+
+    if(splitParameter && splitParameter.length <= 2) {
+      testNumbers = checkNumbers(splitParameter);
+      testPassed = testNumbers.every(number => number);
+    };
+
+    if(splitParameter && splitParameter.length === 1 && testPassed) {
+      let num1 = parseInt(splitParameter[0]);
+      newVariable = newArray.slice(num1);
+    };
+
+    if(splitParameter && splitParameter.length === 2 && testPassed) {
+      let num1 = parseInt(splitParameter[0]);
+      let num2 = parseInt(splitParameter[1]);
+      newVariable = newArray.slice(num1, num2);
+    };
+  };
+
   // If any of the 'methodTests' is true, the array 'results' is returned to the Editor component
   const checkResults = () => {
-    const methodTests = [testPush, testPop, testUnshift, testShift];
+    const methodTests = [testPush, testPop, testUnshift, testShift, testSlice];
     const methodTestClear = methodTests.some(methodClear => methodClear);
     return methodTestClear;
   };

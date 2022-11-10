@@ -20,8 +20,7 @@ const gameData = [
     characters: ['mrOwl'],
     // Editor - Values to test the input of the user on the Editor component
     method: 'push',
-    items: 1,
-    testResult: `backpack.push('compass')`
+    items: 1
   },
   {
 
@@ -43,8 +42,7 @@ const gameData = [
     editorLines: 6,
     characters: ['mrOwl'],
     method: 'pop',
-    item: undefined,
-    testResult: `backpack.pop()`
+    item: undefined
   },
   {
 
@@ -66,8 +64,7 @@ const gameData = [
     editorLines: 6,
     characters: ['mrsOwl'],
     method: 'unshift',
-    item: 'ticket',
-    testResult: `bag.unshift('ticket', 'mobile')`
+    item: 'ticket'
   },
   {
 
@@ -89,8 +86,7 @@ const gameData = [
     editorLines: 9,
     characters: ['mrsOwl'],
     method: 'shift',
-    item: undefined,
-    testResult: `bin = bag.shift()`
+    item: undefined
   },
   {
 
@@ -104,16 +100,15 @@ const gameData = [
     link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice',
     mozillaDefinition: 'The slice() method returns a portion of an array into a new array selected from start to end (end not included) where start and end represent the index of items in that array. The original array will not be modified.',
     arrayName: 'shelf',
-    arrayItems: ['jam', 'bread', 'biscuit', 'apple', 'carrot'],
-    finalArrayItems: ['jam', 'bread', 'biscuit', 'apple', 'carrot'],
+    arrayItems: ['cheese', 'bread', 'biscuit', 'apple', 'carrot'],
+    finalArrayItems: ['cheese', 'bread', 'biscuit', 'apple', 'carrot'],
     variableName: 'basket',
-    finalVariable: 'biscuit',
+    finalVariable: ['biscuit', 'apple'],
     editorRows: 1,
     editorLines: 9,
     characters: ['mrOwl', 'mrsOwl'],
     method: 'slice',
-    item: '2, 4',
-    testResult: `bin = bag.shift()`
+    item: '2, 4'
   },
   {
 
@@ -121,22 +116,23 @@ const gameData = [
 
     level: '06',
     title: 'The join() Method',
-    storyModeOne: `Good morning everyone! After eating a delicious breakfast, Mr and Mrs Owl are ready to start a new day, but they just want to finish the morning with a glass of lemon water.`,
-    storyModeTwo: `Your task is to join the strings 'lemon' and 'water' from the array 'ingredients' and assign it to the variable 'glass', so they can continue enjoying the weekend. You must use the join() method.`,
+    storyModeOne: `Home, sweet home! After all day at work, Mr and Mrs Owl would love to prepare some lemon ice cream.`,
+    storyModeTwo: `Your task is to join the strings 'lemon', 'ice' and 'cream' from the array 'ingredients' and assign it to the variable 'cone', so they can start watching their favourite TV serie. You must use the join() method.`,
+    // storyModeOne: `Good morning everyone! After eating a delicious breakfast, Mr and Mrs Owl are ready to start a new day, but they just want to finish the morning with a glass of lemon ice cream.`,
+    // storyModeTwo: `Your task is to join the strings 'lemon' and 'water' from the array 'ingredients' and assign it to the variable 'glass', so they can continue enjoying the weekend. You must use the join() method.`,
     generalInstructions: `Your task is to join the strings 'lemon' and 'water' from the array 'ingredients' and assign it to the variable 'glass'. You must use the join() method.`,
     link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join',
     mozillaDefinition: 'The join() method creates and returns a new string by concatenating all of the elements in an array, separated by commas or a specified separator string.',
     arrayName: 'ingredients',
-    arrayItems: ['lemon', 'water'],
-    finalArrayItems: ['lemon', 'water'],
-    variableName: 'glass',
-    finalVariable: 'lemon water',
+    arrayItems: ['lemon', 'ice', 'cream', 'lemon ice cream'],
+    finalArrayItems: ['lemon', 'ice', 'cream', 'lemon ice cream'],
+    variableName: 'cone',
+    finalVariable: 'lemon ice cream',
     editorRows: 1,
     editorLines: 9,
     characters: ['mrOwl', 'mrsOwl'],
     method: 'join',
-    item: '2, 4',
-    testResult: `bin = bag.shift()`
+    item: '2, 4'
   }
 ];
 

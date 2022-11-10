@@ -15,15 +15,16 @@ const icons = {
   headphones: <i className='fa-solid fa-headphones'></i>,
   key: <i className='fas fa-key'></i>,
   // Level 05
-  jam: <i className='fa-solid fa-jar'></i>,
+  cheese: <i className='fa-solid fa-cheese'></i>,
   bread: <i className='fa-solid fa-bread-slice'></i>,
   biscuit: <i className='fa-solid fa-cookie'></i>,
   apple: <i className='fa-solid fa-apple-whole'></i>,
   carrot: <i className='fa-solid fa-carrot'></i>,
   // Level 06
   lemon: <i className='fa-solid fa-lemon'></i>,
-  water: <i className='fa-solid fa-droplet'></i>,
-  'lemon water': <i className='fa-solid fa-glass-water'></i>
+  ice: <i className='fa-solid fa-cubes-stacked'></i>,
+  cream: <i className='fa-solid fa-jar'></i>,
+  'lemon ice cream': <i className='fa-solid fa-ice-cream'></i>
 }
 
 export default icons;

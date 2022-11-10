@@ -114,8 +114,17 @@ const Editor = (props) => {
 
     const arrayOne = modifiedArray.join();
     const arrayTwo = finalArrayItems.join();
+
+    let variableOne = modifiedVariable;
+    let variableTwo = finalVariable;
+    // JSON.stringify is used to be able to compare arrays
+    if(modifiedVariable !== null) {
+      variableOne = JSON.stringify(modifiedVariable);
+      variableTwo = JSON.stringify(finalVariable);
+    }
+    
     // If the modifiedArray and the finalArrayItems are the same, the Main component receives the update through the changeLevelClear function to update its LevelClear state to true
-    if(arrayOne === arrayTwo && modifiedVariable === finalVariable) {
+    if(arrayOne === arrayTwo && variableOne === variableTwo) {
       changeLevelClear(true);
     } else {
       changeLevelClear(false);
