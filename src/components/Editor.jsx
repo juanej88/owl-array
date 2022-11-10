@@ -106,10 +106,11 @@ const Editor = (props) => {
     };
   }, [input, arrayName, method, arrayItems, variableName]);
 
-  const { finalArrayItems, finalVariable, changeArray, changeLevelClear } = props;
+  const { changeArray, changeVariable, finalArrayItems, finalVariable,  changeLevelClear } = props;
   useEffect(() => {
-    // When the modifiedArray changes, it updates the Main component so the Display component can show the new array
+    // When modifiedArray and modifiedVariable change, they updates the Main component so the Display component can show the new items on them
     changeArray(modifiedArray);
+    changeVariable(modifiedVariable);
 
     const arrayOne = modifiedArray.join();
     const arrayTwo = finalArrayItems.join();
@@ -119,7 +120,7 @@ const Editor = (props) => {
     } else {
       changeLevelClear(false);
     }
-  }, [modifiedArray, changeArray, finalArrayItems, modifiedVariable, finalVariable, changeLevelClear]);
+  }, [changeArray, modifiedArray, changeVariable, modifiedVariable, finalArrayItems,  finalVariable, changeLevelClear]);
   // END ----- FEATURE: USER INPUT TESTS ----- END
 
   // This function renders the required numbers of lines on the left of the editor

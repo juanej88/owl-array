@@ -9,7 +9,6 @@ const Display = (props) => {
   // is the last item on the array
   const arrayItemsJSX = props.arrayItems.map((item, index) => {
     let comma = <p>,</p>;
-
     return (
       <div className='array-element' key={`item${index}`}>
         <div 
@@ -27,6 +26,25 @@ const Display = (props) => {
     )
   });
 
+  const variableItemsJSX = (variableContent) => {
+    console.log(variableContent);
+    if(typeof variableContent === 'string') {
+      return (
+        <div className='item-container item-effect'>
+          {icons[variableContent]}
+          <p>{props.gameVariable}</p>
+        </div>
+      );
+    } else if (typeof variableContent === 'number') {
+      return (
+        <div className='item-container item-effect'>
+          {/* {icons[variableContent]} */}
+          <span className='number-item'>{props.gameVariable}</span>
+        </div>
+      );
+    }
+  }
+
   return (
     <section 
       id='display' 
@@ -40,15 +58,15 @@ const Display = (props) => {
         {arrayItemsJSX}
         <p>]</p>        
       </article>
-      {props.variableName && <article className='display--array'>
-        <p translate='no'>{props.variableName}:</p>
-          {props.gameVariable && <div className='array-element'>
-            <div className='item-container item-effect'>
-              {icons[props.gameVariable]} 
-              <p>{props.gameVariable}</p>
-            </div>
-          </div> }
-      </article>}
+
+      {props.variableName &&
+        <article className='display--array'>
+          <p translate='no'>{props.variableName}:</p>
+            {props.gameVariable && <div className='array-element'>
+            {variableItemsJSX(props.gameVariable)}
+            </div> }
+        </article>
+      }
     </section>
   );
 };

@@ -1,6 +1,6 @@
 import icons from '../data/icons';
 
-// This function gets the main input (so it can be checked by the rest of the functions below) and the last character of the input
+// This function gets the last character of the input and the main input (so it can be checked by the rest of the functions below)
 const getInputToCheck = inputSplit => {
   const closeParenthesis = inputSplit.lastIndexOf(')');
   let mainInput = '';
@@ -104,6 +104,7 @@ const runTests = (input, arrayName, method, arrayItems, variableName) => {
   const arrayNameTest = checkArrayName(arrayName, arrayNameInput);
 
   let methodInput, parameterInput;
+  // The variableNameInput accepts null, so it can update the Display component if one of the methodTests passes; even though, the variableNameTest returns true or false
   if((variableNameTest || variableNameInput === null) && arrayNameTest) {
     [methodInput, parameterInput] = getMethodAndParameter(methodAndParameter);
   }
@@ -116,14 +117,14 @@ const runTests = (input, arrayName, method, arrayItems, variableName) => {
 
   // All the methods available to be implemented:
   // push, pop, unshift, shift, *(slice, join) *working on it
-
+  
+  // These 2 variables are returned to the Editor component when at least one test below returns true
   let newArray = [...arrayItems];
-  let newVariable;
+  let newVariable = null;
 
   const assignVariable = item => {
     newVariable = item;
   }
-
 
   let testPush = lastCharacterTest &&
   arrayNameTest &&
@@ -141,8 +142,8 @@ const runTests = (input, arrayName, method, arrayItems, variableName) => {
         newArray.push('');
       }
     });
-
-    if (variableNameTest) {
+    // The 'variableNameTest' runs again to whether return the value of the method used or not. The final check is done on an Editor useEffect function to changeLevelClear to true or false // This check is done in all methods below
+    if (variableNameTest && variableNameInput !== null) {
       assignVariable(newArray.length);
     };
   };
@@ -153,7 +154,7 @@ const runTests = (input, arrayName, method, arrayItems, variableName) => {
   parameterInput === '' ? true : false;
 
   if(testPop) {
-    if (variableNameTest) {
+    if (variableNameTest && variableNameInput !== null) {
       newVariable = newArray.pop();
     } else {
       newArray.pop();
@@ -178,7 +179,7 @@ const runTests = (input, arrayName, method, arrayItems, variableName) => {
       }
     });
 
-    if (variableNameTest) {
+    if (variableNameTest && variableNameInput !== null) {
       assignVariable(newArray.length);
     };
   };
@@ -189,14 +190,14 @@ const runTests = (input, arrayName, method, arrayItems, variableName) => {
   parameterInput === '' ? true : false;
 
   if(testShift) {
-    if (variableNameTest) {
+    if (variableNameTest && variableNameInput !== null) {
       newVariable = newArray.shift();
     } else {
       newArray.shift();
     };
   };
 
-
+  // If any of the 'methodTests' is true, the array 'results' is returned to the Editor component
   const checkResults = () => {
     const methodTests = [testPush, testPop, testUnshift, testShift];
     const methodTestClear = methodTests.some(methodClear => methodClear);
@@ -206,7 +207,6 @@ const runTests = (input, arrayName, method, arrayItems, variableName) => {
   let returnResults = checkResults();
 
   if(returnResults) {
-    console.log(variableNameTest);
     let results = [newArray, newVariable];
     return results;
   };

@@ -14,9 +14,13 @@ const Main = (props) => {
   const [consoleArray, setConsoleArray] = useState(data.arrayItems);
   const [gameVariable, setGameVariable] = useState('');
 
-  const changeArray = (newArray) => {
+  const changeArray = newArray => {
     setConsoleArray(newArray);
-  }
+  };
+
+  const changeVariable = newVariable => {
+    setGameVariable(newVariable);
+  };
 
   const [levelClear, setLevelClear] = useState(false);
   // This is the function which is passed as props to the Editor component to change the state 'levelClear' whether the input is correct or not
@@ -24,10 +28,10 @@ const Main = (props) => {
     setLevelClear(newState);
   }
   // The array and string which are passed as props to the Display component are updated every time the 'levelClear' state changes.
-  useEffect(() => {
-    // levelClear ? setConsoleArray(data.finalArrayItems) : setConsoleArray(data.arrayItems);
-    levelClear ? setGameVariable(data.finalVariable) : setGameVariable('');
-  }, [levelClear, data]);
+  // useEffect(() => {
+  //   // levelClear ? setConsoleArray(data.finalArrayItems) : setConsoleArray(data.arrayItems);
+  //   levelClear ? setGameVariable(data.finalVariable) : setGameVariable('');
+  // }, [levelClear, data]);
 
   // This useEffect will update the App component whether the level has been levelCleard or not
   const updateLevelStatus = props.updateLevelStatus;
@@ -85,6 +89,7 @@ const Main = (props) => {
         items={data.items}
         testResult={data.testResult}
         changeArray={changeArray}
+        changeVariable={changeVariable}
         changeLevelClear={changeLevelClear}
         level={data.level}
         reset={reset}
