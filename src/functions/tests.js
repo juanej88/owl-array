@@ -17,18 +17,21 @@ const checkLastCharacter = lastCharacter => lastCharacter === ';' || lastCharact
 const getInputSections = inputSplit => {
   const equalsSign = inputSplit.indexOf('=');
   const dotCharacter = inputSplit.indexOf('.');
-  let variableName;
+  let variableName = null;
   let arrayName;
   let methodAndParameter;
   if(equalsSign === -1 && dotCharacter !== -1) {
     arrayName = inputSplit.slice(0, dotCharacter).join('');
     methodAndParameter = inputSplit.slice(dotCharacter + 1);
-  } else if (equalsSign === -1 && dotCharacter !== -1) {
-    arrayName = inputSplit.slice(equalsSign + 1, dotCharacter).join('').trim();
+  } else if (equalsSign !== -1 && dotCharacter !== -1) {
+    variableName = inputSplit.slice(0, equalsSign).join('').trim();
+    arrayName = inputSplit.slice(equalsSign + 1, dotCharacter).join('').trimStart();
+    methodAndParameter = inputSplit.slice(dotCharacter + 1);
   }
   return [variableName, arrayName, methodAndParameter];
 };
 
+const checkVariableName = (variableName, variableNameInput) => variableName === variableNameInput;
 const checkArrayName = (arrayName, arrayNameInput) => arrayName === arrayNameInput;
 
 const getMethodAndParameter = (inputSplit) => {
@@ -86,7 +89,7 @@ const getStringsArray = (strings) => {
 };
 
 // This function controls all the functions above and runs them depending on the tests which have been passed successfully
-const runTests = (input, arrayName, method, arrayItems, items) => {
+const runTests = (input, arrayName, method, arrayItems, variableName) => {
   const inputSplit = input.trim().split('');
   const [mainInput, lastCharacter] = getInputToCheck(inputSplit);
 
@@ -97,12 +100,11 @@ const runTests = (input, arrayName, method, arrayItems, items) => {
     [variableNameInput, arrayNameInput, methodAndParameter] = getInputSections(mainInput);
   }
 
-  console.log(variableNameInput); // NEXT TO BE IMPLEMENTED...
-
+  const variableNameTest = checkVariableName(variableName, variableNameInput);
   const arrayNameTest = checkArrayName(arrayName, arrayNameInput);
 
   let methodInput, parameterInput;
-  if(arrayNameTest) {
+  if((variableNameTest || variableNameInput === null) && arrayNameTest) {
     [methodInput, parameterInput] = getMethodAndParameter(methodAndParameter);
   }
 
@@ -113,9 +115,15 @@ const runTests = (input, arrayName, method, arrayItems, items) => {
   const stringParameterTest = checkStringParameter(parameterInput);
 
   // All the methods available to be implemented:
-  // push, pop, unshift, shift, slice...
+  // push, pop, unshift, shift, *(slice, join) *working on it
 
   let newArray = [...arrayItems];
+  let newVariable;
+
+  const assignVariable = item => {
+    newVariable = item;
+  }
+
 
   let testPush = lastCharacterTest &&
   arrayNameTest &&
@@ -132,9 +140,12 @@ const runTests = (input, arrayName, method, arrayItems, items) => {
       } else {
         newArray.push('');
       }
-    })
-    return newArray;
-  } 
+    });
+
+    if (variableNameTest) {
+      assignVariable(newArray.length);
+    };
+  };
 
   let testPop = lastCharacterTest &&
   arrayNameTest &&
@@ -142,9 +153,12 @@ const runTests = (input, arrayName, method, arrayItems, items) => {
   parameterInput === '' ? true : false;
 
   if(testPop) {
-    newArray.pop();
-    return newArray;
-  } 
+    if (variableNameTest) {
+      newVariable = newArray.pop();
+    } else {
+      newArray.pop();
+    }
+  };
 
   let testUnshift = lastCharacterTest &&
   arrayNameTest &&
@@ -162,9 +176,12 @@ const runTests = (input, arrayName, method, arrayItems, items) => {
       } else {
         newArray.unshift('');
       }
-    })
-    return newArray;
-  } 
+    });
+
+    if (variableNameTest) {
+      assignVariable(newArray.length);
+    };
+  };
 
   let testShift = lastCharacterTest &&
   arrayNameTest &&
@@ -172,9 +189,27 @@ const runTests = (input, arrayName, method, arrayItems, items) => {
   parameterInput === '' ? true : false;
 
   if(testShift) {
-    newArray.shift();
-    return newArray;
-  } 
+    if (variableNameTest) {
+      newVariable = newArray.shift();
+    } else {
+      newArray.shift();
+    };
+  };
+
+
+  const checkResults = () => {
+    const methodTests = [testPush, testPop, testUnshift, testShift];
+    const methodTestClear = methodTests.some(methodClear => methodClear);
+    return methodTestClear;
+  };
+
+  let returnResults = checkResults();
+
+  if(returnResults) {
+    console.log(variableNameTest);
+    let results = [newArray, newVariable];
+    return results;
+  };
   
 };
 
