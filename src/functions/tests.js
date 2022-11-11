@@ -1,4 +1,4 @@
-import icons from '../data/icons';
+// import icons from '../data/icons';
 
 // This function gets the last character of the input and the main input (so it can be checked by the rest of the functions below)
 const getInputToCheck = inputSplit => {
@@ -68,14 +68,22 @@ const checkStringParameter = parameter => {
 
 const getEachString = strings => {
   const inputSplit = strings.trim().split('');
-  const cleanString = inputSplit.slice(1, -1).join('').trim();
+  let cleanString = '';
+  if(inputSplit.at(0) === `'` && inputSplit.at(-1) === `'`) {
+    cleanString = inputSplit.slice(1, -1).join('');
+  }
   return cleanString;
 };
 
+// CHECK IF I NEED IT OR I CAN DELETE IT
 const checkEachString = stringInput => {
-  const validItems = Object.keys(icons);
-  const validString = validItems.includes(stringInput);
-  return validString;
+  // const validItems = Object.keys(icons);
+  // const validString = validItems.includes(stringInput);
+  // return validString;
+
+  if(stringInput.length <= 12) {
+    return true;
+  };
 };
 
 const getStringsArray = strings => {
@@ -249,9 +257,32 @@ const runTests = (input, arrayName, method, arrayItems, variableName) => {
     };
   };
 
+  let testJoin = lastCharacterTest &&
+  arrayNameTest &&
+  variableNameTest &&
+  (methodInput === 'join');
+
+  const runTestJoin = () => {
+    if(testJoin) {
+      const cleanParameter = parameterInput.trim();
+      const parameterString = getEachString(cleanParameter);
+  
+      if (cleanParameter.length === 0) {
+        newVariable = newArray.join();
+      } else if (cleanParameter === `''`) {
+        newVariable = newArray.join('');
+      } else if (cleanParameter === `' '`) {
+        newVariable = newArray.join(' ');
+      } else if(parameterString.length > 0) {
+        newVariable = newArray.join(parameterString);
+      }
+    };
+  };
+  runTestJoin();
+
   // If any of the 'methodTests' is true, the array 'results' is returned to the Editor component
   const checkResults = () => {
-    const methodTests = [testPush, testPop, testUnshift, testShift, testSlice];
+    const methodTests = [testPush, testPop, testUnshift, testShift, testSlice, testJoin];
     const methodTestClear = methodTests.some(methodClear => methodClear);
     return methodTestClear;
   };

@@ -10,6 +10,7 @@ const Display = (props) => {
   const arrayItemsJSX = array => {
     return array.map((item, index) => {
       let comma = <p>,</p>;
+      let itemLength = item.length;
       return (
         <div className='array-element' key={`item${index}`}>
           <div 
@@ -19,8 +20,8 @@ const Display = (props) => {
               'item-container'
             }
           >
-            {icons[item]} 
-            <p>{item}</p>
+            {itemLength > 0 ? <p>{item}</p> : <p>_</p>}
+            {icons[item] ? icons[item] : <span>?</span>} 
           </div>
           {index !== props.arrayItems.length - 1 && comma}
         </div>
@@ -51,14 +52,15 @@ const Display = (props) => {
       return (
         <div className='array-element'>
           <div className='item-container item-effect'>
-            {icons[props.gameVariable]}
             <p>{props.gameVariable}</p>
+            {icons[props.gameVariable] ? icons[props.gameVariable] : <span>?</span>}
           </div>
         </div>
       );
     } else if (typeof props.gameVariable === 'number') {
       return (
         <div className='item-container item-effect'>
+          <p  class='hide-number'>{props.gameVariable}</p>
           <span className='number-item'>{props.gameVariable}</span>
         </div>
       );
