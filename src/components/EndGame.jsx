@@ -11,6 +11,10 @@ const EndGame = ({ hideEndGame, allLevelsStatus }) => {
   };
   const percentage = getPercentage();
 
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText('https://owl-array.netlify.app');
+  };
+
   return (
     <section className='end-game'>
       <article className='welcome-message'>
@@ -35,7 +39,7 @@ const EndGame = ({ hideEndGame, allLevelsStatus }) => {
             <button 
               id='share-game' 
               className='end-game-button'
-              // onClick={share}
+              onClick={copyToClipboard}
               translate='no'
             >
               Share game

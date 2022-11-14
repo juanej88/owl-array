@@ -206,6 +206,7 @@ const Editor = (props) => {
         autoComplete='off'
         spellCheck='false'
         onChange={handleChange}
+        autoFocus
         // onKeyDown={handleEnter}
         value={input}
       ></textarea>

@@ -10,7 +10,7 @@ const icons = {
   trophy: <i className='fa-solid fa-trophy'></i>,
   plant: <i className='fa-solid fa-seedling'></i>,
   // Level 03 && 04
-  ticket: <i className='fa-solid fa-receipt'></i>,
+  ticket: <i className='fa-solid fa-ticket'></i>,
   mobile: <i className='fas fa-mobile-alt'></i>,
   headphones: <i className='fa-solid fa-headphones'></i>,
   key: <i className='fas fa-key'></i>,

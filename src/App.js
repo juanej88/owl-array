@@ -71,6 +71,8 @@ function App() {
 
   useEffect(() => {
     setLevelData(gameData[level]);
+    // The cursor focuses on the editor input every time the level changes
+    document.getElementById('editor-input').focus();
   }, [level]);
 
   const hideEndGame = () => {
