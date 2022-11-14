@@ -42,7 +42,7 @@
   padding-top: 6rem;
 }
 
-.level-clear.level-complete {
+/* .level-clear.level-complete {
   transform-origin: bottom;
   animation: 0.25s linear forwards changeHeadingColour;
 }
@@ -62,4 +62,4 @@
     opacity: 1;
     transform: scale(1);
   }
-}
+} */

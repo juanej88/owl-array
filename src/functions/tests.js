@@ -266,7 +266,10 @@ const runTests = (input, arrayName, method, arrayItems, variableName) => {
     if(testJoin) {
       const cleanParameter = parameterInput.trim();
       const parameterString = getEachString(cleanParameter);
-  
+      if (cleanParameter.length >= 10) {
+        return;
+      };
+
       if (cleanParameter.length === 0) {
         newVariable = newArray.join();
       } else if (cleanParameter === `''`) {

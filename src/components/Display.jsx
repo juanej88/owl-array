@@ -8,11 +8,15 @@ const Display = (props) => {
   // div.item-container with a p element which holds a comma, unless 
   // is the last item on the array
   const arrayItemsJSX = array => {
+    let arrayLength = array.length;
     return array.map((item, index) => {
-      let comma = <p>,</p>;
+      let openBracket = <p>[</p>;
+        let comma = <p>,</p>;
+        let closeBracket = <p>]</p>;
       let itemLength = item.length;
       return (
         <div className='array-element' key={`item${index}`}>
+          {index === 0 && openBracket}
           <div 
             className={
               item === props.item ? 
@@ -23,7 +27,8 @@ const Display = (props) => {
             {itemLength > 0 ? <p>{item}</p> : <p>_</p>}
             {icons[item] ? icons[item] : <span>?</span>} 
           </div>
-          {index !== props.arrayItems.length - 1 && comma}
+          {index !== arrayLength - 1 && comma}
+          {index === arrayLength -1 && closeBracket}
         </div>
       )
     });
@@ -78,9 +83,8 @@ const Display = (props) => {
     >
       <h2>Console</h2>
       <article className='display--array'>
-        <p translate='no'>{props.arrayName}: [</p>
+        <p translate='no'>{props.arrayName}:</p>
         {arrayItemsJSX(props.arrayItems)}
-        <p>]</p>        
       </article>
 
       {props.variableName &&

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import gameData from './data/gameData';
 import './App.css';
-import Welcome from './components/Welcome';
 import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
+import Welcome from './components/Welcome';
+import EndGame from './components/EndGame';
 
 function App() {
   // This state keeps track of the actual 'level'
@@ -51,22 +52,30 @@ function App() {
   }, [resetGameStatus])
   // END ----- FEATURE: RESET GAME ----- END
 
+  // START ----- FEATURE: NEXT LEVEL & END GAME ----- START
+  const [showEndGame, setShowEndGame] = useState(false);
   // This state takes the object of the actual 'level' from the gameData array and pass it as props to render its data
   const [levelData, setLevelData] = useState(gameData[level]);
   
   const nextLevel = () => {
     if(gameData.length > (level + 1)) {
       setLevel(prevLevel => prevLevel + 1);
+    } else {
+      setShowEndGame(true);
     }
   };
 
   const changeLevel = (level) => {
     setLevel(level);
-  }
+  };
 
   useEffect(() => {
     setLevelData(gameData[level]);
   }, [level]);
+
+  const hideEndGame = () => {
+    setShowEndGame(false);
+  };
 
   const levelTitles = gameData.map(eachLevel => eachLevel.method);
 
@@ -75,7 +84,9 @@ function App() {
     setLevelComplete(newState);
   };
 
-  // Start ----- Feature: Save All Levels Status to Local Storage ----- Start
+  // END ----- FEATURE: NEXT LEVEL & END GAME ----- END
+
+  // START ----- FEATURE: SAVE ALL LEVELS STATUS TO LOCAL STORAGE ----- START
   // allLevelStatus keeps track of each level which has been completed
   const [allLevelsStatus, setAllLevelsStatus] = useState(JSON.parse(localStorage.getItem('Levels solved')) || {});
   // This useEffect creates a new object with a key-value for each level and saves it to the localStorage for the first time the game is loaded
@@ -88,7 +99,7 @@ function App() {
       setAllLevelsStatus(statusObject);
       localStorage.setItem('Levels solved', JSON.stringify(statusObject));
     }
-    // it updates the allLevelStatus every time the game is reset and is called through the showWelcome status change
+    // It updates the allLevelStatus every time the game is reset and is called through the showWelcome status change
   }, [showWelcome]);
 
   useEffect(() => {
@@ -101,15 +112,10 @@ function App() {
   useEffect(() => {
     localStorage.setItem('Levels solved', JSON.stringify(allLevelsStatus));
   }, [allLevelsStatus]);
-  // End ----- Feature: Save All Level Status to Local Storage ----- End
+  // END ----- FEATURE: SAVE ALL LEVELS STATUS TO LOCAL STORAGE ----- END
 
   return (
     <div className='App'>
-      {showWelcome && <Welcome
-        storyMode={storyMode}
-        toggleStoryMode={toggleStoryMode}
-        toggleShowWelcome={toggleShowWelcome}
-      />}
       <Header 
         storyMode={storyMode}
         toggleStoryMode={toggleStoryMode}
@@ -129,6 +135,15 @@ function App() {
         updateLevelStatus={updateLevelStatus}
       />
       <Footer />
+      {showWelcome && <Welcome
+        storyMode={storyMode}
+        toggleStoryMode={toggleStoryMode}
+        toggleShowWelcome={toggleShowWelcome}
+      />}
+      {showEndGame && <EndGame
+      hideEndGame={hideEndGame}
+      allLevelsStatus={allLevelsStatus}
+      />}
     </div>
   );
 }

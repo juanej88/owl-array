@@ -147,7 +147,25 @@ const Editor = (props) => {
   };
 
   const editorArray = props.arrayItems.join("', '");
-  const editorfinalArray = props.finalArrayItems.join("', '");
+
+  const getComments = comment => {
+    let finalComment;
+
+    if(Array.isArray(comment)) {
+      const arrayToString = comment.join("', '");
+      finalComment = `['${arrayToString}']`;
+    } else if(typeof comment === 'number') {
+      finalComment = comment;
+    } else {
+      finalComment = `'${comment}'`;
+    }
+
+    return (
+      <p className='code-comment' translate='no'>
+        &#x2f;&#x2f; Expected outcome: {finalComment}
+      </p>
+    );
+  }
 
   // THINKING ABOUT TO LEAVE THIS FEATURE OR NOT - BELOW
   // const [rows, setRows] = useState(props.editorRows);
@@ -177,6 +195,7 @@ const Editor = (props) => {
       </p>
       {props.variableName && <p>let {props.variableName};</p>}
       <p></p>
+
       <textarea
         id='editor-input'
         className='code-input'
@@ -191,18 +210,14 @@ const Editor = (props) => {
         value={input}
       ></textarea>
       <p></p>
+
       <p translate='no'>console.log({props.arrayName});</p>
-      <p className='code-comment' translate='no'>
-        &#x2f;&#x2f; Expected outcome: ['{editorfinalArray}']
-      </p>
+      {getComments(props.finalArrayItems)}
+
       {props.variableName && (
         <p translate='no'>console.log({props.variableName});</p>
       )}
-      {props.variableName && (
-        <p className='code-comment' translate='no'>
-          &#x2f;&#x2f; Expected outcome: '{props.finalVariable}'
-        </p>
-      )}
+      {props.variableName && getComments(props.finalVariable)}
     </section>
   );
 };

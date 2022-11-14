@@ -26,12 +26,7 @@ const Main = (props) => {
   // This is the function which is passed as props to the Editor component to change the state 'levelClear' whether the input is correct or not
   const changeLevelClear = (newState) => {
     setLevelClear(newState);
-  }
-  // The array and string which are passed as props to the Display component are updated every time the 'levelClear' state changes.
-  // useEffect(() => {
-  //   // levelClear ? setConsoleArray(data.finalArrayItems) : setConsoleArray(data.arrayItems);
-  //   levelClear ? setGameVariable(data.finalVariable) : setGameVariable('');
-  // }, [levelClear, data]);
+  };
 
   // This useEffect will update the App component whether the level has been levelCleard or not
   const updateLevelStatus = props.updateLevelStatus;
@@ -106,7 +101,7 @@ const Main = (props) => {
         className={levelClear ? 'green-background' : undefined}
       >
         {/* <h1 className={
-        levelClear ? 'level-clear level-levelClear' : 'level-clear'
+        levelClear ? 'level-clear level-complete' : 'level-clear'
       }>Level Clear!</h1> */}
         {data.characters.map(character => (
           <Owl key={character} owl={character} levelClear={levelClear} />
