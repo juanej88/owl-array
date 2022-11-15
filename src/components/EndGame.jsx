@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../stylesheets/EndGame.css';
 import Owl from './Owl';
 
@@ -11,9 +11,38 @@ const EndGame = ({ hideEndGame, allLevelsStatus }) => {
   };
   const percentage = getPercentage();
 
+  const [message, setMessage] = useState(`Share game`);
+
   const copyToClipboard = () => {
-    navigator.clipboard.writeText('https://owl-array.netlify.app');
+    navigator.clipboard.writeText('https://owl-array.netlify.app').then(
+      function() {
+        setMessage(`Copied`);
+      },
+      function() {
+        setMessage(`Game's URL could't be copied`);
+      }
+    );
   };
+
+  useEffect(() => {
+    const changeMessageHover = () => {
+      setMessage(`Copy game's URL`);
+    }
+
+    const changeMessageBack = () => {
+      setMessage(`Share game`);
+    };
+
+    const shareButton = document.getElementById('share-game');
+
+    shareButton.addEventListener('mouseenter', changeMessageHover);
+    shareButton.addEventListener('mouseleave', changeMessageBack);
+
+    return () => {
+      shareButton.removeEventListener('mouseenter', changeMessageHover);
+      shareButton.removeEventListener('mouseleave', changeMessageBack);
+    };
+  });
 
   return (
     <section className='end-game'>
@@ -42,15 +71,14 @@ const EndGame = ({ hideEndGame, allLevelsStatus }) => {
               onClick={copyToClipboard}
               translate='no'
             >
-              Share game
+              {message}
             </button>
             <button 
               id='play-more' 
-              className='end-game-button'
+              className='end-game-button close-button'
               onClick={hideEndGame}
-              translate='no'
             >
-              Play more
+              X
             </button>
           </div>
         </aside>

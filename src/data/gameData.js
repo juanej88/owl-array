@@ -120,7 +120,7 @@ const gameData = [
     storyModeTwo: `Your task is to join the strings 'lemon', 'ice' and 'cream' from the array 'ingredients' and assign it to the variable 'cone', so they can start watching their favourite TV series. You must use the join() method.`,
     // storyModeOne: `Good morning everyone! After eating a delicious breakfast, Mr and Mrs Owl are ready to start a new day, but they just want to finish the morning with a glass of lemon ice cream.`,
     // storyModeTwo: `Your task is to join the strings 'lemon' and 'water' from the array 'ingredients' and assign it to the variable 'glass', so they can continue enjoying the weekend. You must use the join() method.`,
-    generalInstructions: `Your task is to join the strings 'lemon' and 'water' from the array 'ingredients' and assign it to the variable 'glass'. You must use the join() method.`,
+    generalInstructions: `Your task is to join the strings 'lemon', 'ice' and 'cream' from the array 'ingredients' and assign it to the variable 'cone'. You must use the join() method.`,
     link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join',
     mozillaDefinition: 'The join() method creates and returns a new string by concatenating all of the elements in an array, separated by commas or a specified separator string.',
     arrayName: 'ingredients',
