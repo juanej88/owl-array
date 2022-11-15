@@ -1,14 +1,16 @@
 .header {
+  grid-area: 1 / 1;
   width: 100%;
   max-width: 1800px;
   min-width: 350px;
+  height: fit-content;
   padding: 1.5rem 1.5rem 0;
-  position: absolute;
   display: grid;
   grid-template-columns: 7fr 3fr;
   justify-content: center;
   z-index: 10;
   color: black;
+  -webkit-user-select: none;
   user-select: none;
 }
 
