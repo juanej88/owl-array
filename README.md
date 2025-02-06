@@ -43,3 +43,19 @@ npm start
 ```
 
 Open **[http://localhost:3000](http://localhost:3000)** to view it in your browser.
+
+## 🤝 Contributing
+
+Contributions are welcome! If you'd like to improve the app, feel free to fork the repository, submit a pull request, or discuss features in the issues section.
+
+## 📬 Contact
+
+Have questions, feedback, or want to collaborate? Reach out!
+
+- **GitHub**: [@juanej88](https://github.com/juanej88)
+- **LinkedIn**: [Juan Espinosa](https://linkedin.com/in/juanespinosajorrin)
+- **Portfolio**: [juanespinosa.net](https://juanespinosa.net)
+
+---
+
+Thank you for checking out **Owl Array**! 🦉 Happy coding! 🚀
